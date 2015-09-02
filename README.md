@@ -29,119 +29,15 @@ setup for all server: (OS:redhat 6.5, security group name: hcl-sg-mysql,  Key n
 ※  hcl-sg-mysql is
 configured like following
 
- 
-
-**Type**
-
- 
-
-**Protocol**
-
- 
-
-**Port Range**
-
- 
-
-**Source**
-
- 
-
-HTTP
-
- 
-
-TCP
-
- 
-
-80
-
- 
-
-0.0.0.0/0
-
- 
-
-MYSQL/Aurora
-
- 
-
-TCP
-
- 
-
-3306
-
- 
-
-0.0.0.0/0
-
- 
-
-Custom TCP Rule
-
- 
-
-TCP
-
- 
-
-9300
-
- 
-
-0.0.0.0/0
-
- 
-
-Custom TCP Rule
-
- 
-
-TCP
-
- 
-
-9200
-
- 
-
-0.0.0.0/0
-
- 
-
-SSH
-
- 
-
-TCP
-
- 
-
-22
-
- 
-
-0.0.0.0/0
-
- 
-
-Custom ICMP Rule
-
- 
-
-Echo Request
-
- 
-
-N/A
-
- 
-
-0.0.0.0/0
-
- 
+| **Type**        |      **Protocol**      |  **Port Range** |  **Source** |
+|-----------------|:----------------------:|----------------:|------------:|
+| HTTP            |  TCP                   | 80              | 0.0.0.0/0   |
+| MYSQL/Aurora    |  TCP                   | 3306            | 0.0.0.0/0   |
+| Custom TCP Rule |  TCP                   | 9300            | 0.0.0.0/0   |
+| Custom TCP Rule |  TCP                   | 9200            | 0.0.0.0/0   |
+| SSH             |  TCP                   | 22              | 0.0.0.0/0   |
+| Custom ICMP Rule|  Echo Request          | N/A             | 0.0.0.0/0   |
 
 ※  test_unit is the
 key-pair which was created earlier.
+

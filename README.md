@@ -41,3 +41,4 @@ configured like following
 ※  test_unit is the
 key-pair which was created earlier.
 
+<img style="float: right;" src="whatever.jpg">

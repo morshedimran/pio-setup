@@ -12,9 +12,20 @@ Below are the procedure that we followed.
 :sparkles: GETTING STARTED :sparkles:
 
 ## Server setup :white_check_mark:
-  Following 8 rules are required to assign on the servers, where personium will be constructed :one:.
 
-1.`Web` Reverse proxy server. Has Global IP, and should be accessible to the internet.
+### server configuration sample
+  Below are the server structure that we configured.
+
+* server configuration
+  * Server 1：Web, Bastion
+  * Server 2：AP, NFS
+  * Server 3：ES, ADS_Master
+  * Server 4：ADS_Slave, backup
+
+### Assign roles on multiple servers
+  personium unit construction requires to assign the following 8 rules on different servers :one:.
+
+1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
 
 2.`AP` Application server, where personium will be executed.
 
@@ -31,19 +42,11 @@ Below are the procedure that we followed.
 8.`Backup` pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary.
 
   
-:one: ：Possible to assign several rules mentioned above on each server.
+:one: ：Possible to assign multiple rules on a single server.
 
 :two: ：As a tool it works as `pio data backup` tool, `consistency check` tool, `Cell recursive Deletion` Tool and the `Elasticsearch index restoring` tool.
 
 
-### server configuration example
-  We verified executing personium, with the below server structure.
-
-* server configuration
-  * Server 1：Web, Bastion
-  * Server 2：AP, NFS
-  * Server 3：ES, ADS_Master
-  * Server 4：ADS_Slave, backup
 
 ### File structure :white_check_mark:
 

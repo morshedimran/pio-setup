@@ -41,4 +41,14 @@ configured like following
 ※  test_unit is the
 key-pair which was created earlier.
 
-<img style="float: right;" src="whatever.jpg">
+<img style="float: right;" src="test.png">
+
+![Flowers](/test.png)
+
+![A picture of a cat](test.png)
+
+
+<div style="float:left;margin:0 10px 10px 0" markdown="1">
+    ![book](test.png)
+</div>
+

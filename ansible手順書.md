@@ -1,141 +1,141 @@
-ŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸ
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
 
-        PersoniumŽ©“®\’zansible  Žg—pŽè‡‘
+# Ansible Procedure manual for personium auto-generation
 
-ŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸ
-
-
-ƒT[ƒo[4‘äˆÈã‚Å\¬‚³‚ê‚épersonium.ioƒT[ƒrƒX‚ð\’z‚·‚é‚½‚ß‚ÌŽè‡‘
-
----------------------------------------
-‚Í‚¶‚ß‚É
-
- ƒT[ƒo[\¬
-  Personium‚ð\¬‚·‚éƒT[ƒo[‚É‚ÍAˆÈ‰º‚Ì8Ží‚Ì–ðŠ„‚ðŠ„‚èU‚é•K—v‚ª‚ ‚é(¦1)B
-  EWeb				ƒŠƒo[ƒXƒvƒƒLƒVƒT[ƒo[BGlobal IP‚ðŽ‚¿AƒCƒ“ƒ^[ƒlƒbƒg‚ÖÚ‘±‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éB
-  EAP				ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo[BPersonium–{‘Ì‚ðŽÀs‚·‚éB
-  EADS_Master			³–{iMySQLjƒT[ƒo[Bƒ}ƒXƒ^[‚Æ‚µ‚Ä³–{‚ð•ÛŽ‚·‚éB
-  EADS_Slave			³–{iMySQLj‚Ì•¡»(ƒXƒŒ[ƒu)ƒT[ƒo[B
-  EES				ElasticSearch‚ðŽÀs‚·‚éƒT[ƒo[B
-  ENFS				NFS‚ð‰Ò“­‚³‚¹‚é‚½‚ß‚ÌƒT[ƒo[B
-  EBastion			“¥‚Ý‘äƒT[ƒo[Bansible‚ÌŽÀs‚âAŠeƒT[ƒo[‚Ö‚ÌSSHÚ‘±‚É—p‚¢‚éB
-  EBackup			PIOƒc[ƒ‹—pƒT[ƒo[(¦2)B•K—v‚É‰ž‚¶‚ÄADS_Slave‚âNFSƒT[ƒo[‚©‚çƒoƒbƒNƒAƒbƒv‚ðs‚¤B
-
-¦1F1‚Â‚ÌƒT[ƒo[‚É‘Î‚µA‚±‚ê‚ç‚Ì–ðŠ„‚ð•¡”‚ðŠ„‚è“–‚Ä‚é‚±‚Æ‚à‰Â”\‚Å‚ ‚éB
-¦2Fƒc[ƒ‹‚Æ‚µ‚ÄPIOƒf[ƒ^ƒoƒbƒNƒAƒbƒvƒc[ƒ‹A®‡«ƒ`ƒFƒbƒNƒc[ƒ‹ACellÄ‹A“Iíœƒc[ƒ‹AElasticsearchƒCƒ“ƒfƒbƒNƒXƒŠƒXƒgƒAƒc[ƒ‹‚ð”õ‚¦‚Ä‚¢‚éB
-
- ƒT[ƒo[\¬—á
-  Personium‚ðŽÀs‚·‚é‚É‚ ‚½‚èAŽÀÑ‚Ì‚ ‚éƒT[ƒo[\¬‚ðˆÈ‰º‚ÉŽ¦‚·B
-  E4‘ä\¬
-    ƒT[ƒo[1FWeb, Bastion
-    ƒT[ƒo[2FAP, NFS
-    ƒT[ƒo[3FES, ADS_Master
-    ƒT[ƒo[4FADS_Slave, backup
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
 
 
- ƒtƒ@ƒCƒ‹\¬
-  /init_personium.yml			ansible-playbookƒRƒ}ƒ“ƒh‚ÅŽÀs‚·‚é‚×‚«yml
-  /[group–¼].yml			group‚²‚Æ‚Ì•Ï”“Ç‚Ýž‚Ý‚ðs‚¢AŽÀsƒ^ƒXƒN‚ð‚Ü‚Æ‚ß‚éyml
-  /ansible.cfg				ŽÀs‚É•K—v‚ÈÝ’è‚ª‹Lq‚³‚ê‚Ä‚¢‚éB•ÏX•s‰ÂB
-
-  /static_inventory/			IP‚È‚ÇŠeŠÂ‹«‚ÉÝ’è‚ª•K{‚Èî•ñ‚ð’u‚­ƒtƒHƒ‹ƒ_
-  š/hosts				ŠeƒzƒXƒg‚ÌÝ’èiIP address, FQDN, group, User name, Private Key‚È‚Çj
-
-  /group_vars/				ŠeŽíƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚ðs‚¤‚½‚ß‚Ìƒtƒ@ƒCƒ‹‚ð’u‚­ƒtƒHƒ‹ƒ_
-  š/[group–¼].yml			group‚²‚Æ‚ÌƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚É•K—v‚ÈÝ’è’l‚ð‚Ü‚Æ‚ß‚é
-
-  /resource/				ƒ^ƒXƒN‚É•K—v‚Èƒtƒ@ƒCƒ‹iƒŠƒ\[ƒX/•ÏX‚ª•s—v‚Ì‚à‚Ìj‚ð‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚ÌƒŠƒ\[ƒX‚ðŠi”[‚·‚é
-
-  /tasks/				ƒ^ƒXƒN‚ð‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚Ì‹ï‘Ì“I‚Èƒ^ƒXƒN‚ðŠi”[‚·‚é
-
-  /handlers/				ƒnƒ“ƒhƒ‰[‚ð‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚Ìƒnƒ“ƒhƒ‰[‚ðŠi”[‚·‚é
-
-
-  ¦šcŠÂ‹«‚É‰ž‚¶‚½Ý’è‚ª•K—v‚Æ‚È‚éƒtƒ@ƒCƒ‹
-
-  ¦[group–¼]cweb, ap, nfs, es, ads_master, ads_slave, bastionAbackup‚¨‚æ‚Ñcommon‚Ì9Ží—Þ
-  icommon‚ÍƒT[ƒo[‚Ì–ðŠ„‚Ì–¼Ì‚Å‚Í‚È‚¢‚ªA•¡”ƒT[ƒo[‚É‹¤’Ê‚µ‚½‹@”\‚ð’ñ‹Ÿ‚·‚é‚½‚ß‚ÉÝ’è‚·‚éj
-
+Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 ---------------------------------------
-Žæˆµ’ˆÓƒtƒ@ƒCƒ‹F
-ˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚ÍansibleŽÀs’†‚ÉŽ©“®¶¬‚³‚ê‚é‚ªAŽæˆµ’ˆÓ‚ÌƒL[‚Å‚ ‚éB
+GETTING STARTED 
+
+## Server setup :white_check_mark:
+  Following 8 rules are required to assign on the servers, where personium will be constructed. :one:
+  ãƒ»Web				ãƒªãƒãƒ¼ã‚¹ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒãƒ¼ã€‚Global IPã‚’æŒã¡ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆã¸æŽ¥ç¶šã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
+  ãƒ»AP				ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒãƒ¼ã€‚Personiumæœ¬ä½“ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+  ãƒ»ADS_Master			æ­£æœ¬ï¼ˆMySQLï¼‰ã‚µãƒ¼ãƒãƒ¼ã€‚ãƒžã‚¹ã‚¿ãƒ¼ã¨ã—ã¦æ­£æœ¬ã‚’ä¿æŒã™ã‚‹ã€‚
+  ãƒ»ADS_Slave			æ­£æœ¬ï¼ˆMySQLï¼‰ã®è¤‡è£½(ã‚¹ãƒ¬ãƒ¼ãƒ–)ã‚µãƒ¼ãƒãƒ¼ã€‚
+  ãƒ»ES				ElasticSearchã‚’å®Ÿè¡Œã™ã‚‹ã‚µãƒ¼ãƒãƒ¼ã€‚
+  ãƒ»NFS				NFSã‚’ç¨¼åƒã•ã›ã‚‹ãŸã‚ã®ã‚µãƒ¼ãƒãƒ¼ã€‚
+  ãƒ»Bastion			è¸ã¿å°ã‚µãƒ¼ãƒãƒ¼ã€‚ansibleã®å®Ÿè¡Œã‚„ã€å„ã‚µãƒ¼ãƒãƒ¼ã¸ã®SSHæŽ¥ç¶šã«ç”¨ã„ã‚‹ã€‚
+  ãƒ»Backup			PIOãƒ„ãƒ¼ãƒ«ç”¨ã‚µãƒ¼ãƒãƒ¼:two:ã€‚å¿…è¦ã«å¿œã˜ã¦ADS_Slaveã‚„NFSã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’è¡Œã†ã€‚
+
+:one:ï¼š1ã¤ã®ã‚µãƒ¼ãƒãƒ¼ã«å¯¾ã—ã€ã“ã‚Œã‚‰ã®å½¹å‰²ã‚’è¤‡æ•°ã‚’å‰²ã‚Šå½“ã¦ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã‚ã‚‹ã€‚
+:two:ï¼šãƒ„ãƒ¼ãƒ«ã¨ã—ã¦PIOãƒ‡ãƒ¼ã‚¿ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ„ãƒ¼ãƒ«ã€æ•´åˆæ€§ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«ã€Cellå†å¸°çš„å‰Šé™¤ãƒ„ãƒ¼ãƒ«ã€Elasticsearchã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒªã‚¹ãƒˆã‚¢ãƒ„ãƒ¼ãƒ«ã‚’å‚™ãˆã¦ã„ã‚‹ã€‚
+
+â–¡ã‚µãƒ¼ãƒãƒ¼æ§‹æˆä¾‹
+  Personiumã‚’å®Ÿè¡Œã™ã‚‹ã«ã‚ãŸã‚Šã€å®Ÿç¸¾ã®ã‚ã‚‹ã‚µãƒ¼ãƒãƒ¼æ§‹æˆã‚’ä»¥ä¸‹ã«ç¤ºã™ã€‚
+  ãƒ»4å°æ§‹æˆ
+    ã‚µãƒ¼ãƒãƒ¼1ï¼šWeb, Bastion
+    ã‚µãƒ¼ãƒãƒ¼2ï¼šAP, NFS
+    ã‚µãƒ¼ãƒãƒ¼3ï¼šES, ADS_Master
+    ã‚µãƒ¼ãƒãƒ¼4ï¼šADS_Slave, backup
+
+
+â–¡ãƒ•ã‚¡ã‚¤ãƒ«æ§‹æˆ
+  /init_personium.yml			ansible-playbookã‚³ãƒžãƒ³ãƒ‰ã§å®Ÿè¡Œã™ã‚‹ã¹ãyml
+  /[groupå].yml			groupã”ã¨ã®å¤‰æ•°èª­ã¿è¾¼ã¿ã‚’è¡Œã„ã€å®Ÿè¡Œã‚¿ã‚¹ã‚¯ã‚’ã¾ã¨ã‚ã‚‹yml
+  /ansible.cfg				å®Ÿè¡Œã«å¿…è¦ãªè¨­å®šãŒè¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ã€‚å¤‰æ›´ä¸å¯ã€‚
+
+  /static_inventory/			IPãªã©å„ç’°å¢ƒã«è¨­å®šãŒå¿…é ˆãªæƒ…å ±ã‚’ç½®ããƒ•ã‚©ãƒ«ãƒ€
+  â˜…/hosts				å„ãƒ›ã‚¹ãƒˆã®è¨­å®šï¼ˆIP address, FQDN, group, User name, Private Keyãªã©ï¼‰
+
+  /group_vars/				å„ç¨®ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºãƒ»ãƒãƒ¥ãƒ¼ãƒ‹ãƒ³ã‚°ã‚’è¡Œã†ãŸã‚ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç½®ããƒ•ã‚©ãƒ«ãƒ€
+  â˜…/[groupå].yml			groupã”ã¨ã®ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºãƒ»ãƒãƒ¥ãƒ¼ãƒ‹ãƒ³ã‚°ã«å¿…è¦ãªè¨­å®šå€¤ã‚’ã¾ã¨ã‚ã‚‹
+
+  /resource/				ã‚¿ã‚¹ã‚¯ã«å¿…è¦ãªãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆãƒªã‚½ãƒ¼ã‚¹/å¤‰æ›´ãŒä¸è¦ã®ã‚‚ã®ï¼‰ã‚’ã¾ã¨ã‚ã‚‹ãƒ•ã‚©ãƒ«ãƒ€
+    /[groupå]/				groupã”ã¨ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’æ ¼ç´ã™ã‚‹
+
+  /tasks/				ã‚¿ã‚¹ã‚¯ã‚’ã¾ã¨ã‚ã‚‹ãƒ•ã‚©ãƒ«ãƒ€
+    /[groupå]/				groupã”ã¨ã®å…·ä½“çš„ãªã‚¿ã‚¹ã‚¯ã‚’æ ¼ç´ã™ã‚‹
+
+  /handlers/				ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ã‚’ã¾ã¨ã‚ã‚‹ãƒ•ã‚©ãƒ«ãƒ€
+    /[groupå]/				groupã”ã¨ã®ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ã‚’æ ¼ç´ã™ã‚‹
+
+
+  â€»â˜…â€¦ç’°å¢ƒã«å¿œã˜ãŸè¨­å®šãŒå¿…è¦ã¨ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+
+  â€»[groupå]â€¦web, ap, nfs, es, ads_master, ads_slave, bastionã€backupãŠã‚ˆã³commonã®9ç¨®é¡ž
+  ï¼ˆcommonã¯ã‚µãƒ¼ãƒãƒ¼ã®å½¹å‰²ã®åç§°ã§ã¯ãªã„ãŒã€è¤‡æ•°ã‚µãƒ¼ãƒãƒ¼ã«å…±é€šã—ãŸæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ãŸã‚ã«è¨­å®šã™ã‚‹ï¼‰
+
+
+---------------------------------------
+å–æ‰±æ³¨æ„ãƒ•ã‚¡ã‚¤ãƒ«ï¼š
+ä»¥ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯ansibleå®Ÿè¡Œä¸­ã«è‡ªå‹•ç”Ÿæˆã•ã‚Œã‚‹ãŒã€å–æ‰±æ³¨æ„ã®ã‚­ãƒ¼ã§ã‚ã‚‹ã€‚
   /fj/dc-core/conf/salt.key
   /fj/dc-core/conf/token.key
 
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
-Part 1. ‰ŠúÝ’è
+Part 1. åˆæœŸè¨­å®š
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
-¡‘O’ñðŒ
-EŽg—pƒ†[ƒU[:root
-EansibleŽÀsƒ†[ƒU[:root
-EansibleŽÀsŠÂ‹«FWeb/BastionƒT[ƒo[
-EŒÅ’èGlobal IP‚ÌŠm•Û‚ÆDNS‚Ö‚Ì“o˜^‚ÍÏ‚Ü‚¹‚Ä‚¨‚­B
-EŠeƒT[ƒo[‚ÉŠ„‚èU‚ç‚ê‚éPrivate IP‚ðŒÅ’è‰»‚µ‚Ä‚¨‚­B
+â– å‰ææ¡ä»¶
+ãƒ»ä½¿ç”¨ãƒ¦ãƒ¼ã‚¶ãƒ¼:root
+ãƒ»ansibleå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ãƒ¼:root
+ãƒ»ansibleå®Ÿè¡Œç’°å¢ƒï¼šWeb/Bastionã‚µãƒ¼ãƒãƒ¼
+ãƒ»å›ºå®šGlobal IPã®ç¢ºä¿ã¨DNSã¸ã®ç™»éŒ²ã¯æ¸ˆã¾ã›ã¦ãŠãã€‚
+ãƒ»å„ã‚µãƒ¼ãƒãƒ¼ã«å‰²ã‚ŠæŒ¯ã‚‰ã‚Œã‚‹Private IPã‚’å›ºå®šåŒ–ã—ã¦ãŠãã€‚
 
 ------------------------------------------------------------------------------------------------
- ansible‚Ìƒpƒ‰ƒ[ƒ^[‚ðÝ’è
+â–¡ansibleã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’è¨­å®š
 ------------------------------------------------------------------------------------------------
-Eansible‚ÌˆÈ‰ºƒtƒ@ƒCƒ‹‚ð•ÒW‚·‚é
+ãƒ»ansibleã®ä»¥ä¸‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç·¨é›†ã™ã‚‹
 
-  - /static_inventory/hosts‚Ì•ÒW  š•K{
-  Šeƒpƒ‰ƒ[ƒ^[‚Ì’l‚ðÝ’è‚·‚éB¦Šeƒpƒ‰ƒ[ƒ^[‚ÉŠÖ‚µ‚Ä‚Í•ÊŽ‘—¿uŽQl_ansibleÝ’è.txtv‚ðŽQÆ
+  - /static_inventory/hostsã®ç·¨é›†  â˜…å¿…é ˆ
+  å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚â€»å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã«é–¢ã—ã¦ã¯åˆ¥è³‡æ–™ã€Œå‚è€ƒ_ansibleè¨­å®š.txtã€ã‚’å‚ç…§
   
-  - /group_vars/[group–¼].yml‚ÌŠm”F
-  ŠeƒT[ƒo‚Ìƒ`ƒ…[ƒjƒ“ƒO‚ðs‚¤ê‡‚Éƒpƒ‰ƒ[ƒ^[‚Ì’l‚ðÝ’è‚·‚éB¦Šeƒpƒ‰ƒ[ƒ^[‚ÉŠÖ‚µ‚Ä‚ÍuansibleÝ’è.txtv‚ðŽQÆ
+  - /group_vars/[groupå].ymlã®ç¢ºèª
+  å„ã‚µãƒ¼ãƒã®ãƒãƒ¥ãƒ¼ãƒ‹ãƒ³ã‚°ã‚’è¡Œã†å ´åˆã«ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚â€»å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã«é–¢ã—ã¦ã¯ã€Œansibleè¨­å®š.txtã€ã‚’å‚ç…§
 
 
 ------------------------------------------------------------------------------------------------
- ansibleŽ‘Þ‚Ì”z”õi‘ÎÛƒT[ƒo[FBastionƒT[ƒo[j
+â–¡ansibleè³‡æã®é…å‚™ï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionã‚µãƒ¼ãƒãƒ¼ï¼‰
 ------------------------------------------------------------------------------------------------
-EWinSCP‚È‚Ç‚ð—p‚¢ABastionƒT[ƒo‚ÖÚ‘±B
-  iWinSCPFhttp://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQj
+ãƒ»WinSCPãªã©ã‚’ç”¨ã„ã€Bastionã‚µãƒ¼ãƒã¸æŽ¥ç¶šã€‚
+  ï¼ˆWinSCPï¼šhttp://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQï¼‰
 
-EAnsibleƒtƒHƒ‹ƒ_‚ðƒAƒbƒvƒ[ƒh‚·‚éB
-  ƒAƒbƒvƒ[ƒhæF/root/
-
-
-------------------------------------------------------------------------------------------------
- Ž©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘/”é–§Œ®‚Ì€”õ
-------------------------------------------------------------------------------------------------
-Eƒ†ƒjƒbƒgØ–¾‘‚Ìì¬•û–@‚Í•ÊŽ‘—¿uŽQl_Ž©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘ì¬Žè‡.txtv‚ðŽQÆ
+ãƒ»Ansibleãƒ•ã‚©ãƒ«ãƒ€ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
+  ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å…ˆï¼š/root/
 
 
 ------------------------------------------------------------------------------------------------
- Ž©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘/”é–§Œ®‚Ì”z’u
+â–¡è‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®æº–å‚™
 ------------------------------------------------------------------------------------------------
-EØ–¾‘‚Ì”z’u
-ì¬‚µ‚½Ž©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘‚Æ”é–§Œ®‚ðansibleƒtƒHƒ‹ƒ_‚Ì/resource/ap/opt/x509/ƒtƒHƒ‹ƒ_‚Ö”z’u‚·‚é
-ƒtƒ@ƒCƒ‹–¼‚ÍˆÈ‰º‚Ì’Ê‚èB
+ãƒ»ãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸ã®ä½œæˆæ–¹æ³•ã¯åˆ¥è³‡æ–™ã€Œå‚è€ƒ_è‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸ä½œæˆæ‰‹é †.txtã€ã‚’å‚ç…§
+
+
+------------------------------------------------------------------------------------------------
+â–¡è‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®é…ç½®
+------------------------------------------------------------------------------------------------
+ãƒ»è¨¼æ˜Žæ›¸ã®é…ç½®
+ä½œæˆã—ãŸè‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸ã¨ç§˜å¯†éµã‚’ansibleãƒ•ã‚©ãƒ«ãƒ€ã®/resource/ap/opt/x509/ãƒ•ã‚©ãƒ«ãƒ€ã¸é…ç½®ã™ã‚‹
+ãƒ•ã‚¡ã‚¤ãƒ«åã¯ä»¥ä¸‹ã®é€šã‚Šã€‚
 /resource/ap/opt/x509/
-	unit-self-sign.crtiŽ©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘j
-	unit.keyi”é–§Œ®j
+	unit-self-sign.crtï¼ˆè‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸ï¼‰
+	unit.keyï¼ˆç§˜å¯†éµï¼‰
 
-¦uŽ©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘/”é–§Œ®‚Ì€”õv‚É‚ÄŽ©ŒÈ–¼ƒ†ƒjƒbƒgØ–¾‘‚ðì¬‚µ‚½ê‡A‚±‚ÌŽè‡‚Í•s—v‚Å‚·B
+â€»ã€Œè‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®æº–å‚™ã€ã«ã¦è‡ªå·±ç½²åãƒ¦ãƒ‹ãƒƒãƒˆè¨¼æ˜Žæ›¸ã‚’ä½œæˆã—ãŸå ´åˆã€ã“ã®æ‰‹é †ã¯ä¸è¦ã§ã™ã€‚
 
 
 ------------------------------------------------------------------------------------------------
- SSLØ–¾‘/”é–§Œ®‚Ì€”õ
+â–¡SSLè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®æº–å‚™
 ------------------------------------------------------------------------------------------------
-ESSLØ–¾‘‚Æ”é–§Œ®‚ð•Ê“r€”õ‚µ‚Ä‚¨‚­B
+ãƒ»SSLè¨¼æ˜Žæ›¸ã¨ç§˜å¯†éµã‚’åˆ¥é€”æº–å‚™ã—ã¦ãŠãã€‚
 
-¦³Ž®‚ÈSSLØ–¾‘‚ª\’zŽž“_‚Å‚È‚¢ê‡‚ÍAŽ©ŒÈ–¼sslØ–¾‘‚ðŽb’è‚Å€”õ‚µAŽg—p‚·‚é
-ˆÈ‰º‚ÍŽ©ŒÈ–¼sslØ–¾‘ì¬Žè‡‚Å‚·BF
-       Ë@# cd /root/ansible/resource/web/opt/nginx/conf
-       Ë@# openssl genrsa -des3 -out server.key 1024
-               “r’†‚ÅuEnter pass phrase for server.key:v‚ª•\Ž¦‚³‚ê‚é‚ªA”CˆÓ‚Ì’l‚ð“ü—Í‚·‚é‚±‚ÆB
-               ’·‚³‚Í4•¶Žš`8191•¶Žš‚Æ‚·‚éB
-       Ë@# openssl req -new -key server.key -out server.csr
-               EuEnter pass phrase for server.key:v‚Íserver.key‚Å“ü—Í‚µ‚½’l‚ð—p‚¢‚éB
-               EˆÈ‰º‚Ì“ü—Í€–Ú‚ª•\Ž¦‚³‚ê‚é‚ªA”CˆÓ‚Ì’l‚ð“ü—Í‚·‚é‚±‚Æ
-                   ‚±‚±‚©‚ç--------
+â€»æ­£å¼ãªSSLè¨¼æ˜Žæ›¸ãŒæ§‹ç¯‰æ™‚ç‚¹ã§ãªã„å ´åˆã¯ã€è‡ªå·±ç½²åsslè¨¼æ˜Žæ›¸ã‚’æš«å®šã§æº–å‚™ã—ã€ä½¿ç”¨ã™ã‚‹
+ä»¥ä¸‹ã¯è‡ªå·±ç½²åsslè¨¼æ˜Žæ›¸ä½œæˆæ‰‹é †ã§ã™ã€‚ï¼š
+       â‡’ã€€# cd /root/ansible/resource/web/opt/nginx/conf
+       â‡’ã€€# openssl genrsa -des3 -out server.key 1024
+               é€”ä¸­ã§ã€ŒEnter pass phrase for server.key:ã€ãŒè¡¨ç¤ºã•ã‚Œã‚‹ãŒã€ä»»æ„ã®å€¤ã‚’å…¥åŠ›ã™ã‚‹ã“ã¨ã€‚
+               é•·ã•ã¯4æ–‡å­—ï½ž8191æ–‡å­—ã¨ã™ã‚‹ã€‚
+       â‡’ã€€# openssl req -new -key server.key -out server.csr
+               ãƒ»ã€ŒEnter pass phrase for server.key:ã€ã¯server.keyã§å…¥åŠ›ã—ãŸå€¤ã‚’ç”¨ã„ã‚‹ã€‚
+               ãƒ»ä»¥ä¸‹ã®å…¥åŠ›é …ç›®ãŒè¡¨ç¤ºã•ã‚Œã‚‹ãŒã€ä»»æ„ã®å€¤ã‚’å…¥åŠ›ã™ã‚‹ã“ã¨
+                   ã“ã“ã‹ã‚‰--------
                    Country Name (2 letter code) [XX]:
                    State or Province Name (full name) []:
                    Locality Name (eg, city) [Default City]:
@@ -148,164 +148,164 @@ Part 1. ‰ŠúÝ’è
                    to be sent with your certificate request
                    A challenge password []:
                    An optional company name []:
-                   ‚±‚±‚Ü‚Å--------
-       Ë@# cp server.key server.key.org
-       Ë@# openssl rsa -in server.key.org -out server.key
-               EuEnter pass phrase for server.key.org:v‚Íserver.key‚Å“ü—Í‚µ‚½’l‚ð—p‚¢‚éB
-       Ë@# openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
-       Ë@# ls -l server.*
-             ËˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚ªo—Í‚³‚ê‚é‚±‚Æ
+                   ã“ã“ã¾ã§--------
+       â‡’ã€€# cp server.key server.key.org
+       â‡’ã€€# openssl rsa -in server.key.org -out server.key
+               ãƒ»ã€ŒEnter pass phrase for server.key.org:ã€ã¯server.keyã§å…¥åŠ›ã—ãŸå€¤ã‚’ç”¨ã„ã‚‹ã€‚
+       â‡’ã€€# openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+       â‡’ã€€# ls -l server.*
+             â‡’ä»¥ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã“ã¨
                server.key.org
                server.crt
                server.csr
                server.key
-  ŽQÆFhttp://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
+  å‚ç…§ï¼šhttp://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
 
 ------------------------------------------------------------------------------------------------
- SSLØ–¾‘/”é–§Œ®‚Ì”z’u
+â–¡SSLè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®é…ç½®
 ------------------------------------------------------------------------------------------------
 
-EØ–¾‘‚Ì”z’u
-Žæ“¾‚µ‚½Ø–¾‘‚ð/root/ansible/resource/web/opt/nginx/conf/ƒtƒHƒ‹ƒ_‚Ö”z’u‚·‚é
+ãƒ»è¨¼æ˜Žæ›¸ã®é…ç½®
+å–å¾—ã—ãŸè¨¼æ˜Žæ›¸ã‚’/root/ansible/resource/web/opt/nginx/conf/ãƒ•ã‚©ãƒ«ãƒ€ã¸é…ç½®ã™ã‚‹
 /root/ansible/resource/web/opt/nginx/conf/
-	server.crtisslØ–¾‘j
-	server.keyi”é–§Œ®j
-¦uSSLØ–¾‘/”é–§Œ®‚Ì€”õv‚É‚ÄŽ©ŒÈ–¼SSLØ–¾‘‚ðì¬‚µ‚½ê‡A‚±‚ÌŽè‡‚Í•s—v‚Å‚·B
+	server.crtï¼ˆsslè¨¼æ˜Žæ›¸ï¼‰
+	server.keyï¼ˆç§˜å¯†éµï¼‰
+â€»ã€ŒSSLè¨¼æ˜Žæ›¸/ç§˜å¯†éµã®æº–å‚™ã€ã«ã¦è‡ªå·±ç½²åSSLè¨¼æ˜Žæ›¸ã‚’ä½œæˆã—ãŸå ´åˆã€ã“ã®æ‰‹é †ã¯ä¸è¦ã§ã™ã€‚
 
-Ø–¾‘‚Ì”z’u‚ÍŠ®—¹‚Å‚·B
+è¨¼æ˜Žæ›¸ã®é…ç½®ã¯å®Œäº†ã§ã™ã€‚
 
 
-
-------------------------------------------------------------------------------------------------
- DISK‚Ì’Ç‰Á
-------------------------------------------------------------------------------------------------
-ˆÈ‰º‚ÌƒT[ƒo‚É‘ÝƒfƒBƒXƒN‚Ì’Ç‰Á‚ðì¬‚µ‚Ä‚¨‚­(‰º‹LƒfƒBƒXƒNƒTƒCƒY‚Í„§’l)B
-‚È‚¨AƒfƒBƒXƒN‚ÌƒpƒX‚Í‰º‹LŠ‡ŒÊ‚Å‹LÚ‚³‚ê‚½ƒpƒXŒÅ’è‚ÅÝ’è‚ð‚·‚é‚±‚ÆB
-ES + ADS_MasterƒT[ƒo[         300GB (ƒpƒX : /dev/xvdb)    —p“rFMySQL‚Ìdata
-                                100GB (ƒpƒX : /dev/xvdc)    —p“rFES‚Ìdata
-ADS_Slave + Backup ƒT[ƒo[     200GB (ƒpƒX : /dev/xvdb)    —p“rFMySQL‚Ìdata(Slave)
-                                200GB (ƒpƒX : /dev/xvdc)    —p“rFƒf[ƒ^ƒoƒbƒNƒAƒbƒv
-AP + NFSƒT[ƒo[                 50GB (ƒpƒX : /dev/xvdb)    —p“rFPIOƒƒO
-                                100GB (ƒpƒX : /dev/xvdc)    —p“rFWebDavAƒCƒxƒ“ƒgƒƒO
 
 ------------------------------------------------------------------------------------------------
- SSHƒL[‚Ìì¬i‘ÎÛƒT[ƒo[FBastionƒT[ƒo[j
+â–¡DISKã®è¿½åŠ 
 ------------------------------------------------------------------------------------------------
-EBastionƒT[ƒo[‚ÉÚ‘±‚µASSHƒL[‚ðì¬‚·‚é
+ä»¥ä¸‹ã®ã‚µãƒ¼ãƒã«å¢—è¨­ãƒ‡ã‚£ã‚¹ã‚¯ã®è¿½åŠ ã‚’ä½œæˆã—ã¦ãŠã(ä¸‹è¨˜ãƒ‡ã‚£ã‚¹ã‚¯ã‚µã‚¤ã‚ºã¯æŽ¨å¥¨å€¤)ã€‚
+ãªãŠã€ãƒ‡ã‚£ã‚¹ã‚¯ã®ãƒ‘ã‚¹ã¯ä¸‹è¨˜æ‹¬å¼§ã§è¨˜è¼‰ã•ã‚ŒãŸãƒ‘ã‚¹å›ºå®šã§è¨­å®šã‚’ã™ã‚‹ã“ã¨ã€‚
+ES + ADS_Masterã‚µãƒ¼ãƒãƒ¼         300GB (ãƒ‘ã‚¹ : /dev/xvdb)    ç”¨é€”ï¼šMySQLã®data
+                                100GB (ãƒ‘ã‚¹ : /dev/xvdc)    ç”¨é€”ï¼šESã®data
+ADS_Slave + Backup ã‚µãƒ¼ãƒãƒ¼     200GB (ãƒ‘ã‚¹ : /dev/xvdb)    ç”¨é€”ï¼šMySQLã®data(Slave)
+                                200GB (ãƒ‘ã‚¹ : /dev/xvdc)    ç”¨é€”ï¼šãƒ‡ãƒ¼ã‚¿ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
+AP + NFSã‚µãƒ¼ãƒãƒ¼                 50GB (ãƒ‘ã‚¹ : /dev/xvdb)    ç”¨é€”ï¼šPIOãƒ­ã‚°
+                                100GB (ãƒ‘ã‚¹ : /dev/xvdc)    ç”¨é€”ï¼šWebDavã€ã‚¤ãƒ™ãƒ³ãƒˆãƒ­ã‚°
+
+------------------------------------------------------------------------------------------------
+â–¡SSHã‚­ãƒ¼ã®ä½œæˆï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionã‚µãƒ¼ãƒãƒ¼ï¼‰
+------------------------------------------------------------------------------------------------
+ãƒ»Bastionã‚µãƒ¼ãƒãƒ¼ã«æŽ¥ç¶šã—ã€SSHã‚­ãƒ¼ã‚’ä½œæˆã™ã‚‹
   # ssh-keygen -t rsa
-  ¨~/.ssh/‚É”z”õ‚³‚ê‚é
-  ¨id_rsa.pubFŒöŠJŒ®
-    id_rsaF”é–§Œ®
+  â†’~/.ssh/ã«é…å‚™ã•ã‚Œã‚‹
+  â†’id_rsa.pubï¼šå…¬é–‹éµ
+    id_rsaï¼šç§˜å¯†éµ
 
-  ƒpƒXƒ[ƒh‚Í‹ó—“‚ÅEnter‚ð‰Ÿ‰º‚·‚é
-  (Ž©“®\’z’†‚ÉƒpƒXƒ[ƒh“ü—Í‚ð‹‚ß‚ç‚ê‚Ä‚µ‚Ü‚¤‚½‚ß)
+  ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯ç©ºæ¬„ã§Enterã‚’æŠ¼ä¸‹ã™ã‚‹
+  (è‡ªå‹•æ§‹ç¯‰ä¸­ã«ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å…¥åŠ›ã‚’æ±‚ã‚ã‚‰ã‚Œã¦ã—ã¾ã†ãŸã‚)
   
-EŒöŠJŒ®‚ÌŠm”F(ŽŸ€uSSHƒL[‚Ì”z’uv‚ÌŽè‡‚ÅŽg—p‚·‚é‚½‚ßAŒ‹‰Ê‚ðƒRƒs[‚µ‚Ä‚¨‚­‚±‚Æ)
+ãƒ»å…¬é–‹éµã®ç¢ºèª(æ¬¡é …ã€ŒSSHã‚­ãƒ¼ã®é…ç½®ã€ã®æ‰‹é †ã§ä½¿ç”¨ã™ã‚‹ãŸã‚ã€çµæžœã‚’ã‚³ãƒ”ãƒ¼ã—ã¦ãŠãã“ã¨)
   # cat /root/.ssh/id_rsa.pub
-      o—Í—á)
+      å‡ºåŠ›ä¾‹)
       ------------------
       ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
       ------------------
 
 ------------------------------------------------------------------------------------------------
- SSHƒL[‚Ì”z’ui‘ÎÛƒT[ƒo[FBastionˆÈŠO‚Ì‘SƒT[ƒo[j
+â–¡SSHã‚­ãƒ¼ã®é…ç½®ï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionä»¥å¤–ã®å…¨ã‚µãƒ¼ãƒãƒ¼ï¼‰
 ------------------------------------------------------------------------------------------------
-¦ˆÈ‰º‚Ìì‹Æ‚ÍBastionƒT[ƒo[ˆÈŠO‚Ì‘SƒT[ƒo[‚ÅŽÀŽ{‚·‚éB
-««‚±‚±‚©‚ç------------
+â€»ä»¥ä¸‹ã®ä½œæ¥­ã¯Bastionã‚µãƒ¼ãƒãƒ¼ä»¥å¤–ã®å…¨ã‚µãƒ¼ãƒãƒ¼ã§å®Ÿæ–½ã™ã‚‹ã€‚
+â†“â†“ã“ã“ã‹ã‚‰------------
 
-EŠeƒT[ƒo[‚ÖÚ‘±‚µAƒL[‚ð”z’u‚·‚é
-  /root/.ssh/authorized_keys‚ÉA¶¬‚µ‚½ŒöŠJŒ®‚ð’Ç‰Á‚·‚é
+ãƒ»å„ã‚µãƒ¼ãƒãƒ¼ã¸æŽ¥ç¶šã—ã€ã‚­ãƒ¼ã‚’é…ç½®ã™ã‚‹
+  /root/.ssh/authorized_keysã«ã€ç”Ÿæˆã—ãŸå…¬é–‹éµã‚’è¿½åŠ ã™ã‚‹
 
-    ¦/root/.sshƒtƒHƒ‹ƒ_‚ª‚È‚¢ê‡‚ÍƒtƒHƒ‹ƒ_‚ðì¬‚µAauthorized_keys‚àì¬‚·‚é
+    â€»/root/.sshãƒ•ã‚©ãƒ«ãƒ€ãŒãªã„å ´åˆã¯ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œæˆã—ã€authorized_keysã‚‚ä½œæˆã™ã‚‹
       # mkdir .ssh
       # touch authorized_keys
 
-  ˆÈ‰º‚ÌƒRƒ}ƒ“ƒh‚ðŽg‚¢Aƒtƒ@ƒCƒ‹‚Ì––”ö‚ÉŒöŠJŒ®‚ð’Ç‰Á‚·‚é
+  ä»¥ä¸‹ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’ä½¿ã„ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ«å°¾ã«å…¬é–‹éµã‚’è¿½åŠ ã™ã‚‹
   # vi /root/.ssh/authorized_keys
-      1. viƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚é‚ÆAƒtƒ@ƒCƒ‹‚Ì’†g‚ª•\Ž¦‚³‚ê‚Ü‚·B
-      2. uiv‚ð‰Ÿ‚·‚Æ•ÒWƒ‚[ƒh‚É‚È‚é‚Ì‚ÅA‚»‚Ìó‘Ô‚Åƒtƒ@ƒCƒ‹––”ö‚Ü‚Å‚¢‚«‚Ü‚·B
-      3. ƒRƒs[‚µ‚½ŒöŠJŒ®‚ð‰EƒNƒŠƒbƒN‚Åu“\‚è•t‚¯v‚ð‘I‘ð‚µ‚Ü‚·B
-      4. uEscv‚ð‰Ÿ‚µu:vAuwvAuqv‚Ì‡‚É‰Ÿ‚·‚Æƒtƒ@ƒCƒ‹‚ª•Û‘¶‚³‚ê‚ÄAviƒRƒ}ƒ“ƒh‚ªI—¹‚³‚ê‚Ü‚·B
+      1. viã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã¨ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­èº«ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+      2. ã€Œiã€ã‚’æŠ¼ã™ã¨ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã«ãªã‚‹ã®ã§ã€ãã®çŠ¶æ…‹ã§ãƒ•ã‚¡ã‚¤ãƒ«æœ«å°¾ã¾ã§ã„ãã¾ã™ã€‚
+      3. ã‚³ãƒ”ãƒ¼ã—ãŸå…¬é–‹éµã‚’å³ã‚¯ãƒªãƒƒã‚¯ã§ã€Œè²¼ã‚Šä»˜ã‘ã€ã‚’é¸æŠžã—ã¾ã™ã€‚
+      4. ã€ŒEscã€ã‚’æŠ¼ã—ã€Œ:ã€ã€ã€Œwã€ã€ã€Œqã€ã®é †ã«æŠ¼ã™ã¨ãƒ•ã‚¡ã‚¤ãƒ«ãŒä¿å­˜ã•ã‚Œã¦ã€viã‚³ãƒžãƒ³ãƒ‰ãŒçµ‚äº†ã•ã‚Œã¾ã™ã€‚
 
-Eƒp[ƒ~ƒbƒVƒ‡ƒ“‚ÌŠm”F
+ãƒ»ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®ç¢ºèª
   # ls -la /root/.ssh/authorized_keys
-  o—Í—á)
+  å‡ºåŠ›ä¾‹)
     ---------------
       -rw-------. 1 root root 952 Aug 27 02:41 /root/.ssh/authorized_keys
     ---------------
 
-  u-rw-------.v‚Æ•\Ž¦‚³‚ê‚Ä‚¢‚é‚±‚ÆB
-  ˆÙ‚È‚éê‡‚Íƒp[ƒ~ƒbƒVƒ‡ƒ“‚ÌC³‚ðs‚¤B
-    ‰º‹LƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚éB
-       ---------‚±‚±‚©‚ç
+  ã€Œ-rw-------.ã€ã¨è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€‚
+  ç•°ãªã‚‹å ´åˆã¯ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®ä¿®æ­£ã‚’è¡Œã†ã€‚
+    ä¸‹è¨˜ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+       ---------ã“ã“ã‹ã‚‰
        # chmod 600 /root/.ssh/authorized_keys
        # ls -la /root/.ssh/authorized_keys
-         o—Í—á)
+         å‡ºåŠ›ä¾‹)
          ---------------
            -rw-------. 1 root root 952 Aug 27 02:41 /root/.ssh/authorized_keys
          ---------------
-        u-rw-------.v‚Æ•\Ž¦‚³‚ê‚Ä‚¢‚é‚±‚ÆB
-       ---------‚±‚±‚Ü‚Å
+        ã€Œ-rw-------.ã€ã¨è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€‚
+       ---------ã“ã“ã¾ã§
 
   # ls -la /root/
-  o—Í—á)
+  å‡ºåŠ›ä¾‹)
   ---------------
     drwx------.  2 root root 4096 Aug 27 02:41 .ssh
   ---------------
-  .sshƒfƒBƒŒƒNƒgƒŠ‚Ì‚Ï[‚É‚µ‚å‚ñ‚ªudrwx------.v‚Æ•\Ž¦‚³‚ê‚Ä‚¢‚é‚±‚ÆB
-  ˆÙ‚È‚éê‡‚Íƒp[ƒ~ƒbƒVƒ‡ƒ“‚ÌC³‚ðs‚¤B
-    ‰º‹LƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚éB
-       ««‚±‚±‚©‚ç---------
+  .sshãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã±ãƒ¼ã«ã—ã‚‡ã‚“ãŒã€Œdrwx------.ã€ã¨è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€‚
+  ç•°ãªã‚‹å ´åˆã¯ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®ä¿®æ­£ã‚’è¡Œã†ã€‚
+    ä¸‹è¨˜ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+       â†“â†“ã“ã“ã‹ã‚‰---------
        # chmod 700 /root/.ssh
        # ls -la /root/.ssh
-         o—Í—á)
+         å‡ºåŠ›ä¾‹)
          ---------------
            drwx------.  2 root root 4096 Aug 27 02:41 .ssh
          ---------------
-        udrwx------.v‚Æ•\Ž¦‚³‚ê‚Ä‚¢‚é‚±‚ÆB
-       ªª‚±‚±‚Ü‚Å---------
+        ã€Œdrwx------.ã€ã¨è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€‚
+       â†‘â†‘ã“ã“ã¾ã§---------
 
   # exit
 
-ªª‚±‚±‚Ü‚Å------------
+â†‘â†‘ã“ã“ã¾ã§------------
 
 ------------------------------------------------------------------------------------------------
- SSHÚ‘±‚ÌŠm”Fi‘ÎÛƒT[ƒo[FBastionƒT[ƒo[j
+â–¡SSHæŽ¥ç¶šã®ç¢ºèªï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionã‚µãƒ¼ãƒãƒ¼ï¼‰
 ------------------------------------------------------------------------------------------------
-EBastionƒT[ƒo[‚©‚çŠeƒT[ƒo‚ÖsshÚ‘±‚ðs‚¤
-  # ssh -i ~/.ssh/id_rsa root@[Ú‘±æƒT[ƒo[‚ÌPrivate IP]
+ãƒ»Bastionã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰å„ã‚µãƒ¼ãƒã¸sshæŽ¥ç¶šã‚’è¡Œã†
+  # ssh -i ~/.ssh/id_rsa root@[æŽ¥ç¶šå…ˆã‚µãƒ¼ãƒãƒ¼ã®Private IP]
   
-  ƒ†[ƒU[–¼root‚ÅƒƒOƒCƒ“‚Å‚«‚é‚±‚Æ
+  ãƒ¦ãƒ¼ã‚¶ãƒ¼årootã§ãƒ­ã‚°ã‚¤ãƒ³ã§ãã‚‹ã“ã¨
 
   # exit
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
-Part 2. ansibleÝ’è
+Part 2. ansibleè¨­å®š
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
 ------------------------------------------------------------------------------------------------
- Ansible‚ÌƒCƒ“ƒXƒg[ƒ‹i‘ÎÛƒT[ƒo[FBastionƒT[ƒo[j
+â–¡Ansibleã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionã‚µãƒ¼ãƒãƒ¼ï¼‰
 ------------------------------------------------------------------------------------------------
-EBastionƒT[ƒo[‚ÖÚ‘±‚µAepelƒŠƒ|ƒWƒgƒŠ‚ð’Ç‰Á‚·‚é
+ãƒ»Bastionã‚µãƒ¼ãƒãƒ¼ã¸æŽ¥ç¶šã—ã€epelãƒªãƒã‚¸ãƒˆãƒªã‚’è¿½åŠ ã™ã‚‹
   # yum localinstall http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-     ËuIs this ok [y/N]: v ‚ª•\Ž¦‚³‚ê‚Ä“ü—Í‚ª—v‹‚³‚ê‚éBuyv‚ð“ü—Í‚µ‚ÄuEnterv‚ð‰Ÿ‚·B
-Eansible–{‘Ì‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é
+     â‡’ã€ŒIs this ok [y/N]: ã€ ãŒè¡¨ç¤ºã•ã‚Œã¦å…¥åŠ›ãŒè¦æ±‚ã•ã‚Œã‚‹ã€‚ã€Œyã€ã‚’å…¥åŠ›ã—ã¦ã€ŒEnterã€ã‚’æŠ¼ã™ã€‚
+ãƒ»ansibleæœ¬ä½“ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
   # yum install ansible
-     ËuIs this ok [y/N]: v ‚ª•\Ž¦‚³‚ê‚Ä“ü—Í‚ª—v‹‚³‚ê‚éBuyv‚ð“ü—Í‚µ‚ÄuEnterv‚ð‰Ÿ‚·B
+     â‡’ã€ŒIs this ok [y/N]: ã€ ãŒè¡¨ç¤ºã•ã‚Œã¦å…¥åŠ›ãŒè¦æ±‚ã•ã‚Œã‚‹ã€‚ã€Œyã€ã‚’å…¥åŠ›ã—ã¦ã€ŒEnterã€ã‚’æŠ¼ã™ã€‚
 
 ------------------------------------------------------------------------------------------------
- ansibleÝ’è€–Ú‚ÌŠm”Fi‘ÎÛƒT[ƒo[FBastionƒT[ƒo[j
+â–¡ansibleè¨­å®šé …ç›®ã®ç¢ºèªï¼ˆå¯¾è±¡ã‚µãƒ¼ãƒãƒ¼ï¼šBastionã‚µãƒ¼ãƒãƒ¼ï¼‰
 ------------------------------------------------------------------------------------------------
-EBastionƒT[ƒo[‚ÉÚ‘±‚µAansibleÝ’è€–Ú‚ªC³‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ðŠm”F
-  1D /hosts‚ÌŠm”F
-    hosts‚ÌÝ’è“à—e‚É˜R‚ê‚ª‚È‚¢‚©‚ðŠm”F‚·‚é
-    # cat /root/ansible/static_inventory/hosts | grep "y"
-        Ë‰½‚à•\Ž¦‚³‚ê‚È‚¯‚ê‚Î‚·‚×‚Ä‚Ì€–Ú‚ªÝ’è‚³‚ê‚Ä‚¢‚éB
+ãƒ»Bastionã‚µãƒ¼ãƒãƒ¼ã«æŽ¥ç¶šã—ã€ansibleè¨­å®šé …ç›®ãŒä¿®æ­£ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª
+  1ï¼Ž /hostsã®ç¢ºèª
+    hostsã®è¨­å®šå†…å®¹ã«æ¼ã‚ŒãŒãªã„ã‹ã‚’ç¢ºèªã™ã‚‹
+    # cat /root/ansible/static_inventory/hosts | grep "ã€"
+        â‡’ä½•ã‚‚è¡¨ç¤ºã•ã‚Œãªã‘ã‚Œã°ã™ã¹ã¦ã®é …ç›®ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã€‚
 
-  2D /group_vars/[group–¼].yml‚ÌŠm”F
-      ¦group_vars“à‚ð•ÏX‚µ‚½ê‡‚Ì‚ÝŽÀŽ{BC³‚ª”½‰f‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ðŠm”F‚·‚é‚±‚ÆB
+  2ï¼Ž /group_vars/[groupå].ymlã®ç¢ºèª
+      â€»group_varså†…ã‚’å¤‰æ›´ã—ãŸå ´åˆã®ã¿å®Ÿæ–½ã€‚ä¿®æ­£ãŒåæ˜ ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹ã“ã¨ã€‚
     # cat /root/ansible/group_vars/ap.yml
     # cat /root/ansible/group_vars/backup.yml
     # cat /root/ansible/group_vars/bastion.yml
@@ -316,30 +316,30 @@ Part 2. ansibleÝ’è
     # cat /root/ansible/group_vars/web.yml
 
 ------------------------------------------------------------------------------------------------
- ansible‚ÌŽÀs
+â–¡ansibleã®å®Ÿè¡Œ
 ------------------------------------------------------------------------------------------------
-EBastionƒT[ƒo‚ÖÚ‘±‚µAƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚ðansibleƒtƒHƒ‹ƒ_‚Ö•ÏX‚·‚é
+ãƒ»Bastionã‚µãƒ¼ãƒã¸æŽ¥ç¶šã—ã€ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ansibleãƒ•ã‚©ãƒ«ãƒ€ã¸å¤‰æ›´ã™ã‚‹
   # cd /root/ansible/
 
-Eansible‚ðŽÀs‚·‚é
+ãƒ»ansibleã‚’å®Ÿè¡Œã™ã‚‹
   # date; ansible-playbook init_personium.yml ; date
-¦  ”•ª`”ŽžŠÔ‚Ù‚Ç‚Åansible‚Ìˆ—‚ªŠ®—¹‚µAÝ’è‚µ‚½FQDN‚ÌPIOƒ†ƒjƒbƒg‚ªŠ®¬‚µ‚Ü‚·BWebihttpsj‚Å‚ÌƒAƒNƒZƒX‚ª‰Â”\‚Æ‚È‚è‚Ü‚·B
+â€»  æ•°åˆ†ï½žæ•°æ™‚é–“ã»ã©ã§ansibleã®å‡¦ç†ãŒå®Œäº†ã—ã€è¨­å®šã—ãŸFQDNã®PIOãƒ¦ãƒ‹ãƒƒãƒˆãŒå®Œæˆã—ã¾ã™ã€‚Webï¼ˆhttpsï¼‰ã§ã®ã‚¢ã‚¯ã‚»ã‚¹ãŒå¯èƒ½ã¨ãªã‚Šã¾ã™ã€‚
 
-Eansible‚ÌŽÀsŠm”F
+ãƒ»ansibleã®å®Ÿè¡Œç¢ºèª
   # egrep -B 3 -A 3 'failed:|error' /root/ansible.log
-      Ë‰½‚à•\Ž¦‚³‚ê‚È‚¢‚±‚Æ‚ðŠm”F
+      â‡’ä½•ã‚‚è¡¨ç¤ºã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèª
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
-Part 3. ‘a’ÊŠm”F
+Part 3. ç–Žé€šç¢ºèª
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡â—‡
 
 ------------------------------------------------------------------------------------------------
- “¥‚Ý‘äƒT[ƒo‚É‚Ä‘a’ÊŠm”F‚ðŽÀŽ{‚·‚é
+â–¡è¸ã¿å°ã‚µãƒ¼ãƒã«ã¦ç–Žé€šç¢ºèªã‚’å®Ÿæ–½ã™ã‚‹
 ------------------------------------------------------------------------------------------------
-E‘a’ÊŠm”Fƒc[ƒ‹‚ðŽÀs‚·‚é
-  uPCS Version(default) RT OKv‚ª•\Ž¦‚³‚ê‚é‚±‚Æ‚ðŠm”F‚·‚é
-  # /bin/sh pcs_regression.sh https://{{ WebƒT[ƒo[‚ÌFQDN }}
-        ËuPCS Version(default) RT OKv‚ªo—Í‚³‚ê‚ê‚Î‘a’ÊŠm”FŠ®—¹B
+ãƒ»ç–Žé€šç¢ºèªãƒ„ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹
+  ã€ŒPCS Version(default) RT OKã€ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹
+  # /bin/sh pcs_regression.sh https://{{ Webã‚µãƒ¼ãƒãƒ¼ã®FQDN }}
+        â‡’ã€ŒPCS Version(default) RT OKã€ãŒå‡ºåŠ›ã•ã‚Œã‚Œã°ç–Žé€šç¢ºèªå®Œäº†ã€‚
 

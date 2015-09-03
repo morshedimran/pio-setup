@@ -45,24 +45,24 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 ### File structure
 
-  * /init_personium.yml			yml file that should be executed by ansible-playbook.
-  * /[group name].yml			Retrieve the variable of each group, which will be executed by task yml.
-  * /ansible.cfg				実行に必要な設定が記述されている。変更不可。
+  * `/init_personium.yml`			yml file that should be executed by ansible-playbook.
+  * `/[group name].yml`			Retrieve the variable of each group, which will be executed by task yml.
+  * `/ansible.cfg`				実行に必要な設定が記述されている。変更不可。
 
-  * /static_inventory/			IPなど各環境に設定が必須な情報を置くフォルダ
-  * ★/hosts				各ホストの設定（IP address, FQDN, group, User name, Private Keyなど）
+  * `/static_inventory/`		IPなど各環境に設定が必須な情報を置くフォルダ
+  * `★/hosts`				各ホストの設定（IP address, FQDN, group, User name, Private Keyなど）
 
-  * /group_vars/				各種カスタマイズ・チューニングを行うためのファイルを置くフォルダ
-  * ★/[group名].yml			groupごとのカスタマイズ・チューニングに必要な設定値をまとめる
+  * `/group_vars/`				各種カスタマイズ・チューニングを行うためのファイルを置くフォルダ
+  * `★/[group名].yml`			groupごとのカスタマイズ・チューニングに必要な設定値をまとめる
 
-　* /resource/				タスクに必要なファイル（リソース/変更が不要のもの）をまとめるフォルダ
-  * /[group名]/				groupごとのリソースを格納する
+　* `/resource/`			タスクに必要なファイル（リソース/変更が不要のもの）をまとめるフォルダ
+  * `/[group名]/`				groupごとのリソースを格納する
 
-  * /tasks/				タスクをまとめるフォルダ
-  * /[group名]/				groupごとの具体的なタスクを格納する
+  * `/tasks/`				タスクをまとめるフォルダ
+  * `[group名]/`			groupごとの具体的なタスクを格納する
 
-  * /handlers/				ハンドラーをまとめるフォルダ
-  * /[group名]/				groupごとのハンドラーを格納する
+  * `/handlers/`			ハンドラーをまとめるフォルダ
+  * `/[group名]/`				groupごとのハンドラーを格納する
 
 
   ※★…環境に応じた設定が必要となるファイル

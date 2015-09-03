@@ -1,8 +1,12 @@
 ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
-# personium auto-creation ansible instruction manual
+# Provisioning personium unit setup using ansible
 ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
 
-Ansible procedure for auto-constructing personium, using 4 servers or more.
+## Introduction
+
+Ansible contains a number of modules for controlling Amazon Web Services (AWS). The purpose of this document is to explain how to use Ansible together with the combibnation of static inventory to construct personium unit. Here experimentaly we executed ansible tasks in its host loop against multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
+
+Below are the procedure that we followed.
 
 ---------------------------------------
 :sparkles: GETTING STARTED :sparkles:
@@ -10,7 +14,7 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 ## Server setup :white_check_mark:
   Following 8 rules are required to assign on the servers, where personium will be constructed :one:.
 
-1.`Web` Reverse proxy server. Has Global IP, and should be accessable to the internet.
+1.`Web` Reverse proxy server. Has Global IP, and should be accessible to the internet.
 
 2.`AP` Application server, where personium will be executed.
 
@@ -46,7 +50,7 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
   * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required
-  * `/static_inventory/`   :		This folder contains all the assential information of different environments
+  * `/static_inventory/`   :		This folder contains all the essential information of different environments
   * `★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
   * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
   * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
@@ -57,12 +61,10 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
   *  `/handlers/`			Folder to organize handler
   *  `/[group名]/`			Store handler for each group
 
-
   ※★…環境に応じた設定が必要となるファイル
 
   ※[group名]…web, ap, nfs, es, ads_master, ads_slave, bastion、backupおよびcommonの9種類
   （commonはサーバーの役割の名称ではないが、複数サーバーに共通した機能を提供するために設定する）
-
 
 ---------------------------------------
 取扱注意ファイル：

@@ -45,7 +45,7 @@ Below are the procedure that we followed.
   * Server 3：ES, ADS_Master
   * Server 4：ADS_Slave, backup
 
-### File structure
+### File structure :white_check_mark:
 
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml

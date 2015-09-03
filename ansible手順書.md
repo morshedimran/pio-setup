@@ -22,17 +22,19 @@ GETTING STARTED
 
 5.`ES` server for running `ElasticSearch`.
 
-6.`NFS` server for running NFS.
+6.`NFS` server for running `Network File System (NFS)`.
 
 7.`Bastion` Bastion server. Will be used to execute ansible and to connect other servers thru ssh.
 
 8.`Backup` pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary.
 
   
-:one: ：1つのサーバーに対し、これらの役割を複数を割り当てることも可能である。
+:one: ：Possible to assign several rules mentioned above on each server.
 
-:two: ：ツールとしてPIOデータバックアップツール、整合性チェックツール、Cell再帰的削除ツール、Elasticsearchインデックスリストアツールを備えている。
+:two: ：As a tool it works as `pio data backup` tool, `consistency check` tool, `Cell recursive Deletion` Tool and the `Elasticsearch index restoring` tool.
 
+
+### server configuration example
 □サーバー構成例
   Personiumを実行するにあたり、実績のあるサーバー構成を以下に示す。
   ・4台構成

@@ -43,15 +43,15 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 ### File structure
 
-  * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook.
-  * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml.
-  * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required.
-  * `/static_inventory/`   :		This folder contains all the assential information of different environments.
+  * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
+  * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
+  * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required
+  * `/static_inventory/`   :		This folder contains all the assential information of different environments
   * `★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
-  * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning.
-  * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings.
-  * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task.
-  *  `/[group名]/`			Store the resources of each group.
+  * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
+  * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
+  * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task
+  *  `/[group名]/`			Store the resources of each group
   *  `/tasks/`				Folder to organize task
   *  `[group名]/`			Store specific task for each group
   *  `/handlers/`			Folder to organize handler

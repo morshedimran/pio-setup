@@ -63,7 +63,6 @@ Below are the procedure that we followed.
   *  `[group名]/`			Store specific task for each group
   *  `/handlers/`			Folder to organize handler
   *  `/[group名]/`			Store handler for each group
-  *  `/[group名]/`			Store handler for each group
 
   ※★…環境に応じた設定が必要となるファイル
 

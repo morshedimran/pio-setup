@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Ansible contains a number of modules for controlling Amazon Web Services (AWS). The purpose of this document is to explain how to use Ansible together with the combibnation of static inventory to construct personium unit. Here experimentaly we executed ansible tasks in its host loop against multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
+The purpose of this document is to explain how to use Ansible together with static inventory to construct personium unit. Here experimentaly we executed ansible tasks in its host loop against multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
 
 Below are the procedure that we followed.
 

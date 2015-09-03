@@ -45,12 +45,11 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook.
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml.
-  * `/ansible.cfg`			Described required Settings for execution. Modification is not required.
-  * `/static_inventory/`		This folder contains all the assential information of different environments.
-  * `★/hosts`				Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
-  * `/group_vars/`			Folder to add files in order to perform various customized tuning.
-  * `★/[group name].yml`		Collections of value for each group, which requires to customize/tuning the settings.
-
+  * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required.
+  * `/static_inventory/`   :		This folder contains all the assential information of different environments.
+  * `★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
+  * `/group_vars/`	   :		Folder to add files in order to perform various customized tuning.
+  * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings.
 　* `/resource/`			タスクに必要なファイル（リソース/変更が不要のもの）をまとめるフォルダ
   * `/[group名]/`			groupごとのリソースを格納する
   * `/tasks/`				タスクをまとめるフォルダ

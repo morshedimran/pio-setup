@@ -10,7 +10,7 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 GETTING STARTED 
 
 ## Server setup :white_check_mark:
-  Following 8 rules are required to assign on the servers, where personium will be constructed (※1).
+  Following 8 rules are required to assign on the servers, where personium will be constructed :one:.
 
 1.`Web` Reverse proxy server. Has Global IP, and should be accessable to the internet.
 
@@ -26,29 +26,12 @@ GETTING STARTED
 
 7.`Bastion` Bastion server. Will be used to execute ansible and to connect other servers thru ssh.
 
-8.`Backup` pio tool server. It performs the backup from ADS_Slave and NFS server if necessary.
+8.`Backup` pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary.
 
   
-  ・`Web`			リバースプロキシサーバー。Global IPを持ち、インターネットへ接続している必要がある。
-  
-  ・AP				アプリケーションサーバー。Personium本体を実行する。
-  
-  ・ADS_Master			正本（MySQL）サーバー。マスターとして正本を保持する。
-  
-  ・ADS_Slave			正本（MySQL）の複製(スレーブ)サーバー。
-  
-  ・ES				ElasticSearchを実行するサーバー。
-  
-  ・NFS				NFSを稼働させるためのサーバー。
-  
-  ・Bastion			踏み台サーバー。ansibleの実行や、各サーバーへのSSH接続に用いる。
-  
-  ・Backup			PIOツール用サーバー(※2)。必要に応じてADS_SlaveやNFSサーバーからバックアップを行う。
+:one: ：1つのサーバーに対し、これらの役割を複数を割り当てることも可能である。
 
-
-(※1)：1つのサーバーに対し、これらの役割を複数を割り当てることも可能である。
-
-(※2)：ツールとしてPIOデータバックアップツール、整合性チェックツール、Cell再帰的削除ツール、Elasticsearchインデックスリストアツールを備えている。
+:two: ：ツールとしてPIOデータバックアップツール、整合性チェックツール、Cell再帰的削除ツール、Elasticsearchインデックスリストアツールを備えている。
 
 □サーバー構成例
   Personiumを実行するにあたり、実績のあるサーバー構成を以下に示す。

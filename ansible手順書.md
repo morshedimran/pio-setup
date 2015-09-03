@@ -12,9 +12,10 @@ GETTING STARTED
 ## Server setup :white_check_mark:
   Following 8 rules are required to assign on the servers, where personium will be constructed. :one:
 
-1. `Web`
-2. Item 2
-3. Item 3
+1.`Web`                      Reverse proxy server. Has Global IP, and should be accessable to the internet.
+
+2.Item 2
+3.Item 3
 
 
   

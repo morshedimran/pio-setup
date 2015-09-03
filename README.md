@@ -52,3 +52,8 @@ key-pair which was created earlier.
     ![book](test.png)
 </div>
 
+---------------------------------------
+GETTING STARTED 
+
+## Server setup :white_check_mark:
+

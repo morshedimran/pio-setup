@@ -35,14 +35,13 @@ GETTING STARTED
 
 
 ### server configuration example
-□サーバー構成例
-  Personiumを実行するにあたり、実績のあるサーバー構成を以下に示す。
-  ・4台構成
-    サーバー1：Web, Bastion
-    サーバー2：AP, NFS
-    サーバー3：ES, ADS_Master
-    サーバー4：ADS_Slave, backup
+  We verified executing personium, with the below server structure.
 
+* server configuration
+  * Server 1：Web, Bastion
+  * Server 2：AP, NFS
+  * Server 3：ES, ADS_Master
+  * Server 4：ADS_Slave, backup
 
 □ファイル構成
   /init_personium.yml			ansible-playbookコマンドで実行するべきyml

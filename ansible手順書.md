@@ -43,8 +43,8 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 ### File structure
 
-  * `/init_personium.yml`		yml file that should be executed by ansible-playbook.
-  * `/[group name].yml`			Retrieve the variable of each group, which will be executed by task yml.
+  * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook.
+  * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml.
   * `/ansible.cfg`			Described required Settings for execution. Modification is not required.
   * `/static_inventory/`		This folder contains all the assential information of different environments.
   * `★/hosts`				Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)

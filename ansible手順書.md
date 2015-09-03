@@ -19,12 +19,19 @@ GETTING STARTED
 
   
   ・`Web`				リバースプロキシサーバー。Global IPを持ち、インターネットへ接続している必要がある。
+  
   ・AP				アプリケーションサーバー。Personium本体を実行する。
+  
   ・ADS_Master			正本（MySQL）サーバー。マスターとして正本を保持する。
+  
   ・ADS_Slave			正本（MySQL）の複製(スレーブ)サーバー。
+  
   ・ES				ElasticSearchを実行するサーバー。
+  
   ・NFS				NFSを稼働させるためのサーバー。
+  
   ・Bastion			踏み台サーバー。ansibleの実行や、各サーバーへのSSH接続に用いる。
+  
   ・Backup			PIOツール用サーバー:two:。必要に応じてADS_SlaveやNFSサーバーからバックアップを行う。
 
 :one:：1つのサーバーに対し、これらの役割を複数を割り当てることも可能である。

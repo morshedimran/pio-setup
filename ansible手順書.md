@@ -43,9 +43,10 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
   * Server 3：ES, ADS_Master
   * Server 4：ADS_Slave, backup
 
-□ファイル構成
-  /init_personium.yml			ansible-playbookコマンドで実行するべきyml
-  /[group名].yml			groupごとの変数読み込みを行い、実行タスクをまとめるyml
+### File structure
+
+  /init_personium.yml			yml file that should be executed by ansible-playbook.
+  /[group name].yml			Retrieve the variable of each group, which will be executed by task yml.
   /ansible.cfg				実行に必要な設定が記述されている。変更不可。
 
   /static_inventory/			IPなど各環境に設定が必須な情報を置くフォルダ

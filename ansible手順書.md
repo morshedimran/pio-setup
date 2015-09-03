@@ -1,8 +1,7 @@
-◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
-
+◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
 # Ansible Procedure manual for personium auto-generation
 
-◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
 
 
 Ansible procedure for auto-constructing personium, using 4 servers or more.
@@ -23,6 +22,7 @@ GETTING STARTED
   ・Backup			PIOツール用サーバー:two:。必要に応じてADS_SlaveやNFSサーバーからバックアップを行う。
 
 :one:：1つのサーバーに対し、これらの役割を複数を割り当てることも可能である。
+
 :two:：ツールとしてPIOデータバックアップツール、整合性チェックツール、Cell再帰的削除ツール、Elasticsearchインデックスリストアツールを備えている。
 
 □サーバー構成例

@@ -12,6 +12,7 @@ GETTING STARTED
 
 ## Server setup :white_check_mark:
   Following 8 rules are required to assign on the servers, where personium will be constructed. :one:
+  
   ・Web				リバースプロキシサーバー。Global IPを持ち、インターネットへ接続している必要がある。
   ・AP				アプリケーションサーバー。Personium本体を実行する。
   ・ADS_Master			正本（MySQL）サーバー。マスターとして正本を保持する。

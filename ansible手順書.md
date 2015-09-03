@@ -14,7 +14,7 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 1.`Web` Reverse proxy server. Has Global IP, and should be accessable to the internet.
 
-2.`AP` Application server, where Personium will be executed.
+2.`AP` Application server, where personium will be executed.
 
 3.`ADS_Master` Basically `MySQL` server. Contributes as Master.
 

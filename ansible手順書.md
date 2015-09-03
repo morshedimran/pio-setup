@@ -7,7 +7,7 @@
 Ansible procedure for auto-constructing personium, using 4 servers or more.
 
 ---------------------------------------
-GETTING STARTED 
+:sparkles: GETTING STARTED :sparkles:
 
 ## Server setup :white_check_mark:
   Following 8 rules are required to assign on the servers, where personium will be constructed :one:.

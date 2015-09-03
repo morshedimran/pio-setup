@@ -48,9 +48,9 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
   * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required.
   * `/static_inventory/`   :		This folder contains all the assential information of different environments.
   * `★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
-  * `/group_vars/`	   :		Folder to add files in order to perform various customized tuning.
+  * `/group_vars/`	   :		Folder to organize files in order to perform various customized tuning.
   * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings.
-　* `/resource/`			タスクに必要なファイル（リソース/変更が不要のもの）をまとめるフォルダ
+　* `/resource/`			Folder to organize files (Modification is not required) those are necessary in task.
   * `/[group名]/`			groupごとのリソースを格納する
   * `/tasks/`				タスクをまとめるフォルダ
   * `[group名]/`			groupごとの具体的なタスクを格納する

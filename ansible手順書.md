@@ -51,12 +51,12 @@ Ansible procedure for auto-constructing personium, using 4 servers or more.
   * `/group_vars/`	   :		Folder to organize files in order to perform various customized tuning.
   * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings.
 
-　* `/resource/`			Folder to organize files (Modification is not required) those are necessary in task.
-  * `/[group名]/`			groupごとのリソースを格納する
-  * `/tasks/`				タスクをまとめるフォルダ
-  * `[group名]/`			groupごとの具体的なタスクを格納する
-  * `/handlers/`			ハンドラーをまとめるフォルダ
-  * `/[group名]/`			groupごとのハンドラーを格納する
+　*  `/resource/`			Folder to organize files (Modification is not required) those are necessary in task.
+  *  `/[group名]/`			groupごとのリソースを格納する
+  *  `/tasks/`				タスクをまとめるフォルダ
+  *  `[group名]/`			groupごとの具体的なタスクを格納する
+  *  `/handlers/`			ハンドラーをまとめるフォルダ
+  *  `/[group名]/`			groupごとのハンドラーを格納する
 
 
   ※★…環境に応じた設定が必要となるファイル

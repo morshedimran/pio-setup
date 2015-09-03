@@ -11,6 +11,12 @@ GETTING STARTED
 
 ## Server setup :white_check_mark:
   Following 8 rules are required to assign on the servers, where personium will be constructed. :one:
+
+1. `Web`
+2. Item 2
+3. Item 3
+
+
   
   ・`Web`				リバースプロキシサーバー。Global IPを持ち、インターネットへ接続している必要がある。
   ・AP				アプリケーションサーバー。Personium本体を実行する。

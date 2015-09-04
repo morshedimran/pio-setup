@@ -13,7 +13,7 @@ Below are the procedure that we followed.
 
 ## Server setup :white_check_mark:
 
-### server configuration sample
+#### server configuration sample
   Below are the server structure that we configured.
 
 * server configuration
@@ -22,7 +22,7 @@ Below are the procedure that we followed.
   * Server 3：ES, ADS_Master
   * Server 4：ADS_Slave, backup
 
-### Assign roles on multiple servers
+#### Assign roles on multiple servers
   personium unit construction requires to assign the following 8 rules on different servers :one:.
 
 1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
@@ -48,7 +48,7 @@ Below are the procedure that we followed.
 
 
 
-### File structure 
+#### File structure 
 
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
@@ -90,7 +90,7 @@ The following key file will be generated automatically during the ansible execut
   * Fixed private IP of all the remote servers.
 
 ------------------------------------------------------------------------------------------------
-### Setup ansible parameters
+#### Setup ansible parameters
 ------------------------------------------------------------------------------------------------
 * Edit the following files of ansible folder
   * Edit /static_inventory/hosts file  ※★ set the value of each parameter.
@@ -102,7 +102,7 @@ The following key file will be generated automatically during the ansible execut
  
 
 ------------------------------------------------------------------------------------------------
-### ansible資材の配備（対象サーバー：Bastionサーバー）
+#### ansible資材の配備（対象サーバー：Bastionサーバー）
 ------------------------------------------------------------------------------------------------
 ・WinSCPなどを用い、Bastionサーバへ接続。
   （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）
@@ -112,13 +112,13 @@ The following key file will be generated automatically during the ansible execut
 
 
 ------------------------------------------------------------------------------------------------
-□自己署名ユニット証明書/秘密鍵の準備
+#### 自己署名ユニット証明書/秘密鍵の準備
 ------------------------------------------------------------------------------------------------
 ・ユニット証明書の作成方法は別資料「参考_自己署名ユニット証明書作成手順.txt」を参照
 
 
 ------------------------------------------------------------------------------------------------
-□自己署名ユニット証明書/秘密鍵の配置
+#### 自己署名ユニット証明書/秘密鍵の配置
 ------------------------------------------------------------------------------------------------
 ・証明書の配置
 作成した自己署名ユニット証明書と秘密鍵をansibleフォルダの/resource/ap/opt/x509/フォルダへ配置する
@@ -131,7 +131,7 @@ The following key file will be generated automatically during the ansible execut
 
 
 ------------------------------------------------------------------------------------------------
-□SSL証明書/秘密鍵の準備
+#### SSL証明書/秘密鍵の準備
 ------------------------------------------------------------------------------------------------
 ・SSL証明書と秘密鍵を別途準備しておく。
 
@@ -171,7 +171,7 @@ The following key file will be generated automatically during the ansible execut
   参照：http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
 
 ------------------------------------------------------------------------------------------------
-□SSL証明書/秘密鍵の配置
+#### SSL証明書/秘密鍵の配置
 ------------------------------------------------------------------------------------------------
 
 ・証明書の配置
@@ -186,7 +186,7 @@ The following key file will be generated automatically during the ansible execut
 
 
 ------------------------------------------------------------------------------------------------
-□DISKの追加
+#### DISKの追加
 ------------------------------------------------------------------------------------------------
 以下のサーバに増設ディスクの追加を作成しておく(下記ディスクサイズは推奨値)。
 なお、ディスクのパスは下記括弧で記載されたパス固定で設定をすること。
@@ -198,7 +198,7 @@ AP + NFSサーバー                 50GB (パス : /dev/xvdb)    用途：PIO�
                                 100GB (パス : /dev/xvdc)    用途：WebDav、イベントログ
 
 ------------------------------------------------------------------------------------------------
-□SSHキーの作成（対象サーバー：Bastionサーバー）
+#### SSHキーの作成（対象サーバー：Bastionサーバー）
 ------------------------------------------------------------------------------------------------
 ・Bastionサーバーに接続し、SSHキーを作成する
   # ssh-keygen -t rsa
@@ -217,7 +217,7 @@ AP + NFSサーバー                 50GB (パス : /dev/xvdb)    用途：PIO�
       ------------------
 
 ------------------------------------------------------------------------------------------------
-□SSHキーの配置（対象サーバー：Bastion以外の全サーバー）
+#### SSHキーの配置（対象サーバー：Bastion以外の全サーバー）
 ------------------------------------------------------------------------------------------------
 ※以下の作業はBastionサーバー以外の全サーバーで実施する。
 ↓↓ここから------------

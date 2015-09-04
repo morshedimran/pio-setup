@@ -48,7 +48,7 @@ Below are the procedure that we followed.
 
 
 
-### File structure :white_check_mark:
+### File structure 
 
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
@@ -58,11 +58,11 @@ Below are the procedure that we followed.
   * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
   * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
   * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task
-  *  `/[group名]/`			Store the resources of each group
+  *  `/[groue name]/`			Store the resources of each group
   *  `/tasks/`				Folder to organize task
-  *  `[group名]/`			Store specific task for each group
+  *  `[groue name]/`			Store specific task for each group
   *  `/handlers/`			Folder to organize handler
-  *  `/[group名]/`			Store handler for each group
+  *  `/[group name]/`			Store handler for each group
 
   ※★…環境に応じた設定が必要となるファイル
 

@@ -84,7 +84,7 @@ The following key file will be generated automatically during the ansible execut
 
 * Prerequisite:
   * User:root
-  * ansible execution user:root
+  * ansible execution user: root
   * ansible execution environment：Web/Bastion server
   * DNS registered fixed Global IP.
   * Fixed private IP of all the remote servers.
@@ -96,7 +96,7 @@ The following key file will be generated automatically during the ansible execut
   * Edit /static_inventory/hosts file  ※★ set the value of each parameter.
 
       ※ Please refer to 「参考_ansible設定.txt」 file, for more details about each parameter.
-  * Check /group_vars/[group name].yml file. Re-set the parameter value, if server tuning is nacessary.
+  * Check /group_vars/[group name].yml file. Re-set the parameter value, if server tuning is necessary.
 
       ※ Please refer to 「ansible設定.txt」file, for more details about each parameter.
  
@@ -164,10 +164,10 @@ The following key file will be generated automatically during the ansible execut
   ※ Refer [Create SSL certificate](http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x) for more details.
 
 ------------------------------------------------------------------------------------------------
-#### SSL証明書/秘密鍵の配置
+#### Deploy SSL certificate / private key
 ------------------------------------------------------------------------------------------------
 
-・証明書の配置
+* Certificate deployment
 取得した証明書を/root/ansible/resource/web/opt/nginx/conf/フォルダへ配置する
 /root/ansible/resource/web/opt/nginx/conf/
 	server.crt（ssl証明書）

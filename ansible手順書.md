@@ -131,9 +131,9 @@ The following key file will be generated automatically during the ansible execut
 
 * Prepare the SSL certificate and private key seperately
 
-※正式なSSL証明書が構築時点でない場合は、自己署名ssl証明書を暫定で準備し、使用する
-以下は自己署名ssl証明書作成手順です。：
-       ⇒　# cd /root/ansible/resource/web/opt/nginx/conf
+※If the official SSL certificate could not be arranged, then create and use self-signed ssl certificate. Following is the self-signed ssl certificate creation procedure.：
+
+    ```⇒　# cd /root/ansible/resource/web/opt/nginx/conf
        ⇒　# openssl genrsa -des3 -out server.key 1024
                途中で「Enter pass phrase for server.key:」が表示されるが、任意の値を入力すること。
                長さは4文字～8191文字とする。
@@ -163,7 +163,7 @@ The following key file will be generated automatically during the ansible execut
                server.key.org
                server.crt
                server.csr
-               server.key
+    ```           server.key
   参照：http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
 
 ------------------------------------------------------------------------------------------------

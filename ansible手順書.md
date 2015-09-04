@@ -135,16 +135,16 @@ The following key file will be generated automatically during the ansible execut
 
     # cd /root/ansible/resource/web/opt/nginx/conf
     # openssl genrsa -des3 -out server.key 1024
-           Enter pass phrase for server.key:         ※ Optional (Characters length: is 4 - 8191)
+           Enter pass phrase for server.key:                            ※ Optional (Characters length: is 4 - 8191)
     # openssl req -new -key server.key -out server.csr
-           Enter pass phrase for server.key:         ※ enter the value of `server.key`
-           Country Name (2 letter code) [XX]:        ※ Optional ( entered value will be visible in the certificate)
-           State or Province Name (full name) []:    ※ Optional ( entered value will be visible in the certificate)
-           Locality Name (eg, city) [Default City]:  ※ Optional ( entered value will be visible in the certificate)
-           Organization Name (eg, company) [Default Company Ltd]:  ※ Optional ( entered value will be visible in the certificate)
-           Organizational Unit Name (eg, section) []:※ Optional ( entered value will be visible in the certificate)
-           Common Name (eg, your name or your server's hostname) []: ※ Optional ( entered value will be visible in the certificate)
-           Email Address []:                         ※ Optional ( entered value will be visible in the certificate)
+           Enter pass phrase for server.key:                            ※ enter the value of `server.key`
+           Country Name (2 letter code) [XX]:                           ※ Optional ( entered value will be visible in the certificate)
+           State or Province Name (full name) []:                       ※ Optional ( entered value will be visible in the certificate)
+           Locality Name (eg, city) [Default City]:                     ※ Optional ( entered value will be visible in the certificate)
+           Organization Name (eg, company) [Default Company Ltd]:       ※ Optional ( entered value will be visible in the certificate)
+           Organizational Unit Name (eg, section) []:                   ※ Optional ( entered value will be visible in the certificate)
+           Common Name (eg, your name or your server's hostname) []:    ※ Optional ( entered value will be visible in the certificate)
+           Email Address []:                                            ※ Optional ( entered value will be visible in the certificate)
                    
                Please enter the following 'extra' attributes
                to be sent with your certificate request

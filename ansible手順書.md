@@ -133,37 +133,37 @@ The following key file will be generated automatically during the ansible execut
 
 ※If the official SSL certificate could not be arranged, then create and use self-signed ssl certificate. Following is the self-signed ssl certificate creation procedure.：
 
-    ```⇒　# cd /root/ansible/resource/web/opt/nginx/conf
-       ⇒　# openssl genrsa -des3 -out server.key 1024
-               途中で「Enter pass phrase for server.key:」が表示されるが、任意の値を入力すること。
-               長さは4文字～8191文字とする。
-       ⇒　# openssl req -new -key server.key -out server.csr
-               ・「Enter pass phrase for server.key:」はserver.keyで入力した値を用いる。
-               ・以下の入力項目が表示されるが、任意の値を入力すること
-                   ここから--------
-                   Country Name (2 letter code) [XX]:
-                   State or Province Name (full name) []:
-                   Locality Name (eg, city) [Default City]:
-                   Organization Name (eg, company) [Default Company Ltd]:
-                   Organizational Unit Name (eg, section) []:
-                   Common Name (eg, your name or your server's hostname) []:
-                   Email Address []:
+    ⇒　# cd /root/ansible/resource/web/opt/nginx/conf
+    ⇒　# openssl genrsa -des3 -out server.key 1024
+           途中で「Enter pass phrase for server.key:」が表示されるが、任意の値を入力すること。
+           長さは4文字～8191文字とする。
+    ⇒　# openssl req -new -key server.key -out server.csr
+           ・「Enter pass phrase for server.key:」はserver.keyで入力した値を用いる。
+           ・以下の入力項目が表示されるが、任意の値を入力すること
+               ここから--------
+               Country Name (2 letter code) [XX]:
+               State or Province Name (full name) []:
+               Locality Name (eg, city) [Default City]:
+               Organization Name (eg, company) [Default Company Ltd]:
+               Organizational Unit Name (eg, section) []:
+               Common Name (eg, your name or your server's hostname) []:
+               Email Address []:
                    
-                   Please enter the following 'extra' attributes
-                   to be sent with your certificate request
-                   A challenge password []:
-                   An optional company name []:
-                   ここまで--------
-       ⇒　# cp server.key server.key.org
-       ⇒　# openssl rsa -in server.key.org -out server.key
-               ・「Enter pass phrase for server.key.org:」はserver.keyで入力した値を用いる。
-       ⇒　# openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
-       ⇒　# ls -l server.*
-             ⇒以下のファイルが出力されること
+               Please enter the following 'extra' attributes
+               to be sent with your certificate request
+               A challenge password []:
+               An optional company name []:
+               ここまで--------
+    ⇒　# cp server.key server.key.org
+    ⇒　# openssl rsa -in server.key.org -out server.key
+           ・「Enter pass phrase for server.key.org:」はserver.keyで入力した値を用いる。
+    ⇒　# openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+    ⇒　# ls -l server.*
+          ⇒以下のファイルが出力されること
                server.key.org
                server.crt
                server.csr
-    ```           server.key
+               server.key
   参照：http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
 
 ------------------------------------------------------------------------------------------------

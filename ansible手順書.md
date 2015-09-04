@@ -82,12 +82,12 @@ The following key file will be generated automatically during the ansible execut
 ## Initial setup for ansible :white_check_mark:
 
 
-* Prerequisite
-  * 使用ユーザー:root
-  * ansible実行ユーザー:root
-  * ansible実行環境：Web/Bastionサーバー
-  * 固定Global IPの確保とDNSへの登録は済ませておく。
-  * 各サーバーに割り振られるPrivate IPを固定化しておく。
+* Prerequisite:
+  * User:root
+  * ansible execution user:root
+  * ansible execution environment：Web/Bastion server
+  * DNS registered fixed Global IP.
+  * Fixed private IP of all the remote servers.
 
 ------------------------------------------------------------------------------------------------
 □ansibleのパラメーターを設定

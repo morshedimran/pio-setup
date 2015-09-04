@@ -64,13 +64,14 @@ Below are the procedure that we followed.
   *  `/handlers/`			Folder to organize handler
   *  `/[group name]/`			Store handler for each group
 
-  ※★:Files required to modify according to the environment
+  ※★:Files required to modify according to the environment.
+
   ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.
   （Here `common` is not the server role. Common group is used to set some general functionalities on all the servers.）
 
 ---------------------------------------
-取扱注意ファイル：
-以下のファイルはansible実行中に自動生成されるが、取扱注意のキーである。
+File (key) handling Caution:
+The following key file will be generated automatically during the ansible execution, we advice to handle the keys carefully.
   /fj/dc-core/conf/salt.key
   /fj/dc-core/conf/token.key
 

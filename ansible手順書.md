@@ -184,7 +184,7 @@ Certificate deployment is done.
 
 Add the extentional disk on the server below (Following disk sizes are recomended).
 Note: It is required to add the extentional disk on the following path
-ES + ADS_Masterサーバー         300GB (パス : /dev/xvdb)    用途：MySQLのdata
+ES + ADS_Master server         300GB (パス : /dev/xvdb)    用途：MySQLのdata
                                 100GB (パス : /dev/xvdc)    用途：ESのdata
 ADS_Slave + Backup サーバー     200GB (パス : /dev/xvdb)    用途：MySQLのdata(Slave)
                                 200GB (パス : /dev/xvdc)    用途：データバックアップ

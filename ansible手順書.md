@@ -128,9 +128,9 @@ The following key file will be generated automatically during the ansible execut
 ※ You may escape the procedure above, if creating the self-signed unit certificate is based on the preparation of self-signed unit certificate and private key.
 
 ------------------------------------------------------------------------------------------------
-#### SSL証明書/秘密鍵の準備
+#### Prepare SSL certificate / private key
 ------------------------------------------------------------------------------------------------
-・SSL証明書と秘密鍵を別途準備しておく。
+* Prepare the SSL certificate and private key seperately
 
 ※正式なSSL証明書が構築時点でない場合は、自己署名ssl証明書を暫定で準備し、使用する
 以下は自己署名ssl証明書作成手順です。：

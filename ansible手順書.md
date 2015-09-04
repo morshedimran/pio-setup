@@ -63,7 +63,8 @@ Below are the procedure that we followed.
   *  `[groue name]/`			Store specific task for each group
   *  `/handlers/`			Folder to organize handler
   *  `/[group name]/`			Store handler for each group
-
+  *  
+  
   ※★:Files required to modify according to the environment.
 
   ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.

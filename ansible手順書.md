@@ -168,10 +168,10 @@ The following key file will be generated automatically during the ansible execut
 ------------------------------------------------------------------------------------------------
 
 * Certificate deployment
-取得した証明書を/root/ansible/resource/web/opt/nginx/conf/フォルダへ配置する
-/root/ansible/resource/web/opt/nginx/conf/
-	server.crt（ssl証明書）
-	server.key（秘密鍵）
+   * Deploy the certificate under `/root/ansible/resource/web/opt/nginx/conf/` folder
+        /root/ansible/resource/web/opt/nginx/conf/
+	     ⇒　server.crt（sSSL certificate）
+　　　　　　 ⇒　server.key（private key）
 ※「SSL証明書/秘密鍵の準備」にて自己署名SSL証明書を作成した場合、この手順は不要です。
 
 証明書の配置は完了です。

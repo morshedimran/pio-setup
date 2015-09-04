@@ -95,10 +95,10 @@ The following key file will be generated automatically during the ansible execut
 * Edit the following files of ansible folder
   * Edit /static_inventory/hosts file  ※★ set the value of each parameter.
 
-      ※Please refer to 「参考_ansible設定.txt」 file, for more details about each parameter.
-  * /group_vars/[group名].ymlの確認 各サーバのチューニングを行う場合にパラメーターの値を設定する。
+      ※ Please refer to 「参考_ansible設定.txt」 file, for more details about each parameter.
+  * Check /group_vars/[group name].yml file. Re-set the parameter value, if server tuning is nacessary.
 
-      ※各パラメーターに関しては「ansible設定.txt」を参照
+      ※ Please refer to 「ansible設定.txt」file, for more details about each parameter.
  
 
 ------------------------------------------------------------------------------------------------

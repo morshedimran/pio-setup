@@ -79,15 +79,10 @@ The following key file will be generated automatically during the ansible execut
 
 ---------------------------------------
 
-
-
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
-
 ## Initial setup for ansible :white_check_mark:
 
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 
-■前提条件
+■Prerequisite
 ・使用ユーザー:root
 ・ansible実行ユーザー:root
 ・ansible実行環境：Web/Bastionサーバー

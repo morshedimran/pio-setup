@@ -104,30 +104,28 @@ The following key file will be generated automatically during the ansible execut
 ------------------------------------------------------------------------------------------------
 #### Deploy ansible （server destination：Bastion server）
 ------------------------------------------------------------------------------------------------
-* Connect to Bastion server using WinSCP or other related tools
+* Connect to the Bastion server using WinSCP or other related tools
   
       （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）
 
-* Updoal the ansible folder on Bastion server under `/root/` directory.
-
-------------------------------------------------------------------------------------------------
-#### 自己署名ユニット証明書/秘密鍵の準備
-------------------------------------------------------------------------------------------------
-・ユニット証明書の作成方法は別資料「参考_自己署名ユニット証明書作成手順.txt」を参照
+* Updoal the `ansible` folder on Bastion server under `/root/` directory.
 
 
-------------------------------------------------------------------------------------------------
-#### 自己署名ユニット証明書/秘密鍵の配置
-------------------------------------------------------------------------------------------------
-・証明書の配置
-作成した自己署名ユニット証明書と秘密鍵をansibleフォルダの/resource/ap/opt/x509/フォルダへ配置する
-ファイル名は以下の通り。
+#### Prepare Self-signed unit certificate and secret key
+
+* Please refer to 「参考_自己署名ユニット証明書作成手順.txt」file, for self-signed unit certificate creation procedure.
+
+
+#### Configure the self-signed unit certificate and private key
+
+・Arrange  certificate
+Deploy the `self-signed unit certificate` and `private key` under `ansible/resource/ap/opt/x509/` folder
+File names are as follows.
 /resource/ap/opt/x509/
-	unit-self-sign.crt（自己署名ユニット証明書）
-	unit.key（秘密鍵）
+	unit-self-sign.crt（self-signed unit certificate）
+	unit.key（private key）
 
-※「自己署名ユニット証明書/秘密鍵の準備」にて自己署名ユニット証明書を作成した場合、この手順は不要です。
-
+※ You may escape the procedure above, if creating the self-signed unit certificate is based on the preparation of self-signed unit certificate and private key.
 
 ------------------------------------------------------------------------------------------------
 #### SSL証明書/秘密鍵の準備

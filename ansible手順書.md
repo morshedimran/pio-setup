@@ -168,12 +168,13 @@ The following key file will be generated automatically during the ansible execut
 
 * Certificate deployment
    * Deploy the certificate under `/root/ansible/resource/web/opt/nginx/conf/` folder
-        
+ 
+   
             /root/ansible/resource/web/opt/nginx/conf/
-
-	           ⇒　server.crt（sSSL certificate）
-
-　　　　　　       ⇒　server.key（private key）
+   
+               ⇒　server.crt（sSSL certificate）
+       
+               ⇒　server.key（private key）
 
 ※ In the case of Self-signed SSL certificate, the above process is not required to follow.
 

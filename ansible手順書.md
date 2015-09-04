@@ -161,7 +161,7 @@ The following key file will be generated automatically during the ansible execut
                 server.crt
                 server.csr
                 server.key
-  参照：http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x
+  ※ Refer to [Create SSL certificate](http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x) 
 
 ------------------------------------------------------------------------------------------------
 #### SSL証明書/秘密鍵の配置

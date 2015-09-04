@@ -186,11 +186,11 @@ Add the extentional disk on the server below (Following disk sizes are recomende
 Note: It is required to add the extentional disk on the following path
 
     ES + ADS_Master server         300GB (path : /dev/xvdb)    Purpose：MySQL data (Master)
-                                100GB (path : /dev/xvdc)    Purpose：ES data
-    ADS_Slave + Backup サーバー     200GB (path : /dev/xvdb)    Purpose：MySQL data (Slave)
-                                200GB (path : /dev/xvdc)    Purpose：Data backup
-    AP + NFSサーバー                 50GB (path : /dev/xvdb)    Purpose：PIO log
-                                100GB (path : /dev/xvdc)    Purpose：WebDav, event log
+                                   100GB (path : /dev/xvdc)    Purpose：ES data
+    ADS_Slave + Backup サーバー    200GB (path : /dev/xvdb)    Purpose：MySQL data (Slave)
+                                   200GB (path : /dev/xvdc)    Purpose：Data backup
+    AP + NFSサーバー               50GB (path  : /dev/xvdb)    Purpose：PIO log
+                                   100GB (path : /dev/xvdc)    Purpose：WebDav, event log
 
 ------------------------------------------------------------------------------------------------
 #### SSHキーの作成（対象サーバー：Bastionサーバー）

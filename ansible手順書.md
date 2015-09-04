@@ -74,8 +74,9 @@ Below are the procedure that we followed.
 File (key) handling Caution:
 The following key file will be generated automatically during the ansible execution, we advice to handle the keys carefully.
   /fj/dc-core/conf/salt.key
-  /fj/dc-core/conf/token.key
+    /fj/dc-core/conf/token.key
 ---------------------------------------
+
 
 ◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 

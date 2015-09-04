@@ -89,9 +89,9 @@ The following key file will be generated automatically during the ansible execut
   * DNS registered fixed Global IP.
   * Fixed private IP of all the remote servers.
 
-------------------------------------------------------------------------------------------------
+
 #### Setup ansible parameters
-------------------------------------------------------------------------------------------------
+
 * Edit the following files of ansible folder
   * Edit /static_inventory/hosts file  ※★ set the value of each parameter.
 

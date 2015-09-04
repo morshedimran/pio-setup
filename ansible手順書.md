@@ -163,9 +163,8 @@ The following key file will be generated automatically during the ansible execut
                 server.key
   ※ Refer [Create SSL certificate](http://qiita.com/nenokido2000/items/1d1c79a0a443ed923e92x) for more details.
 
-------------------------------------------------------------------------------------------------
+
 #### Deploy SSL certificate / private key
-------------------------------------------------------------------------------------------------
 
 * Certificate deployment
    * Deploy the certificate under `/root/ansible/resource/web/opt/nginx/conf/` folder
@@ -178,15 +177,13 @@ The following key file will be generated automatically during the ansible execut
 
 ※ In the case of Self-signed SSL certificate, the above process is not required to follow.
 
-証明書の配置は完了です。
+Certificate deployment is done.
 
 
+#### Add DISK
 
-------------------------------------------------------------------------------------------------
-#### DISKの追加
-------------------------------------------------------------------------------------------------
-以下のサーバに増設ディスクの追加を作成しておく(下記ディスクサイズは推奨値)。
-なお、ディスクのパスは下記括弧で記載されたパス固定で設定をすること。
+Add the extentional disk on the server below (Following disk sizes are recomended).
+Note: It is required to add the extentional disk on the following path
 ES + ADS_Masterサーバー         300GB (パス : /dev/xvdb)    用途：MySQLのdata
                                 100GB (パス : /dev/xvdc)    用途：ESのdata
 ADS_Slave + Backup サーバー     200GB (パス : /dev/xvdb)    用途：MySQLのdata(Slave)

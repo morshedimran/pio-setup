@@ -102,14 +102,13 @@ The following key file will be generated automatically during the ansible execut
  
 
 ------------------------------------------------------------------------------------------------
-#### ansible資材の配備（対象サーバー：Bastionサーバー）
+#### Deploy ansible （server destination：Bastion server）
 ------------------------------------------------------------------------------------------------
-・WinSCPなどを用い、Bastionサーバへ接続。
-  （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）
+* Connect to Bastion server using WinSCP or other related tools
+  
+      （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）
 
-・Ansibleフォルダをアップロードする。
-  アップロード先：/root/
-
+* Updoal the ansible folder on Bastion server under `/root/` directory.
 
 ------------------------------------------------------------------------------------------------
 #### 自己署名ユニット証明書/秘密鍵の準備

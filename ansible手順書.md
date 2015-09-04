@@ -119,11 +119,11 @@ The following key file will be generated automatically during the ansible execut
 #### Configure the self-signed unit certificate and private key
 
 * Arrange  certificate
-  * Deploy the `self-signed unit certificate` and `private key` under `ansible/resource/ap/opt/x509/` folder
-  * File names are as follows.
-     /resource/ap/opt/x509/
-     unit-self-sign.crt（self-signed unit certificate）
-	unit.key（private key）
+  * Deploy the `self-signed unit certificate` and `private key` under `ansible/resource/ap/opt/x509/` folder with the following file names.
+
+　　　　   　⇒　unit-self-sign.crt（self-signed unit certificate）
+	
+　　　　   　⇒　unit.key（private key）
 
 ※ You may escape the procedure above, if creating the self-signed unit certificate is based on the preparation of self-signed unit certificate and private key.
 

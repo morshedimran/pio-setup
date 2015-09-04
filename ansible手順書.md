@@ -102,7 +102,7 @@ The following key file will be generated automatically during the ansible execut
  
 
 ------------------------------------------------------------------------------------------------
-□ansible資材の配備（対象サーバー：Bastionサーバー）
+### ansible資材の配備（対象サーバー：Bastionサーバー）
 ------------------------------------------------------------------------------------------------
 ・WinSCPなどを用い、Bastionサーバへ接続。
   （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）

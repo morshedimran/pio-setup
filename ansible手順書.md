@@ -90,12 +90,15 @@ The following key file will be generated automatically during the ansible execut
   * Fixed private IP of all the remote servers.
 
 ------------------------------------------------------------------------------------------------
-□ansibleのパラメーターを設定
+### Setup ansible parameters
 ------------------------------------------------------------------------------------------------
-・ansibleの以下ファイルを編集する
+* Edit the following files of ansible folder
+  * /static_inventory/hostsの編集  ★必須
+  
+    各パラメーターの値を設定する。※各パラメーターに関しては別資料「参考_ansible設定.txt」を参照
+  * sdggdfg
+  * 
 
-  - /static_inventory/hostsの編集  ★必須
-  各パラメーターの値を設定する。※各パラメーターに関しては別資料「参考_ansible設定.txt」を参照
   
   - /group_vars/[group名].ymlの確認
   各サーバのチューニングを行う場合にパラメーターの値を設定する。※各パラメーターに関しては「ansible設定.txt」を参照

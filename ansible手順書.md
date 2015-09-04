@@ -95,7 +95,9 @@ The following key file will be generated automatically during the ansible execut
 * Edit the following files of ansible folder
   * Edit /static_inventory/hosts file  ※★
 
-   set the value of each parameter.※Please refer to 「参考_ansible設定.txt」 file, for more details about each parameter.
+   set the value of each parameter.
+   
+   ※Please refer to 「参考_ansible設定.txt」 file, for more details about each parameter.
   * sdggdfg
   * 
 

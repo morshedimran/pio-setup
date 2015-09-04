@@ -54,9 +54,9 @@ Below are the procedure that we followed.
   * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
   * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required
   * `/static_inventory/`   :		This folder contains all the essential information of different environments
-  * `★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
+  * `※★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
   * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
-  * `★/[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
+  * `※★[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
   * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task
   *  `/[groue name]/`			Store the resources of each group
   *  `/tasks/`				Folder to organize task
@@ -64,10 +64,9 @@ Below are the procedure that we followed.
   *  `/handlers/`			Folder to organize handler
   *  `/[group name]/`			Store handler for each group
 
-  ※★…環境に応じた設定が必要となるファイル
-
-  ※[group名]…web, ap, nfs, es, ads_master, ads_slave, bastion、backupおよびcommonの9種類
-  （commonはサーバーの役割の名称ではないが、複数サーバーに共通した機能を提供するために設定する）
+  ※★:Files required to modify according to the environment
+  ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.
+  （Here `common` is not the server role. Common group is used to set some general functionalities on all the servers.）
 
 ---------------------------------------
 取扱注意ファイル：

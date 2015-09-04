@@ -101,9 +101,8 @@ The following key file will be generated automatically during the ansible execut
       ※ Please refer to 「ansible設定.txt」file, for more details about each parameter.
  
 
-------------------------------------------------------------------------------------------------
 #### Deploy ansible （server destination：Bastion server）
-------------------------------------------------------------------------------------------------
+
 * Connect to the Bastion server using WinSCP or other related tools
   
       （WinSCP：http://win-scp.joydownload.jp/?c=5&gclid=CK7L0pvWpcACFVYHvAodOF0AgQ）
@@ -127,9 +126,9 @@ The following key file will be generated automatically during the ansible execut
 
 ※ You may escape the procedure above, if creating the self-signed unit certificate is based on the preparation of self-signed unit certificate and private key.
 
-------------------------------------------------------------------------------------------------
+
 #### Prepare SSL certificate / private key
-------------------------------------------------------------------------------------------------
+
 * Prepare the SSL certificate and private key seperately
 
 ※正式なSSL証明書が構築時点でない場合は、自己署名ssl証明書を暫定で準備し、使用する

@@ -65,6 +65,7 @@ Below are the procedure that we followed.
   *  `/[group name]/`			Store handler for each group
 
   ※★:Files required to modify according to the environment
+  
   ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.
   （Here `common` is not the server role. Common group is used to set some general functionalities on all the servers.）
 

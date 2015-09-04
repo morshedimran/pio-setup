@@ -70,7 +70,7 @@ Below are the procedure that we followed.
   ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.
   （Here `common` is not the server role. Common group is used to set some general functionalities on all the servers.）
 
-File (key) handling Caution: :closed_lock_with_key:
+File (key) handling Caution: :zap:
 
 The following key file will be generated automatically during the ansible execution, we advice to handle the keys carefully.
 
@@ -83,7 +83,7 @@ The following key file will be generated automatically during the ansible execut
 
 ◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 
-Part 1. 初期設定
+## Initial setup for ansible :white_check_mark:
 
 ◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 

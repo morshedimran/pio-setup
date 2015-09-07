@@ -367,11 +367,11 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
 * Access to the Bastion server and change the ansible as current directory 
 
 ```
-# cd /root/ansible/
+    # cd /root/ansible/
 
 ⇒　Exucute ansible
-  # date; ansible-playbook init_personium.yml ; date
-※  数分～数時間ほどでansibleの処理が完了し、設定したFQDNのPIOユニットが完成します。Web（https）でのアクセスが可能となります。
+    # date; ansible-playbook init_personium.yml ; date
+※  After few minutes-hours (case by case) ansible process will be done. (※　Don't kill the process in between) personium Unit will be created with the configured FQDN. Also will be accessable from web (ex: https://FQDN) 
 
 ・Confirm if ansible executed properly
   # egrep -B 3 -A 3 'failed:|error' /root/ansible.log
@@ -390,8 +390,9 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
 
 ## Conclusion
 
-Ansible believes you should not need another framework to validate basic things of your infrastructure is true. This is the case because Ansible is an order-based system that will fail immediately on unhandled errors for a host, and prevent further configuration of that host. This forces errors to the top and shows them in a summary at the end of the Ansible run.
+We explored to deploy personium on different environment using Ansible. Like as we also was able to deploy personium on AWS environment using CFT(Cloud Formation Template). This documnet is written for the developers conveniency, to be able to delpoy personium easily on the top environment. Also we have choosen ansible as it is designed as a multi-tier orchestration system, and by default runs in an easy push-based mode incorporate tests into the end of a playbook run.
 
-However, as Ansible is designed as a multi-tier orchestration system, it makes it very easy to incorporate tests into the end of a playbook run, either using loose tasks or roles. When used with rolling updates, testing steps can decide whether to put a machine back into a load balanced pool or not.
+Finally, hoping the readers will give a try deploying personium on any suitable environment. enjoy the system and give us feedback for further development of personium. Your comments or requiest will be highly appritiated.
 
-Finally, because Ansible errors propagate all the way up to the return code of the Ansible program itself, and Ansible by default runs in an easy push-based mode, Ansible is a great step to put into a build environment if you wish to use it to roll out systems as part of a Continuous Integration/Continuous Delivery pipeline, as is covered in sections above.
+Thanks for reading.
+Chears!! :relaxed:

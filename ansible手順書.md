@@ -313,7 +313,7 @@ The **private key** (identification) is now located in **/home/demo/.ssh/id_rsa*
     $ su root  (※　switch to the root user)
     # ssh -i ~/.ssh/id_rsa root@[Private IP of remote server]  (※　ssh to remote servers as root user)
     
-    # exit (※　Exit fro remote server after successfull access from bastion server)
+    # exit (※　Exit from remote server after successfull access from bastion server)
 ```
 --------------------------------------------------------------------
 

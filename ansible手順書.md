@@ -268,7 +268,7 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
       # touch authorized_keys
 ```
 
-* Check the permission on remote servers
+* Check the permission. Change if required
 
 ```
     # ls -la /root/.ssh/authorized_keys
@@ -306,9 +306,15 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
 
 ```
 
-
-
 ##### Step Three— Access to remote servers form Bastion server by SSH using private key
+
+```
+⇒　Access to Bastion server
+    $ su root  (※　switch to the root user)
+    # ssh -i ~/.ssh/id_rsa root@[Private IP of remote server]  (※　ssh to remote servers as root user)
+    
+    # exit (※　Exit fro remote server after successfull access from bastion server)
+```
 
     # ssh-keygen -t rsa
     →~/.ssh/に配備される

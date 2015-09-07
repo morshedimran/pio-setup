@@ -24,7 +24,7 @@ Below are the procedure that we followed.
 
 ----
 
-:collision: Common Server Setting
+★Common Server Setting
 【Ansible_Execution_User】
 　⇒ Specify a user to rexecute ansible
 

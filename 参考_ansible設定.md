@@ -15,15 +15,14 @@ Below are the procedure that we followed.
 
 * all elements inside `/static_inventory/hosts` file enclosed with **【】**, replace with the constructed server configuration.
 
-```
+
     Ex：ansible_ssh_user=【Ansible_Execution_User】
         ↓
         ansible_ssh_user=root
 
 ---------------
 
-----
-
+```
 ★ Common Server Setting
 【Ansible_Execution_User】
 　⇒ Specify a user to rexecute ansible

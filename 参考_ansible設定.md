@@ -24,14 +24,14 @@ Below are the procedure that we followed.
 
 ----
 
-★Common Server Setting
+★ Common Server Setting
 【Ansible_Execution_User】
 　⇒ Specify a user to rexecute ansible
 
 【SSH_PrivateKey】
 　⇒ Set the secret key in the absolute path for  ansible user ssh public key authentication.
 
-:collision: Bastion server
+★ Bastion server
 【Bastion_Private_IP】
 　⇒ Specify the private IP of Bastion server
 
@@ -41,7 +41,7 @@ Below are the procedure that we followed.
 【Bastion_Network_Separation】
 　⇒ Specify the network setup for Bastion server
 
-■Webサーバー
+★ Webサーバー
 【Web_Private_IP】
 　⇒ Specify the private IP of Web server
 
@@ -54,7 +54,7 @@ Below are the procedure that we followed.
 【Web_FQDN】
 　⇒ Specify the FQDN for Web server（same as unit FQDN）
 
-■APサーバー
+★ APサーバー
 【AP_Private_IP】
 　⇒ Specify the private IP of  AP server
 
@@ -67,21 +67,21 @@ Below are the procedure that we followed.
 【Master_Token】
 　⇒各種操作を許可するためのマスタートークンを設定する（厳重管理のこと）
 
-■ADS_Masterサーバー
+★ ADS_Masterサーバー
 【ADS_Master_Private_IP】
 　⇒ADS_MasterサーバーのプライベートIPを指定する
 
 【ADS_Master_Tag_Name】
 　⇒ADS_Masterサーバーに設定するホスト名を指定する
 
-■ADS_Slaveサーバー
+★ ADS_Slaveサーバー
 【ADS_Slave_Private_IP】
 　⇒ADS_SlaveサーバーのプライベートIPを指定する
 
 【ADS_Slave_Tag_Name】
 　⇒ADS_Slaveサーバーに設定するホスト名を指定する
 
-■ADS共通設定項目
+★ ADS共通設定項目
 【ADS_User_Name】
 　⇒mysql(ads)上の一般ユーザーのアカウント名を指定する
 【ADS_User_Password】
@@ -95,7 +95,7 @@ Below are the procedure that we followed.
 【ADS_Repl_Password】
 　⇒mysql(ads)上のレプリケーション用のパスワードを指定する
 
-■Backupサーバー
+★ Backupサーバー
 【Backup_Private_IP】
 　⇒BackupサーバーのプライベートIPを指定する
 
@@ -105,14 +105,14 @@ Below are the procedure that we followed.
 【Buckup_Network_Separation】
 　⇒Buckupサーバーのネットワーク部を指定する
 
-■ESサーバー
+★ ESサーバー
 【ES_Private_IP】
 　⇒ESサーバーのプライベートIPを指定する
 
 【ES_Tag_Name】
 　⇒ESサーバーに設定するホスト名を指定する
 
-■NFSサーバー
+★ NFSサーバー
 【NFS_Private_IP】
 　⇒NFSサーバーのプライベートIPを指定する
 

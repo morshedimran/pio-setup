@@ -41,7 +41,7 @@ Below are the procedure that we followed.
 【Bastion_Network_Separation】
 　⇒ Specify the network setup for Bastion server
 
-★ Webサーバー
+★ Web server
 【Web_Private_IP】
 　⇒ Specify the private IP of Web server
 
@@ -54,7 +54,7 @@ Below are the procedure that we followed.
 【Web_FQDN】
 　⇒ Specify the FQDN for Web server（same as unit FQDN）
 
-★ APサーバー
+★ AP server
 【AP_Private_IP】
 　⇒ Specify the private IP of  AP server
 
@@ -65,25 +65,25 @@ Below are the procedure that we followed.
 　⇒ Specify the host name to be set  for AP server
 
 【Master_Token】
-　⇒各種操作を許可するためのマスタートークンを設定する（厳重管理のこと）
+　⇒ To authorize all kind of operation, set the master token. (strictly managed)
 
-★ ADS_Masterサーバー
+★ ADS_Master server
 【ADS_Master_Private_IP】
-　⇒ADS_MasterサーバーのプライベートIPを指定する
-
+　⇒ Specify the private IP of  ADS_Master server 
+　
 【ADS_Master_Tag_Name】
-　⇒ADS_Masterサーバーに設定するホスト名を指定する
+　⇒ Specify the host name to be set  for ADS_Master server
 
-★ ADS_Slaveサーバー
+★ ADS_Slave server
 【ADS_Slave_Private_IP】
-　⇒ADS_SlaveサーバーのプライベートIPを指定する
+　⇒ Specify the private IP of ADS_Slave server
 
 【ADS_Slave_Tag_Name】
-　⇒ADS_Slaveサーバーに設定するホスト名を指定する
+　⇒ Specify the host name to be set  for ADS_Slave server
 
-★ ADS共通設定項目
+★ ADS common setup
 【ADS_User_Name】
-　⇒mysql(ads)上の一般ユーザーのアカウント名を指定する
+　⇒ mysql(ads)上の一般ユーザーのアカウント名を指定する
 【ADS_User_Password】
 　⇒mysql(ads)上の一般ユーザーのパスワードを指定する
 【ADS_Root_Name】

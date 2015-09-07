@@ -245,16 +245,16 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
    * Access to each remote server, and add the public key
    
 ```
-    $ sudo su –
+    $ sudo su –  (※　switch to the root user)
     # vim /root/.ssh/authorized_keys  (※ Add the key below and save)
     -----------------
     ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
     ------------------
 ⇒　Notes:
-      1. `vi` command displayes the contents of the file.
-      2. By Pressing「i」you will be in edit mode, and be able to copy the public key.
+      1. vi command displayes the contents of the file.
+      2. By Pressing[i]you will be in edit mode, and be able to copy the public key.
       3. Paste the public key, copied from bastion server
-      4. Press「Esc」, then type `:wq!` to save the file
+      4. Press[Esc], then type [:wq!] to save the file
     
 ⇒　If the directory if not available on the remote server, then create the file first
     　
@@ -262,7 +262,47 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
       # touch authorized_keys
 ```
 
+* Check the permission on remote servers
 
+```
+    # ls -la /root/.ssh/authorized_keys
+    output ex:)
+    ---------------
+      -rw-------. 1 root root 952 Aug 27 02:41 /root/.ssh/authorized_keys
+    ---------------
+    [-rw-------.]should be shown.
+
+⇒　Change the permission if required
+       # chmod 600 /root/.ssh/authorized_keys
+       # ls -la /root/.ssh/authorized_keys
+    output ex:)
+    ---------------
+       -rw-------. 1 root root 952 Aug 27 02:41 /root/.ssh/authorized_keys
+     ---------------
+
+    # ls -la /root/
+    output ex:)
+    ---------------
+      drwx------.  2 root root 4096 Aug 27 02:41 .ssh
+    ---------------
+  .ssh directory permission should be shown as [drwx------.]
+
+⇒　Change the permission if required
+
+    # chmod 700 /root/.ssh
+    # ls -la /root/.ssh
+    Output ex:)
+    ---------------
+      drwx------.  2 root root 4096 Aug 27 02:41 .ssh
+    ---------------
+    [drwx------.]should be shown.
+    # exit
+
+```
+
+
+
+##### Step Three— Access to remote servers form Bastion server by SSH using private key
 
     # ssh-keygen -t rsa
     →~/.ssh/に配備される

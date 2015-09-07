@@ -194,11 +194,56 @@ Note: It is required to add the extentional disk on the following path
                                    100GB (path : /dev/xvdc)    Purpose：WebDav, event log
 
 ------------------------------------------------------------------------------------------------
-#### SSHキーの作成（対象サーバー：Bastionサーバー）
+#### Generate SSH key （Client machine：Bastion server）
 ------------------------------------------------------------------------------------------------
-・Bastionサーバーに接続し、SSHキーを作成する
-  # ssh-keygen -t rsa
-  →~/.ssh/に配備される
+* Setup the ssh keys(RSA key pair) to access other servers from bastion server as “root” user. Follow the steps below:
+##### Step One—Create the RSA Key Pair on the client machine
+
+* The entire key generation process looks like this:
+
+
+    $ su root
+    Password:
+    $ ssh-keygen -t rsa
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/root/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /root/.ssh/id_rsa.
+    Your public key has been saved in /root/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    0b:a0:a6:41:8c:6d:3f:46:96:a2:24:dc:7a:87:43:db root@ip-172-31-10-87
+    The key's randomart image is:
+    +--[ RSA 2048]----+
+    |                 |
+    |+..  .           |
+    |o=+o=            |
+    |+oo*+.           |
+    |o.o=+E. S        |
+    | +..o. . .       |
+    |.       .        |
+    |                 |
+    |                 |
+    +-----------------+
+
+The public key is now located in */home/demo/.ssh/id_rsa.pub* 
+The private key (identification) is now located in */home/demo/.ssh/id_rsa*
+
+
+##### Step Two—Put the public key to other remote servers. Follow the steps below:
+
+* Copy the public key from bastion server
+
+
+    $ cat /root/.ssh/id_rsa.pub
+    sammple output)
+      ------------------
+      ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
+      ------------------
+* and add the key in the */root/.ssh/authorized_keys* to all target remote servers
+   * 
+    # ssh-keygen -t rsa
+    →~/.ssh/に配備される
   →id_rsa.pub：公開鍵
     id_rsa：秘密鍵
 

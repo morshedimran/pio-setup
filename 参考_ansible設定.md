@@ -21,6 +21,7 @@ Below are the procedure that we followed.
     ansible_ssh_user=root
 ```
 ---------------
+* Modify the hosts file as per instruction below
 
 ```
 ★ Common Server Setting

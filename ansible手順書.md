@@ -193,9 +193,9 @@ Note: It is required to add the extentional disk on the following path
     AP + NFS server                50GB (path  : /dev/xvdb)    Purpose：PIO log
                                    100GB (path : /dev/xvdc)    Purpose：WebDav, event log
 
-------------------------------------------------------------------------------------------------
+
 #### Generate SSH key （Client machine：Bastion server）
-------------------------------------------------------------------------------------------------
+
 * Setup the ssh keys(RSA key pair) to access other servers from bastion server as “root” user. Follow the steps below:
 ##### Step One—Create the RSA Key Pair on the client machine
 
@@ -226,8 +226,9 @@ Note: It is required to add the extentional disk on the following path
     |                 |
     +-----------------+
 ```
-The public key is now located in */home/demo/.ssh/id_rsa.pub* 
-The private key (identification) is now located in */home/demo/.ssh/id_rsa*
+The public key is now located in **/home/demo/.ssh/id_rsa.pub** 
+
+The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
 
 ##### Step Two—Put the public key to other remote servers. Follow the steps below:
 

@@ -324,7 +324,7 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
 ## Ansible configuration :white_check_mark:
 
 
-### Install Ansible（Client server：Bastion server）
+#### Install Ansible（Client server：Bastion server）
 
 * Add the epel repository to the Bastion server
 
@@ -338,7 +338,7 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
     # yum install ansible
     this ok [y/N]: 　　(※　type [y] and press enter)
 ```    
-### Check the ansible configuration file on client server (Bastion server)
+#### Check the ansible configuration file on client server (Bastion server)
 
 * Access to Bastion server and check the following ansible setup files, if configures as required
 
@@ -362,7 +362,7 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
     　　# cat /root/ansible/group_vars/web.yml
 ```
 
-### Execute Ansible
+#### Execute Ansible
 
 ・Bastionサーバへ接続し、カレントディレクトリをansibleフォルダへ変更する
   # cd /root/ansible/

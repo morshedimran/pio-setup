@@ -315,47 +315,51 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
     
     # exit (※　Exit fro remote server after successfull access from bastion server)
 ```
+--------------------------------------------------------------------
+
+## ansible configuration :white_check_mark:
 
 
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
+### Install Ansible（Client server：Bastion server）
 
-Part 2. ansible設定
+* Adf the epel repository to the Bastion server
 
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 
-------------------------------------------------------------------------------------------------
-□Ansibleのインストール（対象サーバー：Bastionサーバー）
-------------------------------------------------------------------------------------------------
-・Bastionサーバーへ接続し、epelリポジトリを追加する
-  # yum localinstall http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-     ⇒「Is this ok [y/N]: 」 が表示されて入力が要求される。「y」を入力して「Enter」を押す。
-・ansible本体をインストールする
-  # yum install ansible
-     ⇒「Is this ok [y/N]: 」 が表示されて入力が要求される。「y」を入力して「Enter」を押す。
+    # yum localinstall http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+    this ok [y/N]: 　　(※　type [y] and press enter)
 
-------------------------------------------------------------------------------------------------
-□ansible設定項目の確認（対象サーバー：Bastionサーバー）
-------------------------------------------------------------------------------------------------
-・Bastionサーバーに接続し、ansible設定項目が修正されていることを確認
-  1． /hostsの確認
-    hostsの設定内容に漏れがないかを確認する
-    # cat /root/ansible/static_inventory/hosts | grep "【"
-        ⇒何も表示されなければすべての項目が設定されている。
+* Install ansible
 
-  2． /group_vars/[group名].ymlの確認
-      ※group_vars内を変更した場合のみ実施。修正が反映されていることを確認すること。
-    # cat /root/ansible/group_vars/ap.yml
-    # cat /root/ansible/group_vars/backup.yml
-    # cat /root/ansible/group_vars/bastion.yml
-    # cat /root/ansible/group_vars/common.yml
-    # cat /root/ansible/group_vars/es.yml
-    # cat /root/ansible/group_vars/mysql.yml
-    # cat /root/ansible/group_vars/nfs.yml
-    # cat /root/ansible/group_vars/web.yml
 
-------------------------------------------------------------------------------------------------
-□ansibleの実行
-------------------------------------------------------------------------------------------------
+    # yum install ansible
+    this ok [y/N]: 　　(※　type [y] and press enter)
+    
+### Check the ansible configuration file on client sarver (Bastion server)
+
+* Access to Bastion server and check the following ansible setup files, if configures as required
+
+```
+1．/hosts file 
+※　Check the hosts file if anything is missing   
+
+    　　# cat /root/ansible/static_inventory/hosts | grep "【"
+⇒　If nothing shows, meaning all are configured
+
+2．/group_vars/[group name].yml file     
+※　Check if all the yml files under group_vars are modified as required
+
+    　　# cat /root/ansible/group_vars/ap.yml
+    　　# cat /root/ansible/group_vars/backup.yml
+    　　# cat /root/ansible/group_vars/bastion.yml
+    　　# cat /root/ansible/group_vars/common.yml
+    　　# cat /root/ansible/group_vars/es.yml
+    　　# cat /root/ansible/group_vars/mysql.yml
+    　　# cat /root/ansible/group_vars/nfs.yml
+    　　# cat /root/ansible/group_vars/web.yml
+```
+
+### Execute Ansible
+
 ・Bastionサーバへ接続し、カレントディレクトリをansibleフォルダへ変更する
   # cd /root/ansible/
 

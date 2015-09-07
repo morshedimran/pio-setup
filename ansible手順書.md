@@ -386,6 +386,7 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
     # /bin/sh pcs_regression.sh https://{{ FQDN of Web server }}
     [PCS Version(default) RT OK] (※　reachability testing is done, if it shows the same)
 ```
+--------------------------------------------------------------------
 
 ## Conclusion
 

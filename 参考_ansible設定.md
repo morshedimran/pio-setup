@@ -1,138 +1,139 @@
-ŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸ
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
+# Personiumè‡ªå‹•æ§‹ç¯‰ansible  è¨­å®šé …ç›®èª¬æ˜Žæ›¸
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
 
-      PersoniumŽ©“®\’zansible  Ý’è€–Úà–¾‘
+## Introduction
 
-ŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸŸ
+Personiumã‚’ç«‹ã¡ä¸Šã’ã‚‹ãŸã‚ã«å¿…è¦ãªè¨­å®šé …ç›®ã«ã¤ã„ã¦ã®èª¬æ˜Žæ›¸
+Part 1ã¯å¿…ãšè¨­å®šã™ã‚‹ãƒ™ãé …ç›®ã€Part 2ã¯å¿…è¦ã«å¿œã˜ã¦è¨­å®šã™ã‚‹ã¹ãé …ç›®ã§ã‚ã‚‹ã€‚
 
-Personium‚ð—§‚¿ã‚°‚é‚½‚ß‚É•K—v‚ÈÝ’è€–Ú‚É‚Â‚¢‚Ä‚Ìà–¾‘
-Part 1‚Í•K‚¸Ý’è‚·‚éƒx‚«€–ÚAPart 2‚Í•K—v‚É‰ž‚¶‚ÄÝ’è‚·‚é‚×‚«€–Ú‚Å‚ ‚éB
+Below are the procedure that we followed.
 
+---------------------------------------
+:sparkles: GETTING STARTED :sparkles:
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+### åˆæœŸè¨­å®šã«ã¦è¨­å®šã™ã‚‹é …ç›®ï¼ˆè¨˜å…¥å…ˆï¼š/hostsï¼‰ :white_check_mark:
 
-Part 1. ‰ŠúÝ’è‚É‚ÄÝ’è‚·‚é€–Úi‹L“üæF/hostsj
+* /static_inventory/hostså†…ã«ã‚ã‚‹ã€ã€‘ã§å›²ã¾ã‚ŒãŸéƒ¨åˆ†ã‚’ã€
+æ§‹ç¯‰ã—ãŸã„ã‚·ã‚¹ãƒ†ãƒ ã®æ§‹æˆã«åˆã‚ã›ã¦å¤‰æ›´ã™ã‚‹ã“ã¨ã€‚
 
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
+```
+    Exï¼šansible_ssh_user=ã€Ansible_Execution_Userã€‘
+        â†“
+        ansible_ssh_user=root
 
-/static_inventory/hosts“à‚É‚ ‚éyz‚ÅˆÍ‚Ü‚ê‚½•”•ª‚ðA
-\’z‚µ‚½‚¢ƒVƒXƒeƒ€‚Ì\¬‚É‡‚í‚¹‚Ä•ÏX‚·‚é‚±‚ÆB
-
-—áFansible_ssh_user=yAnsible_Execution_Userz
-    «
-    ansible_ssh_user=root
-
-----
-
-¡ƒT[ƒo[‹¤’Ê€–Ú
-yAnsible_Execution_Userz
-@Ëansible‚ðŽÀs‚·‚éƒ†[ƒU[‚ðŽw’è‚·‚é
-
-ySSH_PrivateKeyz
-@ËansibleŽÀsƒ†[ƒU[‚ªsshŒöŠJŒ®”FØ‚É—p‚¢‚é”é–§Œ®‚ðâ‘ÎƒpƒX‚ÅŽw’è‚·‚é
-
-¡BastionƒT[ƒo[
-yBastion_Private_IPz
-@ËBastionƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yBastion_Tag_Namez
-@ËBastionƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-yBastion_Network_Separationz
-@ËBastionƒT[ƒo[‚Ìƒlƒbƒgƒ[ƒN•”‚ðŽw’è‚·‚é
-
-¡WebƒT[ƒo[
-yWeb_Private_IPz
-@ËWebƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yWeb_Tag_Namez
-@ËWebƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-yWeb_Global_IPz
-@ËWebƒT[ƒo[‚ÌƒOƒ[ƒoƒ‹IP‚ðŽw’è‚·‚é
-
-yWeb_FQDNz
-@ËWebƒT[ƒo[‚ÌFQDNiƒ†ƒjƒbƒg‚ÌFQDNj
-
-¡APƒT[ƒo[
-yAP_Private_IPz
-@ËAPƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yAP_Network_Separationz
-@ËAPƒT[ƒo[‚Ìƒlƒbƒgƒ[ƒN•”‚ðŽw’è‚·‚é
-
-yAP_Tag_Namez
-@ËAPƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-yMaster_Tokenz
-@ËŠeŽí‘€ì‚ð‹–‰Â‚·‚é‚½‚ß‚Ìƒ}ƒXƒ^[ƒg[ƒNƒ“‚ðÝ’è‚·‚éiŒµdŠÇ—‚Ì‚±‚Æj
-
-¡ADS_MasterƒT[ƒo[
-yADS_Master_Private_IPz
-@ËADS_MasterƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yADS_Master_Tag_Namez
-@ËADS_MasterƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-¡ADS_SlaveƒT[ƒo[
-yADS_Slave_Private_IPz
-@ËADS_SlaveƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yADS_Slave_Tag_Namez
-@ËADS_SlaveƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-¡ADS‹¤’ÊÝ’è€–Ú
-yADS_User_Namez
-@Ëmysql(ads)ã‚Ìˆê”Êƒ†[ƒU[‚ÌƒAƒJƒEƒ“ƒg–¼‚ðŽw’è‚·‚é
-yADS_User_Passwordz
-@Ëmysql(ads)ã‚Ìˆê”Êƒ†[ƒU[‚ÌƒpƒXƒ[ƒh‚ðŽw’è‚·‚é
-yADS_Root_Namez
-@Ëmysql(ads)ã‚Ìrootƒ†[ƒU[‚ÌƒAƒJƒEƒ“ƒg–¼‚ðŽw’è‚·‚é
-yADS_Root_Passwordz
-@Ëmysql(ads)ã‚Ìrootƒ†[ƒU[‚ÌƒpƒXƒ[ƒh‚ðŽw’è‚·‚é
-yADS_Repl_Namez
-@Ëmysql(ads)ã‚ÌƒŒƒvƒŠƒP[ƒVƒ‡ƒ“—p‚ÌƒAƒJƒEƒ“ƒg–¼‚ðŽw’è‚·‚é
-yADS_Repl_Passwordz
-@Ëmysql(ads)ã‚ÌƒŒƒvƒŠƒP[ƒVƒ‡ƒ“—p‚ÌƒpƒXƒ[ƒh‚ðŽw’è‚·‚é
-
-¡BackupƒT[ƒo[
-yBackup_Private_IPz
-@ËBackupƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yBuckup_Tag_Namez
-@ËBackupƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-yBuckup_Network_Separationz
-@ËBuckupƒT[ƒo[‚Ìƒlƒbƒgƒ[ƒN•”‚ðŽw’è‚·‚é
-
-¡ESƒT[ƒo[
-yES_Private_IPz
-@ËESƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-yES_Tag_Namez
-@ËESƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-¡NFSƒT[ƒo[
-yNFS_Private_IPz
-@ËNFSƒT[ƒo[‚Ìƒvƒ‰ƒCƒx[ƒgIP‚ðŽw’è‚·‚é
-
-ynfs_Tag_Namez
-@ËnfsƒT[ƒo[‚ÉÝ’è‚·‚éƒzƒXƒg–¼‚ðŽw’è‚·‚é
-
-
-
-
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
-
-Part 2. ansible‚ÌŽÀs‚ÉÛ‚µ‚ÄÝ’è‚·‚é€–Úi‹L“üæF/group_vars/[group–¼].ymlj
-
-žžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžžž
-
-group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚³‚ê‚Ä‚¢‚éB
-Šî–{“I‚É•ÏX‚·‚é•K—v‚Í‚È‚¢‚ªAƒT[ƒo[‚Ìƒ`ƒ…[ƒjƒ“ƒO‚È‚Ç‚ðs‚¤ê‡‚É‚ÍC³‚µ‚Ä‚æ‚¢B
+---------------
 
 ----
 
- WebƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/web.yml)
+â– ã‚µãƒ¼ãƒãƒ¼å…±é€šé …ç›®
+ã€Ansible_Execution_Userã€‘
+ã€€â‡’ansibleã‚’å®Ÿè¡Œã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æŒ‡å®šã™ã‚‹
+
+ã€SSH_PrivateKeyã€‘
+ã€€â‡’ansibleå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒsshå…¬é–‹éµèªè¨¼ã«ç”¨ã„ã‚‹ç§˜å¯†éµã‚’çµ¶å¯¾ãƒ‘ã‚¹ã§æŒ‡å®šã™ã‚‹
+
+â– Bastionã‚µãƒ¼ãƒãƒ¼
+ã€Bastion_Private_IPã€‘
+ã€€â‡’Bastionã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€Bastion_Tag_Nameã€‘
+ã€€â‡’Bastionã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+ã€Bastion_Network_Separationã€‘
+ã€€â‡’Bastionã‚µãƒ¼ãƒãƒ¼ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯éƒ¨ã‚’æŒ‡å®šã™ã‚‹
+
+â– Webã‚µãƒ¼ãƒãƒ¼
+ã€Web_Private_IPã€‘
+ã€€â‡’Webã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€Web_Tag_Nameã€‘
+ã€€â‡’Webã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+ã€Web_Global_IPã€‘
+ã€€â‡’Webã‚µãƒ¼ãƒãƒ¼ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«IPã‚’æŒ‡å®šã™ã‚‹
+
+ã€Web_FQDNã€‘
+ã€€â‡’Webã‚µãƒ¼ãƒãƒ¼ã®FQDNï¼ˆãƒ¦ãƒ‹ãƒƒãƒˆã®FQDNï¼‰
+
+â– APã‚µãƒ¼ãƒãƒ¼
+ã€AP_Private_IPã€‘
+ã€€â‡’APã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€AP_Network_Separationã€‘
+ã€€â‡’APã‚µãƒ¼ãƒãƒ¼ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯éƒ¨ã‚’æŒ‡å®šã™ã‚‹
+
+ã€AP_Tag_Nameã€‘
+ã€€â‡’APã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+ã€Master_Tokenã€‘
+ã€€â‡’å„ç¨®æ“ä½œã‚’è¨±å¯ã™ã‚‹ãŸã‚ã®ãƒžã‚¹ã‚¿ãƒ¼ãƒˆãƒ¼ã‚¯ãƒ³ã‚’è¨­å®šã™ã‚‹ï¼ˆåŽ³é‡ç®¡ç†ã®ã“ã¨ï¼‰
+
+â– ADS_Masterã‚µãƒ¼ãƒãƒ¼
+ã€ADS_Master_Private_IPã€‘
+ã€€â‡’ADS_Masterã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€ADS_Master_Tag_Nameã€‘
+ã€€â‡’ADS_Masterã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+â– ADS_Slaveã‚µãƒ¼ãƒãƒ¼
+ã€ADS_Slave_Private_IPã€‘
+ã€€â‡’ADS_Slaveã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€ADS_Slave_Tag_Nameã€‘
+ã€€â‡’ADS_Slaveã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+â– ADSå…±é€šè¨­å®šé …ç›®
+ã€ADS_User_Nameã€‘
+ã€€â‡’mysql(ads)ä¸Šã®ä¸€èˆ¬ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+ã€ADS_User_Passwordã€‘
+ã€€â‡’mysql(ads)ä¸Šã®ä¸€èˆ¬ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+ã€ADS_Root_Nameã€‘
+ã€€â‡’mysql(ads)ä¸Šã®rootãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+ã€ADS_Root_Passwordã€‘
+ã€€â‡’mysql(ads)ä¸Šã®rootãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+ã€ADS_Repl_Nameã€‘
+ã€€â‡’mysql(ads)ä¸Šã®ãƒ¬ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+ã€ADS_Repl_Passwordã€‘
+ã€€â‡’mysql(ads)ä¸Šã®ãƒ¬ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+
+â– Backupã‚µãƒ¼ãƒãƒ¼
+ã€Backup_Private_IPã€‘
+ã€€â‡’Backupã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€Buckup_Tag_Nameã€‘
+ã€€â‡’Backupã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+ã€Buckup_Network_Separationã€‘
+ã€€â‡’Buckupã‚µãƒ¼ãƒãƒ¼ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯éƒ¨ã‚’æŒ‡å®šã™ã‚‹
+
+â– ESã‚µãƒ¼ãƒãƒ¼
+ã€ES_Private_IPã€‘
+ã€€â‡’ESã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€ES_Tag_Nameã€‘
+ã€€â‡’ESã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+â– NFSã‚µãƒ¼ãƒãƒ¼
+ã€NFS_Private_IPã€‘
+ã€€â‡’NFSã‚µãƒ¼ãƒãƒ¼ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆIPã‚’æŒ‡å®šã™ã‚‹
+
+ã€nfs_Tag_Nameã€‘
+ã€€â‡’nfsã‚µãƒ¼ãƒãƒ¼ã«è¨­å®šã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹
+
+---------------
+
+```
+
+### ansibleã®å®Ÿè¡Œã«éš›ã—ã¦è¨­å®šã™ã‚‹é …ç›®ï¼ˆè¨˜å…¥å…ˆï¼š/group_vars/[groupå].ymlï¼‰ :white_check_mark:
+
+group_vars/ãƒ•ã‚©ãƒ«ãƒ€å†…ã«ã‚ã‚‹.ymlãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯ã€ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã¨ã—ã¦è¨­å®šå¯èƒ½ãªå€¤ãŒè¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ã€‚
+åŸºæœ¬çš„ã«å¤‰æ›´ã™ã‚‹å¿…è¦ã¯ãªã„ãŒã€ã‚µãƒ¼ãƒãƒ¼ã®ãƒãƒ¥ãƒ¼ãƒ‹ãƒ³ã‚°ãªã©ã‚’è¡Œã†å ´åˆã«ã¯ä¿®æ­£ã—ã¦ã‚ˆã„ã€‚
+
+```
+----
+
+â–¡Webã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/web.yml)
   tag_ServerType: web
 
   nginx_version: 1.7.6
@@ -140,7 +141,7 @@ group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚
   nginx_hm_version: 0.25
 
 
- APƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/ap.yml)
+â–¡APã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/ap.yml)
   tag_ServerType: ap
 
   tomcat_version: 8.0.14
@@ -166,7 +167,7 @@ group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚
   cache_manager: memcached
 
 
- ADS_Master/ADS_SlaveƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/mysql.yml)
+â–¡ADS_Master/ADS_Slaveã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/mysql.yml)
   tag_ServerType: mysql
 
   ads_username: mysql
@@ -174,7 +175,7 @@ group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚
   ads_groupname: mysql
 
 
- ESƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/es.yml)
+â–¡ESã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/es.yml)
   tag_ServerType: es
 
   es_heapsize: 3328
@@ -182,7 +183,7 @@ group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚
   version: 1.3.4
 
 
- nfsƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/nfs.yml)
+â–¡nfsã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/nfs.yml)
   tag_ServerType: nfs
 
   # lock / cache instance
@@ -204,7 +205,9 @@ group_vars/ƒtƒHƒ‹ƒ_“à‚É‚ ‚é.ymlƒtƒ@ƒCƒ‹‚É‚ÍAƒIƒvƒVƒ‡ƒ“‚Æ‚µ‚ÄÝ’è‰Â”\‚È’l‚ª‹Lq‚
   memcached_cache_maxconn: 1024
 
 
- bastionƒT[ƒo[ŠÖ˜A(Ý’èæF/group_vars/bastion.yml)
+â–¡bastionã‚µãƒ¼ãƒãƒ¼é–¢é€£(è¨­å®šå…ˆï¼š/group_vars/bastion.yml)
   tag_ServerType: bastion
 
+```
+## Summary
 

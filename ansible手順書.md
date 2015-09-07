@@ -194,12 +194,12 @@ Note: It is required to add the extentional disk on the following path
                                    100GB (path : /dev/xvdc)    Purpose：WebDav, event log
 
 
-#### Generate SSH key （Client machine：Bastion server）
+#### Generate SSH key 
 
 * Setup the ssh keys(RSA key pair) to access other servers from bastion server as “root” user. Follow the steps below:
-##### Step One—Create the RSA Key Pair on the client machine
+##### Step One—Create the RSA Key Pair on the client machine (Bastion server)
 
-* The entire key generation process looks like this:
+* The entire key generation process looks like as follows:
 
 ```
     $ su root
@@ -250,6 +250,11 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
     -----------------
     ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
     ------------------
+⇒　Notes:
+      1. `vi` command displayes the contents of the file.
+      2. By Pressing「i」you will be in edit mode, and be able to copy the public key.
+      3. Paste the public key, copied from bastion server
+      4. Press「Esc」, then type `:wq!` to save the file
     
 ⇒　If the directory if not available on the remote server, then create the file first
     　

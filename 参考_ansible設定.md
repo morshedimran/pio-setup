@@ -13,7 +13,7 @@ Below are the procedure that we followed.
 
 ### Items to be set initially（Fill destination：/hosts） :white_check_mark:
 
-* all elements inside `/static_inventory/hosts` file enclosed with **【】**, replace with the constructed server configuration.
+* all elements inside `/static_inventory/hosts` file enclosed with `【】`, replace with the constructed server configuration.
 
 ```
     Ex：ansible_ssh_user=【Ansible_Execution_User】

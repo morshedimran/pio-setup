@@ -4,18 +4,16 @@
 
 ## Introduction
 
-Personiumを立ち上げるために必要な設定項目についての説明書
-Part 1は必ず設定するベき項目、Part 2は必要に応じて設定するべき項目である。
+This it the setup documment to launch Personium by ansible. Part 1( initial configuration) must be completed, where Part 2(Item to be set upon ansible execution) modification is based on the requirement.
 
 Below are the procedure that we followed.
 
 ---------------------------------------
 :sparkles: GETTING STARTED :sparkles:
 
-### 初期設定にて設定する項目（記入先：/hosts） :white_check_mark:
+### Items to be set initially（Fill destination：/hosts） :white_check_mark:
 
-* /static_inventory/hosts内にある【】で囲まれた部分を、
-構築したいシステムの構成に合わせて変更すること。
+* all elements inside `/static_inventory/hosts` file enclosed with **【】**, replace with the constructed server configuration.
 
 ```
     Ex：ansible_ssh_user=【Ansible_Execution_User】
@@ -26,45 +24,45 @@ Below are the procedure that we followed.
 
 ----
 
-■サーバー共通項目
+■Common Server Setting
 【Ansible_Execution_User】
-　⇒ansibleを実行するユーザーを指定する
+　⇒ Specify a user to rexecute ansible
 
 【SSH_PrivateKey】
-　⇒ansible実行ユーザーがssh公開鍵認証に用いる秘密鍵を絶対パスで指定する
+　⇒ Set the secret key in the absolute path for  ansible user ssh public key authentication.
 
-■Bastionサーバー
+■Bastion server
 【Bastion_Private_IP】
-　⇒BastionサーバーのプライベートIPを指定する
+　⇒ Specify the private IP of Bastion server
 
 【Bastion_Tag_Name】
-　⇒Bastionサーバーに設定するホスト名を指定する
+　⇒ Specify the host name to be set  for Bastion server
 
 【Bastion_Network_Separation】
-　⇒Bastionサーバーのネットワーク部を指定する
+　⇒ Specify the network setup for Bastion server
 
 ■Webサーバー
 【Web_Private_IP】
-　⇒WebサーバーのプライベートIPを指定する
+　⇒ Specify the private IP of Web server
 
 【Web_Tag_Name】
-　⇒Webサーバーに設定するホスト名を指定する
+　⇒ Specify the host name to be set  for Web server
 
 【Web_Global_IP】
-　⇒WebサーバーのグローバルIPを指定する
+　⇒ Specify the global IP for Web server
 
 【Web_FQDN】
-　⇒WebサーバーのFQDN（ユニットのFQDN）
+　⇒ Specify the FQDN for Web server（same as unit FQDN）
 
 ■APサーバー
 【AP_Private_IP】
-　⇒APサーバーのプライベートIPを指定する
+　⇒ Specify the private IP of  AP server
 
 【AP_Network_Separation】
-　⇒APサーバーのネットワーク部を指定する
+　⇒ Specify the network setup for AP server
 
 【AP_Tag_Name】
-　⇒APサーバーに設定するホスト名を指定する
+　⇒ Specify the host name to be set  for AP server
 
 【Master_Token】
 　⇒各種操作を許可するためのマスタートークンを設定する（厳重管理のこと）
@@ -125,7 +123,7 @@ Below are the procedure that we followed.
 
 ```
 
-### ansibleの実行に際して設定する項目（記入先：/group_vars/[group名].yml） :white_check_mark:
+### Item to be set upon ansible execution（記入先：/group_vars/[group名].yml） :white_check_mark:
 
 group_vars/フォルダ内にある.ymlファイルには、オプションとして設定可能な値が記述されている。
 基本的に変更する必要はないが、サーバーのチューニングなどを行う場合には修正してよい。

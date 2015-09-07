@@ -364,28 +364,32 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
 
 #### Execute Ansible
 
-・Bastionサーバへ接続し、カレントディレクトリをansibleフォルダへ変更する
-  # cd /root/ansible/
+* Access to the Bastion server and change the ansible as current directory 
 
-・ansibleを実行する
+```
+# cd /root/ansible/
+
+⇒　Exucute ansible
   # date; ansible-playbook init_personium.yml ; date
 ※  数分～数時間ほどでansibleの処理が完了し、設定したFQDNのPIOユニットが完成します。Web（https）でのアクセスが可能となります。
 
-・ansibleの実行確認
+・Confirm if ansible executed properly
   # egrep -B 3 -A 3 'failed:|error' /root/ansible.log
-      ⇒何も表示されないことを確認
+      ⇒ Check the fansible log file, if it has any error
+```
 
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
+#### Deployment testing at Bastion server
 
-Part 3. 疎通確認
+* Execute the reachability testing tool
 
-◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 
-------------------------------------------------------------------------------------------------
-□踏み台サーバにて疎通確認を実施する
-------------------------------------------------------------------------------------------------
-・疎通確認ツールを実行する
-  「PCS Version(default) RT OK」が表示されることを確認する
-  # /bin/sh pcs_regression.sh https://{{ WebサーバーのFQDN }}
-        ⇒「PCS Version(default) RT OK」が出力されれば疎通確認完了。
+    # /bin/sh pcs_regression.sh https://{{ FQDN of Web server }}
+    [PCS Version(default) RT OK] (※　reachability testing is done, if it shows the same)
 
+## Conclusion
+
+Ansible believes you should not need another framework to validate basic things of your infrastructure is true. This is the case because Ansible is an order-based system that will fail immediately on unhandled errors for a host, and prevent further configuration of that host. This forces errors to the top and shows them in a summary at the end of the Ansible run.
+
+However, as Ansible is designed as a multi-tier orchestration system, it makes it very easy to incorporate tests into the end of a playbook run, either using loose tasks or roles. When used with rolling updates, testing steps can decide whether to put a machine back into a load balanced pool or not.
+
+Finally, because Ansible errors propagate all the way up to the return code of the Ansible program itself, and Ansible by default runs in an easy push-based mode, Ansible is a great step to put into a build environment if you wish to use it to roll out systems as part of a Continuous Integration/Continuous Delivery pipeline, as is covered in sections above.

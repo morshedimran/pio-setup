@@ -201,7 +201,7 @@ Note: It is required to add the extentional disk on the following path
 
 * The entire key generation process looks like this:
 
-
+```
     $ su root
     Password:
     $ ssh-keygen -t rsa
@@ -225,21 +225,21 @@ Note: It is required to add the extentional disk on the following path
     |                 |
     |                 |
     +-----------------+
-
+```
 The public key is now located in */home/demo/.ssh/id_rsa.pub* 
 The private key (identification) is now located in */home/demo/.ssh/id_rsa*
-
 
 ##### Step Two—Put the public key to other remote servers. Follow the steps below:
 
 * Copy the public key from bastion server
+```
+   $ cat /root/.ssh/id_rsa.pub
+   sammple output)
+   ------------------
+   ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
+   ------------------
+```
 
-
-    $ cat /root/.ssh/id_rsa.pub
-    sammple output)
-      ------------------
-      ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
-      ------------------
 * and add the key in the */root/.ssh/authorized_keys* to all target remote servers
    * 
     # ssh-keygen -t rsa

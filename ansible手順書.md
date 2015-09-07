@@ -241,8 +241,24 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
    ------------------
 ```
 
-* and add the key in the */root/.ssh/authorized_keys* to all target remote servers
+* Add the public key of bastion server to the **/root/.ssh/authorized_keys** of all target remote servers
+   * Access to each remote server, and add the public key
    * 
+   
+```
+    $ sudo su –
+    # vim /root/.ssh/authorized_keys  (※ Add the key below and save)
+    -----------------
+    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxUTAHN8vxgp8w2tBeSYKLDvISg3LF9W/iiIQ5boQNPfHQkpXtbFAVmQ1uDMBf3bUOzQN0Hr+YnAtiV1D7mPjRdBapM7dzI3o4hcuy1Jk9o6J6ZY4SQosH23jOJJZhz0yLn/ACQ+aKeIu3DPj4Pw4C/BUfd+JlFGCRcr/OTjLmqtVerW70LLGSh1CwYr/b7uvKjxdzArxKlzsvCpGBU69Vn0g5+tUzOtvMEYRz1Jttn1gxrRpCqIUbtRbIlYEoNYpzt0hVBfOhNtfbBE8yb8Lw1AenBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
+    ------------------
+    
+⇒　If the directory if not available on the remote server, then create the file first
+    　
+    　# mkdir .ssh
+      # touch authorized_keys
+　```
+
+
     # ssh-keygen -t rsa
     →~/.ssh/に配備される
   →id_rsa.pub：公開鍵

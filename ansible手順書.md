@@ -324,16 +324,16 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
 
 * Adf the epel repository to the Bastion server
 
-
+```
     # yum localinstall http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
     this ok [y/N]: 　　(※　type [y] and press enter)
-
+```
 * Install ansible
 
-
+```
     # yum install ansible
     this ok [y/N]: 　　(※　type [y] and press enter)
-    
+```    
 ### Check the ansible configuration file on client sarver (Bastion server)
 
 * Access to Bastion server and check the following ansible setup files, if configures as required

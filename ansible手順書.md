@@ -243,7 +243,6 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
 
 * Add the public key of bastion server to the **/root/.ssh/authorized_keys** of all target remote servers
    * Access to each remote server, and add the public key
-   * 
    
 ```
     $ sudo su –
@@ -256,7 +255,8 @@ The private key (identification) is now located in **/home/demo/.ssh/id_rsa**
     　
     　# mkdir .ssh
       # touch authorized_keys
-　```
+```
+
 
 
     # ssh-keygen -t rsa

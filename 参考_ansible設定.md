@@ -17,8 +17,8 @@ Below are the procedure that we followed.
 
 
     Ex：ansible_ssh_user=【Ansible_Execution_User】
-        ↓
-        ansible_ssh_user=root
+    ↓
+    ansible_ssh_user=root
 
 ---------------
 

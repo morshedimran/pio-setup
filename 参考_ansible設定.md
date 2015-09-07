@@ -24,14 +24,14 @@ Below are the procedure that we followed.
 
 ----
 
-■Common Server Setting
+:collision: Common Server Setting
 【Ansible_Execution_User】
 　⇒ Specify a user to rexecute ansible
 
 【SSH_PrivateKey】
 　⇒ Set the secret key in the absolute path for  ansible user ssh public key authentication.
 
-■Bastion server
+:collision: Bastion server
 【Bastion_Private_IP】
 　⇒ Specify the private IP of Bastion server
 

@@ -257,7 +257,7 @@ The **private key** (identification) is now located in **/home/demo/.ssh/id_rsa*
     enBBP0WcBI7uGJpIdIhlPSIiOqyfG/XnSCVOWZCFGIc13CtOjHq3rabcdefg== root@ip-XX-XX-XX-XX
     ------------------
 ⇒　Notes:
-      1. vi command displayes the contents of the file.
+      1. vi command displays the contents of the file.
       2. By Pressing[i]you will be in edit mode, and be able to copy the public key.
       3. Paste the public key, copied from bastion server
       4. Press[Esc], then type [:wq!] to save the file
@@ -313,16 +313,16 @@ The **private key** (identification) is now located in **/home/demo/.ssh/id_rsa*
     $ su root  (※　switch to the root user)
     # ssh -i ~/.ssh/id_rsa root@[Private IP of remote server]  (※　ssh to remote servers as root user)
     
-    # exit (※　Exit from remote server after successfull access from bastion server)
+    # exit (※　Exit from remote server, after accessing it successfully from bastion server)
 ```
 --------------------------------------------------------------------
 
-## ansible configuration :white_check_mark:
+## Ansible configuration :white_check_mark:
 
 
 ### Install Ansible（Client server：Bastion server）
 
-* Adf the epel repository to the Bastion server
+* Add the epel repository to the Bastion server
 
 ```
     # yum localinstall http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
@@ -334,18 +334,18 @@ The **private key** (identification) is now located in **/home/demo/.ssh/id_rsa*
     # yum install ansible
     this ok [y/N]: 　　(※　type [y] and press enter)
 ```    
-### Check the ansible configuration file on client sarver (Bastion server)
+### Check the ansible configuration file on client server (Bastion server)
 
 * Access to Bastion server and check the following ansible setup files, if configures as required
 
 ```
-1．/hosts file 
+1．/hosts file   (※　Static inventory file)
 ※　Check the hosts file if anything is missing   
 
     　　# cat /root/ansible/static_inventory/hosts | grep "【"
 ⇒　If nothing shows, meaning all are configured
 
-2．/group_vars/[group name].yml file     
+2．/group_vars/[group name].yml file    (※　Group Variable files) 
 ※　Check if all the yml files under group_vars are modified as required
 
     　　# cat /root/ansible/group_vars/ap.yml

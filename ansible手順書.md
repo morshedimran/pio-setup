@@ -225,10 +225,14 @@ Note: It is required to add the extentional disk on the following path
     |                 |
     |                 |
     +-----------------+
+```
+
 The **public key** is now located in **/home/demo/.ssh/id_rsa.pub** 
 
 The **private key** (identification) is now located in **/home/demo/.ssh/id_rsa**
-```
+
+
+
 
 ##### Step Two—Put the public key to other remote servers. Follow the steps below:
 

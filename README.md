@@ -1,60 +1,69 @@
-ƒT[ƒo[4‘äˆÈã‚Å\¬‚³‚ê‚épersonium.ioƒT[ƒrƒX‚ğ\’z‚·‚é‚½‚ß‚Ìè‡‘
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
+# Provisioning personium unit setup using ansible
+â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†â—†
+
+## Introduction
+
+The purpose of this document is to explain how to use Ansible together with static inventory to construct personium unit. Here experimentaly we executed ansible tasks in its host loop against multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
+
+Below are the procedure that we followed.
 
 ---------------------------------------
-‚Í‚¶‚ß‚É
+:sparkles: GETTING STARTED :sparkles:
 
- ƒT[ƒo[\¬
-  Personium‚ğ\¬‚·‚éƒT[ƒo[‚É‚ÍAˆÈ‰º‚Ì8í‚Ì–ğŠ„‚ğŠ„‚èU‚é•K—v‚ª‚ ‚é(¦1)B
-  EWeb				ƒŠƒo[ƒXƒvƒƒLƒVƒT[ƒo[BGlobal IP‚ğ‚¿AƒCƒ“ƒ^[ƒlƒbƒg‚ÖÚ‘±‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éB
-  EAP				ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo[BPersonium–{‘Ì‚ğÀs‚·‚éB
-  EADS_Master			³–{iMySQLjƒT[ƒo[Bƒ}ƒXƒ^[‚Æ‚µ‚Ä³–{‚ğ•Û‚·‚éB
-  EADS_Slave			³–{iMySQLj‚Ì•¡»(ƒXƒŒ[ƒu)ƒT[ƒo[B
-  EES				ElasticSearch‚ğÀs‚·‚éƒT[ƒo[B
-  ENFS				NFS‚ğ‰Ò“­‚³‚¹‚é‚½‚ß‚ÌƒT[ƒo[B
-  EBastion			“¥‚İ‘äƒT[ƒo[Bansible‚ÌÀs‚âAŠeƒT[ƒo[‚Ö‚ÌSSHÚ‘±‚É—p‚¢‚éB
-  EBackup			PIOƒc[ƒ‹—pƒT[ƒo[(¦2)B•K—v‚É‰‚¶‚ÄADS_Slave‚âNFSƒT[ƒo[‚©‚çƒoƒbƒNƒAƒbƒv‚ğs‚¤B
+### Assign roles on multiple servers
+  personium unit construction requires to assign the following 8 rules on different servers :one:.
 
-¦1F1‚Â‚ÌƒT[ƒo[‚É‘Î‚µA‚±‚ê‚ç‚Ì–ğŠ„‚ğ•¡”‚ğŠ„‚è“–‚Ä‚é‚±‚Æ‚à‰Â”\‚Å‚ ‚éB
-¦2Fƒc[ƒ‹‚Æ‚µ‚ÄPIOƒf[ƒ^ƒoƒbƒNƒAƒbƒvƒc[ƒ‹A®‡«ƒ`ƒFƒbƒNƒc[ƒ‹ACellÄ‹A“Iíœƒc[ƒ‹AElasticsearchƒCƒ“ƒfƒbƒNƒXƒŠƒXƒgƒAƒc[ƒ‹‚ğ”õ‚¦‚Ä‚¢‚éB
+1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
 
- ƒT[ƒo[\¬—á
-  Personium‚ğÀs‚·‚é‚É‚ ‚½‚èAÀÑ‚Ì‚ ‚éƒT[ƒo[\¬‚ğˆÈ‰º‚É¦‚·B
-  E4‘ä\¬
-    ƒT[ƒo[1FWeb, Bastion
-    ƒT[ƒo[2FAP, NFS
-    ƒT[ƒo[3FES, ADS_Master
-    ƒT[ƒo[4FADS_Slave, backup
+2.`AP` Application server, where personium will be executed.
 
+3.`ADS_Master` Basically `MySQL` server. Contributes as Master.
 
- ƒtƒ@ƒCƒ‹\¬
-  /init_personium.yml			ansible-playbookƒRƒ}ƒ“ƒh‚ÅÀs‚·‚é‚×‚«yml
-  /[group–¼].yml			group‚²‚Æ‚Ì•Ï”“Ç‚İ‚İ‚ğs‚¢AÀsƒ^ƒXƒN‚ğ‚Ü‚Æ‚ß‚éyml
-  /ansible.cfg				Às‚É•K—v‚Èİ’è‚ª‹Lq‚³‚ê‚Ä‚¢‚éB•ÏX•s‰ÂB
+4.`ADS_Slave` Basically `MySQL` server. Contributes as Slave.
 
-  /static_inventory/			IP‚È‚ÇŠeŠÂ‹«‚Éİ’è‚ª•K{‚Èî•ñ‚ğ’u‚­ƒtƒHƒ‹ƒ_
-  š/hosts				ŠeƒzƒXƒg‚Ìİ’èiIP address, FQDN, group, User name, Private Key‚È‚Çj
+5.`ES` server for running `ElasticSearch`.
 
-  /group_vars/				ŠeíƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚ğs‚¤‚½‚ß‚Ìƒtƒ@ƒCƒ‹‚ğ’u‚­ƒtƒHƒ‹ƒ_
-  š/[group–¼].yml			group‚²‚Æ‚ÌƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚É•K—v‚Èİ’è’l‚ğ‚Ü‚Æ‚ß‚é
+6.`NFS` server for running `Network File System (NFS)`.
 
-  /resource/				ƒ^ƒXƒN‚É•K—v‚Èƒtƒ@ƒCƒ‹iƒŠƒ\[ƒX/•ÏX‚ª•s—v‚Ì‚à‚Ìj‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚ÌƒŠƒ\[ƒX‚ğŠi”[‚·‚é
+7.`Bastion` Bastion server. Will be used to execute ansible and to connect other servers thru ssh.
 
-  /tasks/				ƒ^ƒXƒN‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚Ì‹ï‘Ì“I‚Èƒ^ƒXƒN‚ğŠi”[‚·‚é
+8.`Backup` pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary.
 
-  /handlers/				ƒnƒ“ƒhƒ‰[‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
-    /[group–¼]/				group‚²‚Æ‚Ìƒnƒ“ƒhƒ‰[‚ğŠi”[‚·‚é
+  
+:one: ï¼šPossible to assign multiple rules on a single server.
+
+:two: ï¼šAs a tool it works as `pio data backup` tool, `consistency check` tool, `Cell recursive Deletion` Tool and the `Elasticsearch index restoring` tool.
 
 
-  ¦šcŠÂ‹«‚É‰‚¶‚½İ’è‚ª•K—v‚Æ‚È‚éƒtƒ@ƒCƒ‹
 
-  ¦[group–¼]cweb, ap, nfs, es, ads_master, ads_slave, bastionAbackup‚¨‚æ‚Ñcommon‚Ì9í—Ş
-  icommon‚ÍƒT[ƒo[‚Ì–ğŠ„‚Ì–¼Ì‚Å‚Í‚È‚¢‚ªA•¡”ƒT[ƒo[‚É‹¤’Ê‚µ‚½‹@”\‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚Éİ’è‚·‚éj
+### File structure 
 
+  * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
+  * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
+  * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required
+  * `/static_inventory/`   :		This folder contains all the essential information of different environments
+  * `â€»â˜…/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
+  * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
+  * `â€»â˜…[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
+  * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task
+  *  `/[groue name]/`			Store the resources of each group
+  *  `/tasks/`				Folder to organize task
+  *  `[groue name]/`			Store specific task for each group
+  *  `/handlers/`			Folder to organize handler
+  *  `/[group name]/`			Store handler for each group
+  
+  
+  â€»â˜…:Files required to modify according to the environment.
+
+  â€»[group name] : web, ap, nfs, es, ads_master, ads_slave, bastionã€backup and common. All in all 9 group names.
+  ï¼ˆHere `common` is not the server role. Common group is used to set some general functionalities on all the servers.ï¼‰
+
+File (key) handling Caution: :zap:
+
+The following key file will be generated automatically during the ansible execution, we advice to handle the keys carefully.
+
+    /fj/dc-core/conf/salt.key
+    /fj/dc-core/conf/token.key
 
 ---------------------------------------
-æˆµ’ˆÓƒtƒ@ƒCƒ‹F
-ˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚ÍansibleÀs’†‚É©“®¶¬‚³‚ê‚é‚ªAæˆµ’ˆÓ‚ÌƒL[‚Å‚ ‚éB
-  /fj/dc-core/conf/salt.key
-  /fj/dc-core/conf/token.key

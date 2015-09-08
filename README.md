@@ -70,4 +70,4 @@ The following key file will be generated automatically during the ansible execut
 
 ### Summary
 
-In this document, we tried to give a general understanding about configuraing the personium by using ansible. Please go thru with our other documents which will help you to construct the personium on a single or multiple servers based on your needs.
+In this document, we tried to share a general understanding about configuraing the personium by using ansible. Please go thru with our other documents which will help you to construct the personium on a single or multiple servers based on your needs.

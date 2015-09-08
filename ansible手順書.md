@@ -131,7 +131,9 @@ The following key file will be generated automatically during the ansible execut
 
 * Prepare the SSL certificate and private key seperately
 
-※If the official SSL certificate could not be arranged, then create and use self-signed ssl certificate. Following is the self-signed ssl certificate creation procedure.：
+※ Create and use self-signed SSL certificate unless the official SSL certificate is not available. 
+
+Following is the self-signed ssl certificate creation procedure.：
 
     # cd /root/ansible/resource/web/opt/nginx/conf
     # openssl genrsa -des3 -out server.key 1024

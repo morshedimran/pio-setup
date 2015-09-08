@@ -125,8 +125,7 @@ Below are the procedure that we followed.
 
 ### Item to be set upon ansible execution（File destination：/group_vars/[group name].yml） :white_check_mark:
 
-group_vars/フォルダ内にある.ymlファイルには、オプションとして設定可能な値が記述されている。
-基本的に変更する必要はないが、サーバーのチューニングなどを行う場合には修正してよい。
+As an option, changing the recorded values of all .yml files under group_vars directory is possible. But basically, no modification is required unless server tuning is nacessary.
 
 ```
 ----

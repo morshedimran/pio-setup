@@ -1,69 +1,60 @@
-**Procedure
-to create pio environment on AWS without using CFT**
-
-Â 
-
-Date:
-Aug.20 2015
-
-**1.Â Â 
-****Create instances**
-
-Â Â 
-Create below 4 instances: (depends on customer request)
-
-Â Â Â  Â â†’ watch-Nginx
-(t2-micro)
-
-Â Â Â  Â â†’ ES-MySQL-Master
-(m3-large)
-
-Â Â Â  Â â†’ NFS-Web (m3-medium)
-
-Â Â Â  Â â†’ MySQL-Slave
-(t2-micro)
-
-Â Â  General
-setup for all server: (OS:redhat 6.5, security group name: hcl-sg-mysql, Â Key name: test_unit)
-
-â€»Â  hcl-sg-mysql is
-configured like following
-
-| **Type**        |      **Protocol**      |  **Port Range** |  **Source** |
-|-----------------|:----------------------:|----------------:|------------:|
-| HTTP            |  TCP                   | 80              | 0.0.0.0/0   |
-| MYSQL/Aurora    |  TCP                   | 3306            | 0.0.0.0/0   |
-| Custom TCP Rule |  TCP                   | 9300            | 0.0.0.0/0   |
-| Custom TCP Rule |  TCP                   | 9200            | 0.0.0.0/0   |
-| SSH             |  TCP                   | 22              | 0.0.0.0/0   |
-| Custom ICMP Rule|  Echo Request          | N/A             | 0.0.0.0/0   |
-
-â€»Â  test_unit is the
-key-pair which was created earlier.
-
-<img style="float: right;" src="test.png">
-
-![Flowers](/test.png)
-
-![A picture of a cat](test.png)
-
-
-<div style="float:left;margin:0 10px 10px 0" markdown="1">
-    ![book](test.png)
-</div>
+ƒT[ƒo[4‘äˆÈã‚Å\¬‚³‚ê‚épersonium.ioƒT[ƒrƒX‚ğ\’z‚·‚é‚½‚ß‚Ìè‡‘
 
 ---------------------------------------
-GETTING STARTED 
+‚Í‚¶‚ß‚É
 
-## Server setup :white_check_mark:
+ ƒT[ƒo[\¬
+  Personium‚ğ\¬‚·‚éƒT[ƒo[‚É‚ÍAˆÈ‰º‚Ì8í‚Ì–ğŠ„‚ğŠ„‚èU‚é•K—v‚ª‚ ‚é(¦1)B
+  EWeb				ƒŠƒo[ƒXƒvƒƒLƒVƒT[ƒo[BGlobal IP‚ğ‚¿AƒCƒ“ƒ^[ƒlƒbƒg‚ÖÚ‘±‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éB
+  EAP				ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo[BPersonium–{‘Ì‚ğÀs‚·‚éB
+  EADS_Master			³–{iMySQLjƒT[ƒo[Bƒ}ƒXƒ^[‚Æ‚µ‚Ä³–{‚ğ•Û‚·‚éB
+  EADS_Slave			³–{iMySQLj‚Ì•¡»(ƒXƒŒ[ƒu)ƒT[ƒo[B
+  EES				ElasticSearch‚ğÀs‚·‚éƒT[ƒo[B
+  ENFS				NFS‚ğ‰Ò“­‚³‚¹‚é‚½‚ß‚ÌƒT[ƒo[B
+  EBastion			“¥‚İ‘äƒT[ƒo[Bansible‚ÌÀs‚âAŠeƒT[ƒo[‚Ö‚ÌSSHÚ‘±‚É—p‚¢‚éB
+  EBackup			PIOƒc[ƒ‹—pƒT[ƒo[(¦2)B•K—v‚É‰‚¶‚ÄADS_Slave‚âNFSƒT[ƒo[‚©‚çƒoƒbƒNƒAƒbƒv‚ğs‚¤B
 
-* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b
-  
+¦1F1‚Â‚ÌƒT[ƒo[‚É‘Î‚µA‚±‚ê‚ç‚Ì–ğŠ„‚ğ•¡”‚ğŠ„‚è“–‚Ä‚é‚±‚Æ‚à‰Â”\‚Å‚ ‚éB
+¦2Fƒc[ƒ‹‚Æ‚µ‚ÄPIOƒf[ƒ^ƒoƒbƒNƒAƒbƒvƒc[ƒ‹A®‡«ƒ`ƒFƒbƒNƒc[ƒ‹ACellÄ‹A“Iíœƒc[ƒ‹AElasticsearchƒCƒ“ƒfƒbƒNƒXƒŠƒXƒgƒAƒc[ƒ‹‚ğ”õ‚¦‚Ä‚¢‚éB
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+ ƒT[ƒo[\¬—á
+  Personium‚ğÀs‚·‚é‚É‚ ‚½‚èAÀÑ‚Ì‚ ‚éƒT[ƒo[\¬‚ğˆÈ‰º‚É¦‚·B
+  E4‘ä\¬
+    ƒT[ƒo[1FWeb, Bastion
+    ƒT[ƒo[2FAP, NFS
+    ƒT[ƒo[3FES, ADS_Master
+    ƒT[ƒo[4FADS_Slave, backup
+
+
+ ƒtƒ@ƒCƒ‹\¬
+  /init_personium.yml			ansible-playbookƒRƒ}ƒ“ƒh‚ÅÀs‚·‚é‚×‚«yml
+  /[group–¼].yml			group‚²‚Æ‚Ì•Ï”“Ç‚İ‚İ‚ğs‚¢AÀsƒ^ƒXƒN‚ğ‚Ü‚Æ‚ß‚éyml
+  /ansible.cfg				Às‚É•K—v‚Èİ’è‚ª‹Lq‚³‚ê‚Ä‚¢‚éB•ÏX•s‰ÂB
+
+  /static_inventory/			IP‚È‚ÇŠeŠÂ‹«‚Éİ’è‚ª•K{‚Èî•ñ‚ğ’u‚­ƒtƒHƒ‹ƒ_
+  š/hosts				ŠeƒzƒXƒg‚Ìİ’èiIP address, FQDN, group, User name, Private Key‚È‚Çj
+
+  /group_vars/				ŠeíƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚ğs‚¤‚½‚ß‚Ìƒtƒ@ƒCƒ‹‚ğ’u‚­ƒtƒHƒ‹ƒ_
+  š/[group–¼].yml			group‚²‚Æ‚ÌƒJƒXƒ^ƒ}ƒCƒYEƒ`ƒ…[ƒjƒ“ƒO‚É•K—v‚Èİ’è’l‚ğ‚Ü‚Æ‚ß‚é
+
+  /resource/				ƒ^ƒXƒN‚É•K—v‚Èƒtƒ@ƒCƒ‹iƒŠƒ\[ƒX/•ÏX‚ª•s—v‚Ì‚à‚Ìj‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
+    /[group–¼]/				group‚²‚Æ‚ÌƒŠƒ\[ƒX‚ğŠi”[‚·‚é
+
+  /tasks/				ƒ^ƒXƒN‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
+    /[group–¼]/				group‚²‚Æ‚Ì‹ï‘Ì“I‚Èƒ^ƒXƒN‚ğŠi”[‚·‚é
+
+  /handlers/				ƒnƒ“ƒhƒ‰[‚ğ‚Ü‚Æ‚ß‚éƒtƒHƒ‹ƒ_
+    /[group–¼]/				group‚²‚Æ‚Ìƒnƒ“ƒhƒ‰[‚ğŠi”[‚·‚é
+
+
+  ¦šcŠÂ‹«‚É‰‚¶‚½İ’è‚ª•K—v‚Æ‚È‚éƒtƒ@ƒCƒ‹
+
+  ¦[group–¼]cweb, ap, nfs, es, ads_master, ads_slave, bastionAbackup‚¨‚æ‚Ñcommon‚Ì9í—Ş
+  icommon‚ÍƒT[ƒo[‚Ì–ğŠ„‚Ì–¼Ì‚Å‚Í‚È‚¢‚ªA•¡”ƒT[ƒo[‚É‹¤’Ê‚µ‚½‹@”\‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚Éİ’è‚·‚éj
+
+
+---------------------------------------
+æˆµ’ˆÓƒtƒ@ƒCƒ‹F
+ˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚ÍansibleÀs’†‚É©“®¶¬‚³‚ê‚é‚ªAæˆµ’ˆÓ‚ÌƒL[‚Å‚ ‚éB
+  /fj/dc-core/conf/salt.key
+  /fj/dc-core/conf/token.key

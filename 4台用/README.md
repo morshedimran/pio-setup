@@ -8,7 +8,6 @@ The purpose of this document is to explain explecitely how to construct personiu
 
 
 ---------------------------------------
-:sparkles: GETTING STARTED :sparkles:
 
 ## Server setup :white_check_mark:
 

@@ -4,9 +4,9 @@
 
 ## Introduction
 
-The purpose of this document is to explain how to use Ansible together with static inventory to construct personium unit. Here experimentaly we executed ansible tasks in its host loop against multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
+The purpose of this document is to explain how we were able to construct personium unit using ansible together with static inventory. Here experimentaly we executed ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
 
-Below are the procedure that we followed.
+Below are the general notifications, which is required to have the better understanding for this configuration.
 
 ---------------------------------------
 :sparkles: GETTING STARTED :sparkles:
@@ -67,3 +67,7 @@ The following key file will be generated automatically during the ansible execut
     /fj/dc-core/conf/token.key
 
 ---------------------------------------
+
+### Summary
+
+In this document, we tried to give a general understanding about configuraing the personium by using ansible. Please go thru with our other documents which will help you to construct the personium on a single or multiple servers based on your needs.

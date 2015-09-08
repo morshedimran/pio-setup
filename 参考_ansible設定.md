@@ -130,7 +130,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
 ```
 ----
 
-□Webサーバー関連(設定先：/group_vars/web.yml)
+□Web server seraled (file destination：/group_vars/web.yml)
   tag_ServerType: web
 
   nginx_version: 1.7.6
@@ -138,7 +138,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
   nginx_hm_version: 0.25
 
 
-□APサーバー関連(設定先：/group_vars/ap.yml)
+□AP server seraled(file destination：/group_vars/ap.yml)
   tag_ServerType: ap
 
   tomcat_version: 8.0.14
@@ -164,7 +164,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
   cache_manager: memcached
 
 
-□ADS_Master/ADS_Slaveサーバー関連(設定先：/group_vars/mysql.yml)
+□ADS_Master/ADS_Slave server seraled(file destination：/group_vars/mysql.yml)
   tag_ServerType: mysql
 
   ads_username: mysql
@@ -172,7 +172,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
   ads_groupname: mysql
 
 
-□ESサーバー関連(設定先：/group_vars/es.yml)
+□ES server seraled(file destination：/group_vars/es.yml)
   tag_ServerType: es
 
   es_heapsize: 3328
@@ -180,7 +180,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
   version: 1.3.4
 
 
-□nfsサーバー関連(設定先：/group_vars/nfs.yml)
+□nfs server seraled(file destination：/group_vars/nfs.yml)
   tag_ServerType: nfs
 
   # lock / cache instance
@@ -202,7 +202,7 @@ As an option, changing the recorded values of all .yml files under group_vars di
   memcached_cache_maxconn: 1024
 
 
-□bastionサーバー関連(設定先：/group_vars/bastion.yml)
+□bastion server seraled(file destination：/group_vars/bastion.yml)
   tag_ServerType: bastion
 
 ```

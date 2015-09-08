@@ -36,17 +36,17 @@ Below are the procedure that we followed.
 　⇒ Specify the private IP of Bastion server
 
 【Bastion_Tag_Name】
-　⇒ Specify the host name to be set  for Bastion server
+　⇒ Specify the host name for Bastion server
 
 【Bastion_Network_Separation】
-　⇒ Specify the network setup for Bastion server
+　⇒ Specify the network catagory for Bastion server
 
 ★ Web server
 【Web_Private_IP】
 　⇒ Specify the private IP of Web server
 
 【Web_Tag_Name】
-　⇒ Specify the host name to be set  for Web server
+　⇒ Specify the host name for Web server
 
 【Web_Global_IP】
 　⇒ Specify the global IP for Web server
@@ -59,71 +59,71 @@ Below are the procedure that we followed.
 　⇒ Specify the private IP of  AP server
 
 【AP_Network_Separation】
-　⇒ Specify the network setup for AP server
+　⇒ Specify the network catagory for AP server
 
 【AP_Tag_Name】
-　⇒ Specify the host name to be set  for AP server
+　⇒ Specify the host name for AP server
 
 【Master_Token】
 　⇒ To authorize all kind of operation, set the master token. (strictly managed)
 
 ★ ADS_Master server
 【ADS_Master_Private_IP】
-　⇒ Specify the private IP of  ADS_Master server 
+　⇒ Specify the private IP of ADS_Master server 
 　
 【ADS_Master_Tag_Name】
-　⇒ Specify the host name to be set  for ADS_Master server
+　⇒ Specify the host name for ADS_Master server
 
 ★ ADS_Slave server
 【ADS_Slave_Private_IP】
 　⇒ Specify the private IP of ADS_Slave server
 
 【ADS_Slave_Tag_Name】
-　⇒ Specify the host name to be set  for ADS_Slave server
+　⇒ Specify the host name for ADS_Slave server
 
 ★ ADS common setup
 【ADS_User_Name】
-　⇒ mysql(ads)上の一般ユーザーのアカウント名を指定する
+　⇒ Set the general user account name for mysql(ads)
 【ADS_User_Password】
-　⇒mysql(ads)上の一般ユーザーのパスワードを指定する
+　⇒ Assign the password for the general user accounts of mysql(ads)
 【ADS_Root_Name】
-　⇒mysql(ads)上のrootユーザーのアカウント名を指定する
+　⇒ Set the root user account name for mysql(ads)
 【ADS_Root_Password】
-　⇒mysql(ads)上のrootユーザーのパスワードを指定する
+　⇒ Assign the password for the root user accounts of mysql(ads)
 【ADS_Repl_Name】
-　⇒mysql(ads)上のレプリケーション用のアカウント名を指定する
+　⇒ Set the account name for replication on mysql (ads)
 【ADS_Repl_Password】
-　⇒mysql(ads)上のレプリケーション用のパスワードを指定する
+　⇒ Assign the password for the replication account of mysql(ads)
 
-★ Backupサーバー
+★ Backup server
 【Backup_Private_IP】
-　⇒BackupサーバーのプライベートIPを指定する
+　⇒ Set the private IP for Backup server 
 
 【Buckup_Tag_Name】
-　⇒Backupサーバーに設定するホスト名を指定する
+　⇒ Specify the host name for Backup server
 
 【Buckup_Network_Separation】
-　⇒Buckupサーバーのネットワーク部を指定する
+　⇒ Specify the network catagory for Backup server
 
-★ ESサーバー
+★ ES server
 【ES_Private_IP】
-　⇒ESサーバーのプライベートIPを指定する
+　⇒ Set the private IP for ES server
 
 【ES_Tag_Name】
-　⇒ESサーバーに設定するホスト名を指定する
+　⇒ Specify the host name for ES server
 
-★ NFSサーバー
+★ NFS server
 【NFS_Private_IP】
-　⇒NFSサーバーのプライベートIPを指定する
+　⇒ Set the private IP for NFS server
 
 【nfs_Tag_Name】
-　⇒nfsサーバーに設定するホスト名を指定する
+　⇒ Specify the host name for nfs server
 
 ---------------
 
 ```
 
-### Item to be set upon ansible execution（記入先：/group_vars/[group名].yml） :white_check_mark:
+### Item to be set upon ansible execution（File destination：/group_vars/[group name].yml） :white_check_mark:
 
 group_vars/フォルダ内にある.ymlファイルには、オプションとして設定可能な値が記述されている。
 基本的に変更する必要はないが、サーバーのチューニングなどを行う場合には修正してよい。

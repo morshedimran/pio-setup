@@ -1,70 +1,69 @@
-# Provisioning personium unit setup using ansible
--------------------------------
+**Procedure
+to create pio environment on AWS without using CFT**
 
-## Introduction
+ 
 
-The purpose of this document is to explain how we were able to construct personium.io unit using ansible combined with static inventory. Here experimentally we executed ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium.io unit successfully. Some required initial information for constructing the personium.io unit are included in this document.
+Date:
+Aug.20 2015
 
-:sparkles: GETTING STARTED :sparkles:
+**1.  
+****Create instances**
 
-### About personium.io unit
-  Personium unit will be constructed by combining the interrelated servers where the following 7 roles will be assigned accordingly.
+  
+Create below 4 instances: (depends on customer request)
 
-| **Server**      | **Requirement**  |    **Overview**                                                                    |
-|-----------------|:----------------:|------------------------------------------------------------------------------------|
-| `Web`           |  Required        | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
-| `AP`            |  Required        | Application server, where personium will be executed.                              |
-| `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master.                                   |
-| `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave.                                    |
-| `ES`            |  Required        | server to operate `ElasticSearch`.                                                |
-| `NFS`           |  Required        | server to operate `Network File System (NFS)`.                                    |
-| `Bastion`       |  Optional        | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
+     → watch-Nginx
+(t2-micro)
 
+     → ES-MySQL-Master
+(m3-large)
 
-:high_brightness: Also possible to assign multiple roles on a single server.
+     → NFS-Web (m3-medium)
 
-### About personium.io unit structure
+     → MySQL-Slave
+(t2-micro)
 
-personium.io unit is configurable based on different types of usages like evaluation、development、verification、production etc..
+   General
+setup for all server: (OS:redhat 6.5, security group name: hcl-sg-mysql,  Key name: test_unit)
 
-For the easiness of the developer, we also implemented the personium.io unit configuration setup tool to construct personium.io unit automatically based on developer needs.
-Of course you can may build the personium.io unit without using the tool, but we recommend to use the tool to construct the personium.io unit.
+※  hcl-sg-mysql is
+configured like following
 
+| **Type**        |      **Protocol**      |  **Port Range** |  **Source** |
+|-----------------|:----------------------:|----------------:|------------:|
+| HTTP            |  TCP                   | 80              | 0.0.0.0/0   |
+| MYSQL/Aurora    |  TCP                   | 3306            | 0.0.0.0/0   |
+| Custom TCP Rule |  TCP                   | 9300            | 0.0.0.0/0   |
+| Custom TCP Rule |  TCP                   | 9200            | 0.0.0.0/0   |
+| SSH             |  TCP                   | 22              | 0.0.0.0/0   |
+| Custom ICMP Rule|  Echo Request          | N/A             | 0.0.0.0/0   |
 
-### About personium.io setup tool
+※  test_unit is the
+key-pair which was created earlier.
 
-This setup tool will install the OS, network and middle wear on the machine before installing personium.io module.
-Please select the setup tool based on you purpose.
+<img style="float: right;" src="test.png">
 
-#### Pattern-1 purpose：evaluation
+![Flowers](/test.png)
 
-If interested on personium.io, you may also try to construct personium.io unit on your local machine (virtualbox) as a separate project using the our setup tool.
-
-* setup-vagrant: https://github.com/personium/setup-vagrant/
-
-#### Pattern-2 purpose：Development, verification  (on process)
-
-* Machine environment：Linux server
-* personium.io unit configuration server：single server
-  * Server elements：Bastion,Web,AP,NFS,ES
-* Set-up time：
-* Setup Tool: https://github.com/personium/setup-ansible/1-server_unit/
+![A picture of a cat](test.png)
 
 
+<div style="float:left;margin:0 10px 10px 0" markdown="1">
+    ![book](test.png)
+</div>
 
-#### Pattern-3 purpose：production environment
+---------------------------------------
+GETTING STARTED 
 
-* Machine environment：Linux server
-* personium.io unit configuration server：4 servers
-  * Server-1 elements：Bastion,Web
-  * Server-2 elements：AP,NFS
-  * Server-3 elements：ES,ADS_Master
-  * Server-4 elements：ADS_Slave
-* Set-up time： 2 hours approximately
-* Setup Tool: https://github.com/personium/setup-ansible/4-server_unit/
+## Server setup :white_check_mark:
 
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+  
 
-
-### Summary
-
-In this document, we tried to share a general understanding about configuring the personium.io unit by using ansible. Please go thru with our other documents which will help you to construct the personium.io unit on a single or multiple servers based on your purposes.
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item

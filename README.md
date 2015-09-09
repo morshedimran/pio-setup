@@ -37,6 +37,18 @@ Below are the general notifications, which is required to have the better unders
 
 
 
+| **Server**      |      **type**    |  **description**                                                                   |
+|-----------------|:----------------:|-----------------------------------------------------------------------------------:|
+| `Web`           |  TCP             | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
+| `AP`            |  TCP             | Application server, where personium will be executed.                              |
+| `ADS_Master`    |  TCP             | Basically `MySQL` server. Contributes as Master.                                   |
+| `ADS_Slave`     |  TCP             | Basically `MySQL` server. Contributes as Slave.                                    |
+| `ES`            |  TCP             | server for running `ElasticSearch`.                                                |
+| `NFS`           |  Echo Request    | server for running `Network File System (NFS)`.                                    |
+| `Bastion`       |  TCP             | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
+| `Backup`        |  TCP             | pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary. |
+
+
 ### File structure 
 
   * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook

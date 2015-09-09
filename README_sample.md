@@ -1,4 +1,4 @@
-# Provisioning personium unit setup using ansible
+# Provisioning personium.io unit setup using ansible
 -------------------------------
 
 ## Introduction

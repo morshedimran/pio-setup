@@ -37,8 +37,8 @@ Below are the general notifications, which is required to have the better unders
 
 
 
-| **Server**      |      **type**    |  **description**                                                                   |
-|-----------------|:----------------:|-----------------------------------------------------------------------------------:|
+| **Server**      |   **type**       |    **description**                                                                 |
+|-----------------|:----------------:|------------------------------------------------------------------------------------|
 | `Web`           |  TCP             | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
 | `AP`            |  TCP             | Application server, where personium will be executed.                              |
 | `ADS_Master`    |  TCP             | Basically `MySQL` server. Contributes as Master.                                   |

@@ -39,7 +39,7 @@ Of course you can may build the personium.io unit without using the tool, but we
   あなたの用途に合わせたセットアップツールを選択してください。
   
 
-* Pattern 1  usage purpose： evaluation
+### Pattern 1  usage purpose： evaluation
 ```
     personium.ioを試してみたい場合は、あなたのローカルマシン（virtualbox）にpersonium.ioをセットアップするツールが別プロジェクトで用意されています。
     以下のプロジェクトを参照してください。
@@ -50,7 +50,7 @@ Of course you can may build the personium.io unit without using the tool, but we
 ```
 
 
-* Pattern 2  usage purpose：開発,検証  (準備中)
+### Pattern 2  usage purpose：開発,検証  (準備中)
 
 
 ```
@@ -67,7 +67,7 @@ Of course you can may build the personium.io unit without using the tool, but we
 
 ```
 
-* Pattern 3  purpose：production environment
+### Pattern 3  purpose：production environment
 
 ```
     ・Machine environment：Linux server

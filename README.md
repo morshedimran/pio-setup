@@ -11,8 +11,8 @@ Below are the general notifications, which is required to have the better unders
 ---------------------------------------
 :sparkles: GETTING STARTED :sparkles:
 
-### Assign roles on multiple servers
-  personium unit construction requires to assign the following 8 roles on different servers :one:.
+### Server group to construct personium Unit
+  Personium unit will be constructed by combining the interrelated servers where the following 7 roles will be assigned accordingly :one:.
 
 1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
 
@@ -37,16 +37,15 @@ Below are the general notifications, which is required to have the better unders
 
 
 
-| **Group**       |   **Remarks**    |    **description**                                                                 |
+| **Group name**  | **Requirement**  |    **Overview**                                                                 |
 |-----------------|:----------------:|------------------------------------------------------------------------------------|
-| `Web`           |  TCP             | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
-| `AP`            |  TCP             | Application server, where personium will be executed.                              |
-| `ADS_Master`    |  TCP             | Basically `MySQL` server. Contributes as Master.                                   |
-| `ADS_Slave`     |  TCP             | Basically `MySQL` server. Contributes as Slave.                                    |
-| `ES`            |  TCP             | server for running `ElasticSearch`.                                                |
-| `NFS`           |  Echo Request    | server for running `Network File System (NFS)`.                                    |
-| `Bastion`       |  TCP             | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
-| `Backup`        |  TCP             | pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary. |
+| `Web`           |  Required        | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
+| `AP`            |  Required        | Application server, where personium will be executed.                              |
+| `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master.                                   |
+| `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave.                                    |
+| `ES`            |  Required        | server for running `ElasticSearch`.                                                |
+| `NFS`           |  Required        | server for running `Network File System (NFS)`.                                    |
+| `Bastion`       |  Optional        | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
 
 
 ### File structure 

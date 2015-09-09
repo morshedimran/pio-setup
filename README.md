@@ -12,7 +12,7 @@ Below are the general notifications, which is required to have the better unders
 :sparkles: GETTING STARTED :sparkles:
 
 ### Assign roles on multiple servers
-  personium unit construction requires to assign the following 8 rules on different servers :one:.
+  personium unit construction requires to assign the following 8 roles on different servers :one:.
 
 1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
 
@@ -37,7 +37,7 @@ Below are the general notifications, which is required to have the better unders
 
 
 
-| **Server**      |   **type**       |    **description**                                                                 |
+| **Role**      |   **type**       |    **description**                                                                 |
 |-----------------|:----------------:|------------------------------------------------------------------------------------|
 | `Web`           |  TCP             | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
 | `AP`            |  TCP             | Application server, where personium will be executed.                              |

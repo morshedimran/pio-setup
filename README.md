@@ -37,7 +37,7 @@ Below are the general notifications, which is required to have the better unders
 
 
 
-| **Group name**  | **Requirement**  |    **Overview**                                                                 |
+| **Server**      | **Requirement**  |    **Overview**                                                                    |
 |-----------------|:----------------:|------------------------------------------------------------------------------------|
 | `Web`           |  Required        | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
 | `AP`            |  Required        | Application server, where personium will be executed.                              |

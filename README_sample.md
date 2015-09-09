@@ -5,7 +5,6 @@
 
 The purpose of this document is to explain how we were able to construct personium.io unit using ansible combined with static inventory. Here experimentally we executed ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium.io unit successfully. Some required initial information for constructing the personium.io unit are included in this document.
 
----------------------------------------
 :sparkles: GETTING STARTED :sparkles:
 
 ### About personium.io unit

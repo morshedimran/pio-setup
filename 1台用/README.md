@@ -331,7 +331,7 @@ The `private key` (identification) is now located in `/home/demo/.ssh/id_rsa`
 ```
 --------------------------------------------------------------------
 
-## Conclusion
+## Summary
 
 We explored to deploy personium on different environment using Ansible. Like as we also was able to deploy personium on AWS environment using CFT(Cloud Formation Template). This documnet is written for the developers conveniency, to be able to delpoy personium easily on the top environment. Also we have choosen ansible as it is designed as a multi-tier orchestration system, and by default runs in an easy push-based mode incorporate tests into the end of a playbook run.
 

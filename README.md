@@ -37,7 +37,7 @@ Below are the general notifications, which is required to have the better unders
 
 
 
-| **Role**      |   **type**       |    **description**                                                                 |
+| **Role**      |   **Remarks**       |    **description**                                                                 |
 |-----------------|:----------------:|------------------------------------------------------------------------------------|
 | `Web`           |  TCP             | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
 | `AP`            |  TCP             | Application server, where personium will be executed.                              |

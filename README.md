@@ -43,8 +43,8 @@ Below are the general notifications, which is required to have the better unders
 | `AP`            |  Required        | Application server, where personium will be executed.                              |
 | `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master.                                   |
 | `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave.                                    |
-| `ES`            |  Required        | server for running `ElasticSearch`.                                                |
-| `NFS`           |  Required        | server for running `Network File System (NFS)`.                                    |
+| `ES`            |  Required        | server to operate `ElasticSearch`.                                                |
+| `NFS`           |  Required        | server to operate `Network File System (NFS)`.                                    |
 | `Bastion`       |  Optional        | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
 
 

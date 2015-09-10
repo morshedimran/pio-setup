@@ -5,9 +5,6 @@
 
 The purpose of this document is to explain explicitly how to construct personium on the top of a single server using ansible together with static inventory. Experimentally we executed ansible tasks in its host loop against a single machine, and was able to construct personium unit successfully.
 
-
----------------------------------------
-
 ## Server setup :white_check_mark:
 
 #### Server configuration structure
@@ -15,9 +12,6 @@ The purpose of this document is to explain explicitly how to construct personium
 
 * server configuration
   * Server 1：Web, Bastion, AP, NFS, ES
-
----------------------------------------
-
   
 #### File structure 
 
@@ -48,7 +42,6 @@ The following key file will be generated automatically during the ansible execut
     /fj/dc-core/conf/salt.key
     /fj/dc-core/conf/token.key
 
----------------------------------------
 
 ## Initial setup for ansible :white_check_mark:
 
@@ -292,7 +285,6 @@ The `private key` (identification) will be placed in `/home/demo/.ssh/id_rsa`
     
     # exit (※　Exit from remote server, after confirming the successful access from bastion server)
 ```
---------------------------------------------------------------------
 
 ## Ansible configuration :white_check_mark:
 
@@ -359,7 +351,6 @@ The `private key` (identification) will be placed in `/home/demo/.ssh/id_rsa`
     # /bin/sh pcs_regression.sh https://{{ FQDN of Web server }}
     [PCS Version(default) RT OK] (※　reachability testing is done, if it shows the same)
 ```
---------------------------------------------------------------------
 
 ## Summary
 

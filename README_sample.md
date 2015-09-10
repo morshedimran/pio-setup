@@ -3,7 +3,7 @@
 
 ## Introduction
 
-The purpose of this document is to explain explicitly how to construct personium on the top of a single server using ansible together with static inventory. Experimentally we executed ansible tasks in its host loop against a single machine, and was able to construct personium unit successfully.
+The purpose of this document is to explain explicitly how to construct personium.io unit on the top of a single server using ansible together with static inventory. Experimentally we executed ansible tasks in its host loop against a single machine, and was able to construct personium unit successfully.
 
 ## Server setup :white_check_mark:
 

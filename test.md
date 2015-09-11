@@ -1,245 +1,137 @@
-# Ansible setup instruction
+# How to generate Self-signed Unit Certificate 
 
 -------------------------------------------------
 
 ## Introduction
 
-This is the setup document to launch Personium.io unit by ansible. Part 1 (Initial Configuration) must be completed, where Part 2 (Tuning personium.io) modification is optional, based on the developers requirement.
+This is a manual for the procedure to generate the Self-signed unit certificate, which is required for the ansible execution to build personium.io unit.  
+Followings will be created by openssl, after performing the procedure below.
 
-Below are the files where modification is required.
+| File name | Explanation |
+|---|---|
+|unit.key             |This is a unit secret key. Created by RSA secret key of more than 2048bit in DER format. Managing this unit secret key strictly is highly recomended.|
+|unit.csr             |Request for X.509 certificate. This file will be required to create the certificate and not be deployed on the server. |
+|unit-self-sign.crt   |It is a DER format certificate supporting Unit Key. The value of CN should be the domain name of `web` server. |
 
+Now you can get these certificate and key! Below is the procedure to generate the Self-signed unit certificate.
 
-### Part 1 : Initial Configuration :white_check_mark:
+---------------------------------------
 
-* **Items to be set initially**
-* all elements inside `/static_inventory/hosts` file enclosed with `{}`, replace with the constructed server configuration.
-* Example
+### Part 1. Create personium.io unit secret key (unit.key) on Bastion server
 
-```yaml
-    ansible_ssh_user={Ansible_Execution_User}
-    
-    # should be changed to
+1. Change directory to the certificate deployment directory of Bastion server.
 
-    ansible_ssh_user=root
+```console
+    # cd /root/ansible/resource/ap/opt/x509/
 ```
 
-* Modify the hosts file as per instruction below
+2. Create secret key
 
-```yaml
-# Common Server Setting
-{Ansible_Execution_User}
-# -> Specify a user ansible execution
-Ex: {Ansible_Execution_User}⇒root
+```console
+    # openssl genrsa -out unit.key 2048 -outform DER
+```  
 
-{SSH_PrivateKey}
-# -> Set the secret key in the absolute path for  ansible user ssh public key authentication
-Ex: {SSH_PrivateKey}⇒rroot/.ssh/id_rsa
+**Example:)**
 
-# Bastion server
-{Bastion_Private_IP}
-# -> Specify the private IP of Bastion server
-Ex: {Bastion_Private_IP}⇒172.31.10.248
-
-{Bastion_Tag_Name}
-# -> Specify the host name for Bastion server
-Ex: {Bastion_Tag_Name}⇒bastion-web
-
-{Bastion_Network_Separation}
-# -> Specify the network catagory for Bastion server
-Ex: {Bastion_Network_Separation}⇒172.31.10.0/24
-
-# Web server
-{Web_Private_IP}
-# -> Specify the private IP of Web server
-Ex: {Web_Private_IP}⇒172.31.10.248
-
-{Web_Tag_Name}
-# -> Specify the host name for Web server
-Ex: {Web_Tag_Name}⇒bastion-web
-
-{Web_Global_IP}
-# -> Specify the global IP for Web server
-Ex: {Web_Global_IP}⇒54.65.33.203
-
-{Web_FQDN}
-# -> Specify the FQDN for Web server(same as unit FQDN)
-Ex: {Web_FQDN}⇒ec2-54-65-33-203.ap-northeast-1.compute.amazonaws.com
-
-# AP server
-{AP_Private_IP}
-# -> Specify the private IP of  AP server
-Ex: {AP_Private_IP}⇒172.31.13.38
-
-{AP_Network_Separation}
-# -> Specify the network catagory for AP server
-Ex: {AP_Network_Separation}⇒172.31.13.0/24
-
-{AP_Tag_Name}
-# -> Specify the host name for AP server
-Ex: {AP_Tag_Name}⇒test-ap
-
-{Master_Token}
-# -> To authorize all kind of operation, set the master token (Strictly managed)
-Ex: {Master_Token}⇒abc123
-
-# ADS_Master server
-{ADS_Master_Private_IP}
-# -> Specify the private IP of ADS_Master server 
-Ex: {ADS_Master_Private_IP}⇒172.31.3.80
-
-{ADS_Master_Tag_Name}
-# -> Specify the host name for ADS_Master server
-Ex: {ADS_Master_Tag_Name}⇒test-mysql
-
-# ADS_Slave server
-{ADS_Slave_Private_IP}
-# -> Specify the private IP of ADS_Slave server
-Ex: {ADS_Slave_Private_IP}⇒172.31.4.5
-
-{ADS_Slave_Tag_Name}
-# -> Specify the host name for ADS_Slave server
-Ex: {ADS_Slave_Tag_Name}⇒test-slave
-
-# ADS common setup
-{ADS_User_Name}
-# -> Set the general user account name for mysql(ads)
-Ex: {ADS_User_Name}⇒user
-
-{ADS_User_Password}
-# -> Assign the password for the general user accounts of mysql(ads)
-Ex: {ADS_User_Password}⇒user
-
-{ADS_Root_Name}
-# -> Set the root user account name for mysql(ads)
-Ex: {ADS_Root_Name}⇒root
-
-{ADS_Root_Password}
-# -> Assign the password for the root user accounts of mysql(ads)
-Ex: {ADS_Root_Password}⇒root
-
-{ADS_Repl_Name}
-# -> Set the account name for replication on mysql (ads)
-Ex: {ADS_Repl_Name}⇒repl
-
-{ADS_Repl_Password}
-# -> Assign the password for the replication account of mysql(ads)
-Ex: {ADS_Repl_Password}⇒repl
-
-# Backup server
-{Backup_Private_IP}
-# -> Set the private IP for Backup server 
-Ex: {Backup_Private_IP}⇒172.31.4.5
-
-{Buckup_Tag_Name}
-# -> Specify the host name for Backup server
-Ex: {Buckup_Tag_Name}⇒test-slave-backup
-
-{Buckup_Network_Separation}
-# -> Specify the network category for Backup server
-Ex: {Buckup_Network_Separation}⇒172.31.4.0/24
-
-# ES server
-{ES_Private_IP}
-# -> Set the private IP for ES server
-Ex: {ES_Private_IP}⇒172.31.3.80
-
-{ES_Tag_Name}
-# -> Specify the host name for ES server
-Ex: {ES_Tag_Name}⇒test-ES
-
-# NFS server
-{NFS_Private_IP}
-# -> Set the private IP for NFS server
-Ex: {NFS_Private_IP}⇒172.31.13.38
-
-{nfs_Tag_Name}
-# -> Specify the host name for nfs server
-Ex: {nfs_Tag_Name}⇒test-NFS
+```console
+    # openssl genrsa -out unit.key 2048 -outform DER
+    Generating RSA private key, 2048 bit long modulus
+    ............................................................+++
+    ...................................................+++
+    e is 65537 (0x10001)
+    -----------------------------------------------------------------------------------
 ```
 
-### Part 2 (Tuning personium.io)
+Confirm that the unit.key is created
 
-* **Item to be set upon ansible execution(File destination : /group_vars/[group name].yml)** :white_check_mark:
-* As an option, changing the recorded values of all .yml files under group_vars directory is possible. But basically, no modification is required unless server tuning is necessary.
+```console
+    # ls -l
+```
 
-```yaml
-# Web server seraled (file destination : /group_vars/web.yml)
-  tag_ServerType: web
+**Example:)**
 
-  nginx_version: 1.7.6
-  
-  nginx_hm_version: 0.25
+```console
+    # ls
+    total 4
+    -rw-r--r--. 1 root root 1675 Sep  1 20:27 unit.key
+```	
 
+### Part 2. Create self-signed unit certificate
 
-# AP server seraled(file destination : /group_vars/ap.yml)
-  tag_ServerType: ap
+1. Create the CSR
 
-  tomcat_version: 8.0.14
-  
-  tomcat_xms: 1024m
-  
-  tomcat_xmx: 1024m
-  
-  tomcat_metaspace_size: 256m
-  
-  tomcat_max_metaspace_size: 256m
-  
-  commons_daemon_version : 1.0.15
+```console
+  # openssl req -new -key unit.key -out unit.csr
+    → enter the required information interactively.
+      ※ Common Name value should be the unit domain name (required)
+```
 
-  lock_host: pcs-nfs
-  
-  lock_port: 11211
-  
-  cache_host: pcs-nfs
-  
-  cache_port: 11212
-  
-  cache_manager: memcached
+**Example:)**
 
 
-# ADS_Master/ADS_Slave server seraled(file destination : /group_vars/mysql.yml)
-  tag_ServerType: mysql
-
-  ads_username: mysql
-
-  ads_groupname: mysql
-
-
-# ES server seraled(file destination : /group_vars/es.yml)
-  tag_ServerType: es
-
-  es_heapsize: 3328
-
-  version: 1.3.4
-
-
-# nfs server seraled(file destination : /group_vars/nfs.yml)
-  tag_ServerType: nfs
-
-  # lock / cache instance
-  cache_in_nfs: true
-
-  lock_port: 11211
-
-  cache_port: 11212
-
-  # ec2 memcached cachesize
-  memcached_lock_cachesize: 512
-
-  memcached_cache_cachesize: 512
-
-  memcached_version: 1.4.21
-
-  memcached_lock_maxconn: 1024
-
-  memcached_cache_maxconn: 1024
-
-
-# bastion server seraled(file destination : /group_vars/bastion.yml)
-  tag_ServerType: bastion
+```console
+    # openssl req -new -key unit.key -out unit.csr
+    You are about to be asked to enter information that will be incorporated
+    into your certificate request.
+    What you are about to enter is what is called a Distinguished Name or a DN.
+    There are quite a few fields but you can leave some blank
+    For some fields there will be a default value,
+    If you enter '.', the field will be left blank.
+    -----
+    Country Name (2 letter code) [XX]:
+    State or Province Name (full name) []:
+    Locality Name (eg, city) [Default City]:
+    Organization Name (eg, company) [Default Company Ltd]:
+    Organizational Unit Name (eg, section) []:
+    Common Name (eg, your name or your server's hostname) []:example.com            ←★ Enter the unit domain name (required)
+    Email Address []:
+    Please enter the following 'extra' attributes
+    to be sent with your certificate request
+    A challenge password []:
+    An optional company name []:
 
 ```
 
-## Summary
+2. Self-sign the CSR. valid for 3650 days (approximately 10 years)
 
-In this document we tried to explain what are the file we require you to modify before executing ansible and build personium.io unit. Please use this document as reference.
+
+```console
+    # openssl x509 -req -days 3650 -signkey unit.key -out unit-self-sign.crt <unit.csr
+```
+
+**Example:)**
+
+```console
+    # openssl x509 -req -days 3650 -signkey unit.key -out unit-self-sign.crt <unit.csr
+    Signature ok
+    subject=/C=XX/L=Default City/O=Default Company Ltd/CN=example.com
+    Getting Private key
+
+```
+
+3. Check the contents of the generated certificate
+
+```console
+    # openssl x509 -in unit-self-sign.crt -text
+```  
+
+  Also check with the following command
+
+```console
+    # ls -l
+```   
+
+**Example:)**
+
+```console
+    # ls -l
+    total 12
+    -rw-r--r--. 1 root root 1041 Sep  1 20:29 unit.csr
+    -rw-r--r--. 1 root root 1675 Sep  1 20:27 unit.key
+    -rw-r--r--. 1 root root 1277 Sep  1 20:29 unit-self-sign.crt
+```
+
+### Summary
+
+Though there are several option to generate the certificate, this time we generate it by self-signing.
+Generally, self-signed unit certificate can't be used in public, so this procedure should be used only in preparing private personium.io unit.

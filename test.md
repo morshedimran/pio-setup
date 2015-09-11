@@ -1,80 +1,245 @@
-# Getting Started with Personium using Ansible
--------------------------------
+# Ansible setup instruction
+
+-------------------------------------------------
 
 ## Introduction
 
-The purpose of this document is to explain how to construct personium.io unit using Ansible combined with static inventory. Here experimentally we executed Ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium.io unit successfully. Some required initial information for constructing the personium.io unit are included in this document.
+This is the setup document to launch Personium.io unit by ansible. Part 1 (Initial Configuration) must be completed, where Part 2 (Tuning personium.io) modification is optional, based on the developers requirement.
 
-### About personium.io unit
-  Personium.io unit will be constructed by combining the interconnected servers where the following 7 roles will be assigned dynamically.
-
-| **Role**        | **Requirement**  |    **Overview**                                                                        |
-|-----------------|:----------------:|----------------------------------------------------------------------------------------|
-| `Web`           |  Required        | Reverse proxy server, contains Global IP and also should be accessible to the internet |
-| `AP`            |  Required        | Application server, where personium.io will be executed                                |
-| `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master                                        |
-| `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave                                         |
-| `ES`            |  Required        | server to operate `ElasticSearch`                                                      |
-| `NFS`           |  Required        | server to operate `Network File System (NFS)`.                                         |
-| `Bastion`       |  Optional        | Bastion server. Used to execute ansible and to connect other servers by ssh.           |
-
-:high_brightness: Also possible to assign multiple roles on a single server.
-
-### About personium.io unit structure
-
-Personium.io unit is configurable based on different purpose of usages like evaluation, development, verification, production etc..
-For the easiness of the developer, we also implemented the personium.io unit setup tool to construct personium.io unit automatically based on developer needs.
-Of course you can build the personium.io unit without using the tool, but we recommend to use the tool to construct the personium.io unit as it will be easier and fast.
+Below are the files where modification is required.
 
 
-### About personium.io setup tool
+### Part 1 : Initial Configuration :white_check_mark:
 
-At first this setup tool will install the OS, network and middle wear on the machine before installing personium.io module.
-Please choose the setup tool based on your purpose.
+* **Items to be set initially**
+* all elements inside `/static_inventory/hosts` file enclosed with `{}`, replace with the constructed server configuration.
+* Example
 
-#### Pattern-1 purpose：evaluation
+```yaml
+    ansible_ssh_user={Ansible_Execution_User}
+    
+    # should be changed to
 
-If interested on personium.io, you may also try to construct personium.io unit on your local machine (virtualbox) as a separate project using the setup tool.
+    ansible_ssh_user=root
+```
 
-* Please refer to setup-vagrant: https://github.com/personium/setup-vagrant/
+* Modify the hosts file as per instruction below
 
-This setup tool will install middleware and configure the OS and its network on the machines before installing personium.io module.
-There are some patterns of personium.io unit constructed by setup tools, so please select suitable one based on you purpose.
+```yaml
+# Common Server Setting
+{Ansible_Execution_User}
+# -> Specify a user ansible execution
+Ex: {Ansible_Execution_User}⇒root
 
-#### Pattern-1 : Evaluation
+{SSH_PrivateKey}
+# -> Set the secret key in the absolute path for  ansible user ssh public key authentication
+Ex: {SSH_PrivateKey}⇒rroot/.ssh/id_rsa
 
-* Machine environment : **Linux (Virtual)**
-* The number of personium.io unit servers : **Single**
-  * Server elements : Bastion, Web, AP, NFS, ES
-* Setup time: 30 minutes
-* Setup tool: https://github.com/personium/setup-vagrant/
-* Note  
-  If interested on personium.io, you may also try to construct personium.io unit on your local machine (virtualbox) as a separate project using the our setup tool.
+# Bastion server
+{Bastion_Private_IP}
+# -> Specify the private IP of Bastion server
+Ex: {Bastion_Private_IP}⇒172.31.10.248
 
-#### Pattern-2 : Development, Verification (on process)
+{Bastion_Tag_Name}
+# -> Specify the host name for Bastion server
+Ex: {Bastion_Tag_Name}⇒bastion-web
 
-* Machine environment : **Linux**
-* The number of personium.io unit servers : **Single**
-  * Server elements : Bastion, Web, AP, NFS, ES
-* Setup time : 1 hour
-* Setup tool: https://github.com/personium/setup-ansible/1-server_unit/
-* Note  
-  If you are more interested on personium.io and want to develop some simple applications or to test this system, you can select this pattern. You will get personium.io unit as a single server.
+{Bastion_Network_Separation}
+# -> Specify the network catagory for Bastion server
+Ex: {Bastion_Network_Separation}⇒172.31.10.0/24
 
-#### Pattern-3 : Production
+# Web server
+{Web_Private_IP}
+# -> Specify the private IP of Web server
+Ex: {Web_Private_IP}⇒172.31.10.248
 
-* Machine environment : **Linux**
-* The number of personium.io unit servers : **4 Servers**
-  * Server-1 elements : Bastion,Web
-  * Server-2 elements : AP,NFS
-  * Server-3 elements : ES,ADS_Master
-  * Server-4 elements : ADS_Slave
-* Setup time :  2 hours
-* Setup tool: https://github.com/personium/setup-ansible/4-server_unit/
-* Note  
-  If you are devoted to personium.io and will release marvelous applications with it, let's try this pattern! You will get personium.io unit with 4 servers, which will meet practical performance.
+{Web_Tag_Name}
+# -> Specify the host name for Web server
+Ex: {Web_Tag_Name}⇒bastion-web
+
+{Web_Global_IP}
+# -> Specify the global IP for Web server
+Ex: {Web_Global_IP}⇒54.65.33.203
+
+{Web_FQDN}
+# -> Specify the FQDN for Web server(same as unit FQDN)
+Ex: {Web_FQDN}⇒ec2-54-65-33-203.ap-northeast-1.compute.amazonaws.com
+
+# AP server
+{AP_Private_IP}
+# -> Specify the private IP of  AP server
+Ex: {AP_Private_IP}⇒172.31.13.38
+
+{AP_Network_Separation}
+# -> Specify the network catagory for AP server
+Ex: {AP_Network_Separation}⇒172.31.13.0/24
+
+{AP_Tag_Name}
+# -> Specify the host name for AP server
+Ex: {AP_Tag_Name}⇒test-ap
+
+{Master_Token}
+# -> To authorize all kind of operation, set the master token (Strictly managed)
+Ex: {Master_Token}⇒abc123
+
+# ADS_Master server
+{ADS_Master_Private_IP}
+# -> Specify the private IP of ADS_Master server 
+Ex: {ADS_Master_Private_IP}⇒172.31.3.80
+
+{ADS_Master_Tag_Name}
+# -> Specify the host name for ADS_Master server
+Ex: {ADS_Master_Tag_Name}⇒test-mysql
+
+# ADS_Slave server
+{ADS_Slave_Private_IP}
+# -> Specify the private IP of ADS_Slave server
+Ex: {ADS_Slave_Private_IP}⇒172.31.4.5
+
+{ADS_Slave_Tag_Name}
+# -> Specify the host name for ADS_Slave server
+Ex: {ADS_Slave_Tag_Name}⇒test-slave
+
+# ADS common setup
+{ADS_User_Name}
+# -> Set the general user account name for mysql(ads)
+Ex: {ADS_User_Name}⇒user
+
+{ADS_User_Password}
+# -> Assign the password for the general user accounts of mysql(ads)
+Ex: {ADS_User_Password}⇒user
+
+{ADS_Root_Name}
+# -> Set the root user account name for mysql(ads)
+Ex: {ADS_Root_Name}⇒root
+
+{ADS_Root_Password}
+# -> Assign the password for the root user accounts of mysql(ads)
+Ex: {ADS_Root_Password}⇒root
+
+{ADS_Repl_Name}
+# -> Set the account name for replication on mysql (ads)
+Ex: {ADS_Repl_Name}⇒repl
+
+{ADS_Repl_Password}
+# -> Assign the password for the replication account of mysql(ads)
+Ex: {ADS_Repl_Password}⇒repl
+
+# Backup server
+{Backup_Private_IP}
+# -> Set the private IP for Backup server 
+Ex: {Backup_Private_IP}⇒172.31.4.5
+
+{Buckup_Tag_Name}
+# -> Specify the host name for Backup server
+Ex: {Buckup_Tag_Name}⇒test-slave-backup
+
+{Buckup_Network_Separation}
+# -> Specify the network category for Backup server
+Ex: {Buckup_Network_Separation}⇒172.31.4.0/24
+
+# ES server
+{ES_Private_IP}
+# -> Set the private IP for ES server
+Ex: {ES_Private_IP}⇒172.31.3.80
+
+{ES_Tag_Name}
+# -> Specify the host name for ES server
+Ex: {ES_Tag_Name}⇒test-ES
+
+# NFS server
+{NFS_Private_IP}
+# -> Set the private IP for NFS server
+Ex: {NFS_Private_IP}⇒172.31.13.38
+
+{nfs_Tag_Name}
+# -> Specify the host name for nfs server
+Ex: {nfs_Tag_Name}⇒test-NFS
+```
+
+### Part 2 (Tuning personium.io)
+
+* **Item to be set upon ansible execution(File destination : /group_vars/[group name].yml)** :white_check_mark:
+* As an option, changing the recorded values of all .yml files under group_vars directory is possible. But basically, no modification is required unless server tuning is necessary.
+
+```yaml
+# Web server seraled (file destination : /group_vars/web.yml)
+  tag_ServerType: web
+
+  nginx_version: 1.7.6
+  
+  nginx_hm_version: 0.25
 
 
-### Summary
+# AP server seraled(file destination : /group_vars/ap.yml)
+  tag_ServerType: ap
 
-In this document, we tried to share a general understanding about configuring the personium.io unit by using Ansible. Please go thru with our other documents which will help you to construct the personium.io unit on a single or multiple servers based on your purposes.
+  tomcat_version: 8.0.14
+  
+  tomcat_xms: 1024m
+  
+  tomcat_xmx: 1024m
+  
+  tomcat_metaspace_size: 256m
+  
+  tomcat_max_metaspace_size: 256m
+  
+  commons_daemon_version : 1.0.15
+
+  lock_host: pcs-nfs
+  
+  lock_port: 11211
+  
+  cache_host: pcs-nfs
+  
+  cache_port: 11212
+  
+  cache_manager: memcached
+
+
+# ADS_Master/ADS_Slave server seraled(file destination : /group_vars/mysql.yml)
+  tag_ServerType: mysql
+
+  ads_username: mysql
+
+  ads_groupname: mysql
+
+
+# ES server seraled(file destination : /group_vars/es.yml)
+  tag_ServerType: es
+
+  es_heapsize: 3328
+
+  version: 1.3.4
+
+
+# nfs server seraled(file destination : /group_vars/nfs.yml)
+  tag_ServerType: nfs
+
+  # lock / cache instance
+  cache_in_nfs: true
+
+  lock_port: 11211
+
+  cache_port: 11212
+
+  # ec2 memcached cachesize
+  memcached_lock_cachesize: 512
+
+  memcached_cache_cachesize: 512
+
+  memcached_version: 1.4.21
+
+  memcached_lock_maxconn: 1024
+
+  memcached_cache_maxconn: 1024
+
+
+# bastion server seraled(file destination : /group_vars/bastion.yml)
+  tag_ServerType: bastion
+
+```
+
+## Summary
+
+In this document we tried to explain what are the file we require you to modify before executing ansible and build personium.io unit. Please use this document as reference.

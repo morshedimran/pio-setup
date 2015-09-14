@@ -1,84 +1,67 @@
-◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
-# Provisioning personium unit setup using ansible
-◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+# Getting Started with Personium using Ansible
+-------------------------------
 
 ## Introduction
 
-The purpose of this document is to explain how we were able to construct personium unit using ansible together with static inventory. Here experimentaly we executed ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium unit successfully.
+The purpose of this document is to explain how to construct personium.io unit using Ansible combined with static inventory. Here experimentally we executed Ansible tasks in its host loop against single or multiple remote machines (4 machines in our case), and was able to construct personium.io unit successfully. Some required initial information for constructing the personium.io unit are included in this document.
 
-Below are the general notifications, which is required to have the better understanding for this configuration.
+### About personium.io unit
+  Personium.io unit will be constructed by combining the interconnected servers where the following 7 roles will be assigned dynamically.
 
----------------------------------------
-:sparkles: GETTING STARTED :sparkles:
+| **Role**        | **Requirement**  |    **Overview**                                                                        |
+|-----------------|:----------------:|----------------------------------------------------------------------------------------|
+| `Web`           |  Required        | Reverse proxy server, contains Global IP and also should be accessible to the internet |
+| `AP`            |  Required        | Application server, where personium.io will be executed                                |
+| `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master                                        |
+| `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave                                         |
+| `ES`            |  Required        | server to operate `ElasticSearch`                                                      |
+| `NFS`           |  Required        | server to operate `Network File System (NFS)`.                                         |
+| `Bastion`       |  Optional        | Bastion server. Used to execute ansible and to connect other servers by ssh.           |
 
-### Server group to construct personium Unit
-  Personium unit will be constructed by combining the interrelated servers where the following 7 roles will be assigned accordingly :one:.
+:high_brightness: Also possible to assign multiple roles on a single server.
 
-1.`Web` Reverse proxy server, contain Global IP, and should be accessible to the internet.
+### About personium.io unit structure
 
-2.`AP` Application server, where personium will be executed.
-
-3.`ADS_Master` Basically `MySQL` server. Contributes as Master.
-
-4.`ADS_Slave` Basically `MySQL` server. Contributes as Slave.
-
-5.`ES` server for running `ElasticSearch`.
-
-6.`NFS` server for running `Network File System (NFS)`.
-
-7.`Bastion` Bastion server. Will be used to execute ansible and to connect other servers thru ssh.
-
-8.`Backup` pio tool server :two:. It performs the backup from ADS_Slave and NFS server if necessary.
-
-  
-:one: ：Possible to assign multiple rules on a single server.
-
-:two: ：As a tool it works as `pio data backup` tool, `consistency check` tool, `Cell recursive Deletion` Tool and the `Elasticsearch index restoring` tool.
+Personium.io unit is configurable based on different purpose of usages like evaluation, development, verification, production etc..
+For the easiness of the developer, we also implemented the personium.io unit setup tool to construct personium.io unit automatically based on developer needs.
+Of course you can build the personium.io unit without using the tool, but we recommend to use the tool to construct the personium.io unit as it will be easier and fast.
 
 
+### About personium.io setup tool
 
-| **Server**      | **Requirement**  |    **Overview**                                                                    |
-|-----------------|:----------------:|------------------------------------------------------------------------------------|
-| `Web`           |  Required        | Reverse proxy server, contain Global IP, and should be accessible to the internet. |
-| `AP`            |  Required        | Application server, where personium will be executed.                              |
-| `ADS_Master`    |  Optional        | Basically `MySQL` server. Contributes as Master.                                   |
-| `ADS_Slave`     |  Optional        | Basically `MySQL` server. Contributes as Slave.                                    |
-| `ES`            |  Required        | server to operate `ElasticSearch`.                                                |
-| `NFS`           |  Required        | server to operate `Network File System (NFS)`.                                    |
-| `Bastion`       |  Optional        | Bastion server. Will be used to execute ansible and to connect other servers thru ssh.|
+This setup tool will install middleware and configure the OS and its network on the machines before installing personium.io module.
+There are some patterns of personium.io unit constructed by setup tools, so please select suitable one based on you purpose.
 
+#### Pattern-1 : Evaluation
 
-### File structure 
+If interested on personium.io, you may also try to construct personium.io unit on your local machine (virtualbox) as a separate project using the setup tool.
 
-  * `/init_personium.yml`  :		yml file that should be executed by ansible-playbook
-  * `/[group name].yml`	   :		Retrieve the variable of each group, which will be executed by task yml
-  * `/ansible.cfg`         :		Described required Settings for execution. Modification is not required
-  * `/static_inventory/`   :		This folder contains all the essential information of different environments
-  * `※★/hosts`	          :     	Setup for each host (IP address, FQDN, group, User name, Private Key, etc.)
-  * `/group_vars/`	   :		Folder to organize files in order to perform various customization or tuning
-  * `※★[group name].yml`  :		Collections of value for each group, which requires to customize/tuning the settings
-  * `/resource/`			Folder to organize files (Modification is not required) those are necessary in task
-  *  `/[groue name]/`			Store the resources of each group
-  *  `/tasks/`				Folder to organize task
-  *  `[groue name]/`			Store specific task for each group
-  *  `/handlers/`			Folder to organize handler
-  *  `/[group name]/`			Store handler for each group
-  
-  
-  ※★:Files required to modify according to the environment.
+* Please refer to setup-vagrant: https://github.com/personium/setup-vagrant/
 
-  ※[group name] : web, ap, nfs, es, ads_master, ads_slave, bastion、backup and common. All in all 9 group names.
-  （Here `common` is not the server role. Common group is used to set some general functionalities on all the servers.）
+#### Pattern-2 : Development, Verification (on process)
 
-File (key) handling Caution: :zap:
+* Machine environment : **Linux**
+* The number of personium.io unit servers : **1 Server**
+  * Server elements : Bastion, Web, AP, NFS, ES
+* Setup time : 1 hour
+* Setup tool: https://github.com/personium/setup-ansible/1-server_unit/
+* Note  
+  If you are more interested on personium.io and want to develop some simple applications or to test this system, you can select this pattern. You will get personium.io unit as a single server.
 
-The following key file will be generated automatically during the ansible execution, we advice to handle the keys carefully.
+#### Pattern-3 : Production
 
-    /fj/dc-core/conf/salt.key
-    /fj/dc-core/conf/token.key
+* Machine environment : **Linux**
+* The number of personium.io unit servers : **4 Servers**
+  * Server-1 elements : Bastion,Web
+  * Server-2 elements : AP,NFS
+  * Server-3 elements : ES,ADS_Master
+  * Server-4 elements : ADS_Slave
+* Setup time :  2 hours
+* Setup tool: https://github.com/personium/setup-ansible/4-server_unit/
+* Note  
+  If you are devoted to personium.io and will release marvelous applications with it, let's try this pattern! You will get personium.io unit with 4 servers, which will meet practical performance.
 
----------------------------------------
 
 ### Summary
 
-In this document, we tried to share a general understanding about configuraing the personium by using ansible. Please go thru with our other documents which will help you to construct the personium on a single or multiple servers based on your needs.
+In this document, we tried to share a general understanding about configuring the personium.io unit by using Ansible. Please go thru with our other documents which will help you to construct the personium.io unit on a single or multiple servers based on your purposes.
